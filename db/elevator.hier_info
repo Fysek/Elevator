@@ -1,0 +1,34 @@
+|elevator
+CLK => ~NO_FANOUT~
+A[0] => ~NO_FANOUT~
+A[1] => ~NO_FANOUT~
+A[2] => ~NO_FANOUT~
+A[3] => ~NO_FANOUT~
+A[4] => ~NO_FANOUT~
+A[5] => ~NO_FANOUT~
+B[0] => ~NO_FANOUT~
+B[1] => ~NO_FANOUT~
+B[2] => ~NO_FANOUT~
+B[3] => ~NO_FANOUT~
+B[4] => ~NO_FANOUT~
+B[5] => ~NO_FANOUT~
+B[6] => ~NO_FANOUT~
+B[7] => ~NO_FANOUT~
+R[0] => ~NO_FANOUT~
+R[1] => ~NO_FANOUT~
+R[2] => ~NO_FANOUT~
+R[3] => ~NO_FANOUT~
+Y[0] <= <GND>
+Y[1] <= <GND>
+Y[2] <= <GND>
+Y[3] <= <GND>
+Y[4] <= <GND>
+Y[5] <= <GND>
+Y[6] <= <GND>
+Y[7] <= <GND>
+F[0] <= <GND>
+F[1] <= <GND>
+F[2] <= <GND>
+F[3] <= <GND>
+
+
