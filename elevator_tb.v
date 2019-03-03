@@ -1,4 +1,8 @@
 //elevator
+//iverilog -o ALU ALU.v 
+//iverilog -o ALU_tb ALU_tb.v
+//vvp ALU_tb
+//gtkwave ALU_tb.vcd
 `include "elevator.v"
 
 module elevator_tb;
@@ -35,15 +39,30 @@ elevator elevator_inst(
 		.level_display(level_display)
 		);
 
-
+always
+	begin
+		#10 clk=!clk;
+	end	
+		
 initial
 	begin
-		$dumpfile("elevator_tb.vcd");
-	  	$dumpvars(0,clk,reset,open_btn,close_btn,btn_num_in,btn_up_out,btn_down_out,engine_up,engine_down,open_door,level_display);
-		$monitor($time,": clk=%b reset=%b open_btn=%b close_btn=%b btn_num_in=%d btn_up_out=%d btn_down_out=%d | engine_up=%b engine_down=%b open_door=%b close_door=%b level_display=%b"
-		,clk,reset,open_btn,close_btn,btn_num_in,btn_up_out,btn_down_out,engine_up,engine_down,open_door,close_door,level_display);
-
-	#10 $finish;
+		//$dumpfile("elevator_tb.vcd");
+	  	//$dumpvars(0,clk,reset,open_btn,close_btn,btn_num_in,btn_up_out,btn_down_out,engine_up,engine_down,open_door,level_display);
+		//$monitor($time,": clk=%b reset=%b open_btn=%b close_btn=%b btn_num_in=%d btn_up_out=%d btn_down_out=%d | engine_up=%b engine_down=%b open_door=%b close_door=%b level_display=%b"
+		//,clk,reset,open_btn,close_btn,btn_num_in,btn_up_out,btn_down_out,engine_up,engine_down,open_door,close_door,level_display);
+	
+	clk = 1'b0;
+	open_btn = 0;
+	close_btn = 0;
+	btn_num_in = 0;
+	btn_up_out = 0;
+	btn_down_out = 0;
+	#5 reset = 0;
+	#5 reset = 1;
+	#60 open_btn = 1;	
+	#10 open_btn = 0;
+		
+	#100 $finish;
 	end
 
 endmodule

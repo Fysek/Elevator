@@ -26,7 +26,6 @@ parameter BUTTONS_WIDTH = 6
 	reg [BUTTONS_WIDTH-1:0] active_levels;// te które są wcisnete
 	reg reached,overload=0;
 	
-	
 	reg[2:0] state, next_state;
 	parameter IDLE=3'b000, OPEN=3'b001, CLOSE=3'b010, UP=3'b011,DOWN=3'b100,WAIT=3'b101;
 	
@@ -35,22 +34,32 @@ parameter BUTTONS_WIDTH = 6
 	
 	
 	
-	always@(posedge clk or reset)
+	always@(posedge clk or negedge reset)
 	begin
-		state<=reset?next_state:IDLE;
-		
 		if(!reset) 
-			floor=GROUND;
-		else if(state==OPEN)
-			floor=next_floor;
+			begin
+				floor			= GROUND;
+				next_floor  = GROUND;
+				state 		= IDLE;
+				engine_up	=0;
+				engine_down =0;
+				open_door	=0;
+				close_door	=0;
+			end
+		else
+			begin
+				state=next_state;
+				floor=next_floor;
+			end
+			
+			
 	end
 	
 	
 	always@(*)
 	begin
-		next_state=IDLE;
+		
 		case(state)
-	
 		IDLE:
 		begin
 			if(open_btn)
@@ -59,13 +68,13 @@ parameter BUTTONS_WIDTH = 6
 				next_state=UP;
 			else if(floor>next_floor)
 				next_state=DOWN;
-			else 
-				if(floor==next_floor)
-				begin
-						next_state=OPEN;
-				end
-				else 
-					next_state=IDLE;
+			//else
+				//begin
+					//if(floor==next_floor)
+					//	next_state=OPEN;
+					///else 
+					//	next_state=IDLE;
+				//end		
 		end
 
 		OPEN:
@@ -117,17 +126,5 @@ parameter BUTTONS_WIDTH = 6
 	
 	
 
-	/*
-    always @(posedge clk or reset)
-        if(reset)
-            begin      
-				engine_up <= 2'b00;
-				engine_down <= 2'b00;
-            end
-		else
-			begin	
-				
-			
-			end*/
 endmodule 
 //elevator
