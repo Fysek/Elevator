@@ -16,10 +16,8 @@ module elevator_tb;
  reg [BUTTONS_WIDTH-1:0] btn_up_out; //na zewnatrz do gory
  reg [BUTTONS_WIDTH-1:0] btn_down_out;
  //outputs
- wire engine_up;
- wire engine_down;
- wire open_door;
- wire close_door;
+ wire engine;
+ wire door;
  wire [BUTTONS_WIDTH-1:0] level_display;
  
  
@@ -32,10 +30,8 @@ elevator elevator_inst(
 		.btn_num_in(btn_num_in),
 		.btn_up_out(btn_up_out),
 		.btn_down_out(btn_down_out),
-		.engine_up(engine_up),
-		.engine_down(engine_down),
-		.open_door(open_door),
-		.close_door(close_door),
+		.engine(engine),
+		.door(door),
 		.level_display(level_display)
 		);
 
@@ -61,6 +57,8 @@ initial
 	#5 reset = 1;
 	#60 open_btn = 1;	
 	#10 open_btn = 0;
+	//#60	
+		
 		
 	#100 $finish;
 	end
