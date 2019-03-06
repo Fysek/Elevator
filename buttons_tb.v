@@ -1,6 +1,6 @@
-//floors_tb
-`include "floors.v"
-module floors_tb;
+//buttons_tb
+`include "buttons.v"
+module buttons_tb;
 
 	parameter BUTTONS_WIDTH = 8;
 	reg clk;
@@ -12,7 +12,7 @@ module floors_tb;
 	wire [BUTTONS_WIDTH-1:0] active_out_up_levels;
 	wire [BUTTONS_WIDTH-1:0] active_out_down_levels;
 
- floors floors_inst(
+ buttons buttons_inst(
 		.clk(clk),
 		.reset(reset),
 		.btn_num_in(btn_num_in),
@@ -30,7 +30,7 @@ always
 		
 initial
 	begin
-	$dumpfile("floors_tb.vcd");
+	$dumpfile("buttons_tb.vcd");
 	$dumpvars(0,clk,reset,btn_num_in,btn_up_out,btn_down_out,active_in_levels,active_out_up_levels,active_out_down_levels);
 	clk = 1'b0;
 	btn_num_in = 0;
@@ -63,4 +63,4 @@ initial
 	end	
 
 endmodule 
-//floors_tb
+//buttons_tb

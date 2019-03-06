@@ -1,6 +1,5 @@
-//floors
-`include "macros.v"
-module floors
+//buttons
+module buttons
 #(
 parameter BUTTONS_WIDTH = 8
 
@@ -15,31 +14,10 @@ parameter BUTTONS_WIDTH = 8
 	output reg [BUTTONS_WIDTH-1:0] active_out_up_levels,
 	output reg [BUTTONS_WIDTH-1:0] active_out_down_levels
 );
-    
-	//reg [BUTTONS_WIDTH-1:0] current_level;
-	
-	reg direction;
+
 	reg [BUTTONS_WIDTH-1:0] reg_active_in_levels;// te które są wcisnete wewnatrz
 	reg [BUTTONS_WIDTH-1:0] reg_active_out_up_levels;// te które są wcisnete na zew
 	reg [BUTTONS_WIDTH-1:0] reg_active_out_down_levels;// te które są wcisnete na zew
-	//reg reached,overload=0;
-	
-	reg [2:0] floor, next_floor;
-	integer index;
-	
-/*
-	always @(posedge clk or negedge reset) 
-	begin
-		if(!reset) begin
-			reg_active_in_levels=0;
-			reg_active_out_up_levels=0;
-			reg_active_out_down_levels=0;
-		end
-		//next_floor?
-		//active_in_levels
-		//active_out_levels
-	end*/
-	
 
 	
 	always @(*) 
@@ -76,4 +54,4 @@ parameter BUTTONS_WIDTH = 8
 	end	
 
 endmodule 
-//floors
+//buttons
