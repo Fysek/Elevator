@@ -1,8 +1,9 @@
 //elevator
+`include "macros.v"
 
 module elevator
 #(
-parameter BUTTONS_WIDTH = 6
+parameter BUTTONS_WIDTH = 8
 
 )
 (
@@ -13,8 +14,8 @@ parameter BUTTONS_WIDTH = 6
 	input [BUTTONS_WIDTH-1:0] btn_num_in, // wewnatrz windy
 	input [BUTTONS_WIDTH-1:0] btn_up_out, //na zewnatrz do gory
 	input [BUTTONS_WIDTH-1:0] btn_down_out,//na zewnatrz na dół
-	output reg engine,				//0-down, 1-up
-	output reg door, 				//0-closed, 1-opened
+	output reg [1:0] engine,				//0-idle 1-down, 2-up
+	output reg [1:0] door, 					//0-idle 1-open, 2-close
 	output reg [BUTTONS_WIDTH-1:0] level_display
 );
     

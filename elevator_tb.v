@@ -16,8 +16,8 @@ module elevator_tb;
  reg [BUTTONS_WIDTH-1:0] btn_up_out; //na zewnatrz do gory
  reg [BUTTONS_WIDTH-1:0] btn_down_out;
  //outputs
- wire engine;
- wire door;
+ wire [1:0] engine;
+ wire [1:0] door;
  wire [BUTTONS_WIDTH-1:0] level_display;
  
  
