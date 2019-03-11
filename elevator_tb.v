@@ -7,7 +7,7 @@
 
 module elevator_tb;
  //inputs
- parameter BUTTONS_WIDTH = 6;
+ parameter BUTTONS_WIDTH = 8;
  reg clk;
  reg reset;
  reg open_btn;
