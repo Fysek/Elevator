@@ -1,5 +1,4 @@
 //buttons
-`include "macros.v"
 module buttons
 #(
 parameter BUTTONS_WIDTH = 8
