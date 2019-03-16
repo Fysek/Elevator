@@ -23,6 +23,7 @@ parameter BUTTONS_WIDTH = 8
 	reg letout;//0 - down, 1 - up
 	reg direction;//0 - down, 1 - up
 	reg last_direction;//0 - down, 1 - up
+	reg [3:0] counter;
 	
 	
 	//buttons regs
@@ -35,7 +36,7 @@ parameter BUTTONS_WIDTH = 8
 
 	//end buttons regs
 	
-	reg[4:0] state, last_state;
+	reg[4:0] state, saved_state;
 	
 	parameter 	FLOOR0  = 0 ,
 				FLOOR1  = 1 ,
@@ -75,6 +76,11 @@ parameter BUTTONS_WIDTH = 8
 	-na pełnych poziomach czyscimy rejestry buttonów
 	-pierwsze wejscie na pełny poziom to FLOOR0->OPEN->CLOSE->FLOOR0
 	-zmiana direction mzoe byc tylko jezeli jest w wait 5 razy
+	active_out_down_levels[1] does not exist
+	inactivate_out_down_levels[1] does not exist
+	active_out_up_levels[7] does not exist
+	inactivate_out_up_levels[7] does not exist
+	
 	*/
 	
 	always@(posedge clk or negedge reset)
@@ -83,29 +89,34 @@ parameter BUTTONS_WIDTH = 8
 			engine 						<=0;
 			letout						<=0;
 			door						<=0;
+			counter						<=0;
+			inactivate_in_levels 		<=0;
+			inactivate_out_up_levels 	<=0;
+			inactivate_out_down_levels	<=0;
 			level_display	 			 =0;
-			inactivate_in_levels 		 =0;
-			inactivate_out_up_levels 	 =0;
-			inactivate_out_down_levels	 =0;
-			if(level_display==0) begin
-				state 		<= FLOOR0;
-				direction   <= 1;
+			if(level_display==) begin
+				state 		<=FLOOR0;
+				direction   <=1;
 			end	
 			else begin
-				state 		<= OPEN;
-				direction   <= 0;
+				state 		<=OPEN;
+				direction   <=0;
 			end			
 		end
 		else begin
 			case(state)
 				FLOOR0: begin
-					level_display=0;
+					level_display					 =0;
+					inactivate_in_levels[1]			<=0;
+					inactivate_out_up_levels[1] 	<=0;
 					if (!letout) begin
-						state		<= OPEN;
-						last_state	<= FLOOR0;
-						letout		<= 1;
+						state							<=OPEN;
+						saved_state						<=FLOOR0;
+						letout							<=1;
+						inactivate_in_levels[0]			<=0;
 					end 
 					else begin
+						inactivate_in_levels[0]			 =0;												
 						if(active_in_levels>1)||(active_out_up_levels>0)) begin 
 							state		<=FLOOR01;
 							direction   <=1;
@@ -117,69 +128,109 @@ parameter BUTTONS_WIDTH = 8
 					end	
 				end
 
-				FLOOR01: begin	
+				FLOOR01: begin
+					letout			<=0;
+					last_direction	<=direction;					
 					if(direction) begin //direction up
 						if((active_in_levels[1] == 1)||(active_out_up_levels[1] == 1)) begin
-							state<=FLOOR1;	//go up to the full floor
-							engine<=0;
+							state	<=FLOOR1;	//go up to the full floor
+							engine	<=0;
+							inactivate_in_levels[1]		<=1;
+							inactivate_out_up_levels[1] <=1;
 						end	
 						else begin
-							state<=FLOOR12;
-							engine<=2;
+							state	<=FLOOR12;
+							engine	<=2;
 						end	
 					end
 					else begin//direction down
-						state<=FLOOR0;		//go down to the full floor
-						engine<=0;
+						state	<=FLOOR0;		//go down to the full floor
+						engine	<=0;
+						inactivate_in_levels[0]			<=1;
+						inactivate_out_down_levels[1] 	<=1;
+						
 					end
 				end
 				
 				FLOOR1: begin
 					level_display=1;
 					if (!letout) begin
-						state		<= OPEN;
-						last_state	<= FLOOR1;
-						letout		<= 1;
+						state							<=OPEN;
+						saved_state						<=FLOOR1;
+						letout							<=1;
+						inactivate_in_levels[1]			<=0;
+						inactivate_out_up_levels[1] 	<=0;
+						inactivate_out_down_levels[1] 	<=0;
 					end 
-					else begin
+					else begin					
 						if(direction==last_direction) begin // continue the direction
 							if(direction) begin	//direction up	
 								if((active_in_levels>2)||(active_out_up_levels>2))begin 
-									state<=FLOOR12;
-									engine<=2;
+									state		<=CLOSE;
+									saved_state	<=FLOOR12;
+									engine		<=2;
 								end	
 								else begin
-									state<=WAIT;
-									engine<=0;
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end
+									else
+										state		<=WAIT;
 								end
 							end 
 							else begin//direction down
-								if((active_in_levels>2)||(active_out_down_levels>2))begin //todo
-									state<=FLOOR01;
-									engine<=1;
+								if((active_in_levels==1)||(active_out_up_levels==1))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR01;
+									engine		<=1;
 								end	
 								else begin
-									state<=WAIT;
-									engine<=0;
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end	
+									else
+										state	<=WAIT;
 								end
-								
-								
 							end
 						end 
-						else begin//zmiana kierunku
-							
-							
-							
-					
+						else begin
+							if((active_in_levels>2)||(active_out_up_levels>2))begin//up
+								state		<=CLOSE;
+								saved_state	<=FLOOR12;
+								direction	<=1;
+								engine		<=2;
+							end	
+							else if((active_in_levels==1)||(active_out_up_levels==1))begin//down ||(active_out_down_levels==1) no sense
+								state		<=CLOSE;
+								saved_state	<=FLOOR01;
+								direction	<=0
+								engine		<=1;
+							end
+							else begin
+								state	<=IDLE;
+								counter	<=0;
+							end
 						end		
 					end		
 				end
 				
-				FLOOR12: begin	
+				FLOOR12: begin
+					letout			<=0;
+					last_direction	<=direction;					
 					if(direction) begin //direction up
 						if((active_in_levels[2] == 1)||(active_out_up_levels[2] == 1)) begin
 							state<=FLOOR2; 	//go up to the full floor
 							engine<=0;
+							inactivate_in_levels[2]		<=1;
+							inactivate_out_up_levels[2] <=1;
 						end	
 						else begin
 							state<=FLOOR23;
@@ -190,6 +241,8 @@ parameter BUTTONS_WIDTH = 8
 						if((active_in_levels[1] == 1)||(active_out_down_levels[1] == 1)) begin
 							state<=FLOOR1; 	//go down to the full floor
 							engine<=0;
+							inactivate_in_levels[1]			<=1;
+							inactivate_out_down_levels[1] 	<=1;
 						end	
 						else begin
 							state<=FLOOR01;
@@ -201,28 +254,83 @@ parameter BUTTONS_WIDTH = 8
 				
 				FLOOR2: begin
 					level_display=2;
+					
 					if (!letout) begin
-						state		<= OPEN;
-						last_state	<= FLOOR2;
-						letout		<= 1;
+						state							<=OPEN;
+						saved_state						<=FLOOR2;
+						letout							<=1;
+						inactivate_in_levels[2]			<=0;							
 					end 
 					else begin
-						if(active_in_levels|active_out_up_levels|active_out_down_levels < 0) begin 
-							state<=FLOOR01;
-							engine<=2;
-						end	
-						else if(open_btn)	
-							state<=OPEN;
-						else	
-							state<=IDLE;
+						if(direction==last_direction) begin // continue the direction
+							if(direction) begin	//direction up			
+								if((active_in_levels>4)||(active_out_up_levels>4)||(active_out_down_levels>4))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR23;
+									engine		<=2;
+								end	
+								else begin
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end
+									else
+										state	<=WAIT;
+								end
+							end 
+							else begin//direction down
+								inactivate_out_down_levels[2] <=0;
+								if((active_in_levels<4)||(active_out_up_levels<4)||(active_out_down_levels<4))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR12;
+									engine		<=1;
+								end	
+								else begin
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end	
+									else
+										state	<=WAIT;
+								end
+							end
+						end 
+						else begin//diff dir
+							if((active_in_levels>4)||(active_out_up_levels>4)||(active_out_down_levels>4))begin 
+								state		<=CLOSE;
+								saved_state	<=FLOOR23;
+								direction	<=1
+								engine		<=2;
+							end	
+							else if((active_in_levels<4)||(active_out_up_levels<4)||(active_out_down_levels<4))begin 
+								state		<=CLOSE;
+								saved_state	<=FLOOR12;
+								direction	<=0
+								engine		<=1;
+							end
+							else begin
+								state	<=IDLE;
+								counter	<=0;
+							end
+						end		
 					end		
-				end
-				
-				FLOOR23: begin	
+				end//FLOOR2
+					
+				FLOOR23: begin
+					letout			<=0;
+					last_direction	<=direction;
 					if(direction) begin //direction up
 						if((active_in_levels[3] == 1)||(active_out_up_levels[3] == 1)) begin
 							state<=FLOOR3; 	//go up to the full floor
 							engine<=0;
+							inactivate_in_levels[3]		<=1;
+							inactivate_out_up_levels[2] <=1;
 						end	
 						else begin
 							state<=FLOOR34;
@@ -233,6 +341,8 @@ parameter BUTTONS_WIDTH = 8
 						if((active_in_levels[2] == 1)||(active_out_down_levels[2] == 1)) begin
 							state<=FLOOR2; 	//go down to the full floor
 							engine<=0;
+							inactivate_in_levels[2]			<=1;
+							inactivate_out_down_levels[3] 	<=1;
 						end	
 						else begin
 							state<=FLOOR12;
@@ -244,27 +354,79 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR3: begin
 					level_display=3;
 					if (!letout) begin
-						state		<= OPEN;
-						last_state	<= FLOOR3;
-						letout		<= 1;
+						state							<=OPEN;
+						saved_state						<=FLOOR3;
+						letout							<=1;
+						inactivate_in_levels[3]			<=0;																
 					end 
 					else begin
-						if(active_in_levels|active_out_up_levels|active_out_down_levels < 0) begin 
-							state<=FLOOR01;
-							engine<=2;
-						end	
-						else if(open_btn)	
-							state<=OPEN;
-						else	
-							state<=IDLE;
+						if(direction==last_direction) begin // continue the direction
+							if(direction) begin	//direction up	
+								if((active_in_levels>8)||(active_out_up_levels>8)||(active_out_down_levels>8))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR34;
+									engine		<=2;
+								end	
+								else begin
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end
+									else
+										state	<=WAIT;
+								end
+							end 
+							else begin//direction down
+								if((active_in_levels<8)||(active_out_up_levels<8)||(active_out_down_levels<8))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR23;
+									engine		<=1;
+								end	
+								else begin
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end	
+									else
+										state	<=WAIT;
+								end
+							end
+						end 
+						else begin//diff dir
+							if((active_in_levels>8)||(active_out_up_levels=>8)||(active_out_down_levels>8))begin 
+								state		<=CLOSE;
+								saved_state	<=FLOOR34;
+								direction	<=1
+								engine		<=2;
+							end	
+							else if((active_in_levels<8)||(active_out_up_levels<8)||(active_out_down_levels<=8))begin
+								state		<=CLOSE;
+								saved_state	<=FLOOR23;
+								direction	<=0
+								engine		<=1;
+							end
+							else begin
+								state	<=IDLE;
+								counter	<=0;
+							end
+						end		
 					end		
-				end
+				end//FLOOR3
 				
 				FLOOR34: begin	
+					letout			<=0;
+					last_direction	<=direction;
 					if(direction) begin //direction up
 						if((active_in_levels[4] == 1)||(active_out_up_levels[4] == 1)) begin
 							state<=FLOOR4; 	//go up to the full floor
 							engine<=0;
+							inactivate_out_up_levels[4] <=1;
 						end	
 						else begin
 							state<=FLOOR45;
@@ -286,27 +448,81 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR4: begin
 					level_display=4;
 					if (!letout) begin
-						state		<= OPEN;
-						last_state	<= FLOOR4;
-						letout		<= 1;
+						state							<=OPEN;
+						saved_state						<=FLOOR4;
+						letout							<=1;
+						inactivate_in_levels[4]			<=0;
+						inactivate_out_up_levels[4]		 =1;
+						inactivate_out_down_levels[4]	 =1;								
 					end 
 					else begin
-						if(active_in_levels|active_out_up_levels|active_out_down_levels < 0) begin 
-							state<=FLOOR01;
-							engine<=2;
-						end	
-						else if(open_btn)	
-							state<=OPEN;
-						else	
-							state<=IDLE;
+						if(direction==last_direction) begin // continue the direction
+							if(direction) begin	//direction up	
+								if((active_in_levels>16)||(active_out_up_levels>16)||(active_out_down_levels>16))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR45;
+									engine		<=2;
+								end	
+								else begin
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end
+									else
+										state	<=WAIT;
+								end
+							end 
+							else begin//direction down
+								if((active_in_levels<16)||(active_out_up_levels<16)||(active_out_down_levels<16))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR34;
+									engine		<=1;
+								end	
+								else begin
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end	
+									else
+										state	<=WAIT;
+								end
+							end
+						end 
+						else begin//diff dir
+							if((active_in_levels>16)||(active_out_up_levels>16)||(active_out_down_levels>16))begin 
+								state		<=CLOSE;
+								saved_state	<=FLOOR45;
+								direction	<=1
+								engine		<=2;
+							end	
+							else if((active_in_levels<16)||(active_out_up_levels<16)||(active_out_down_levels<16))begin //todo
+								state		<=CLOSE;
+								saved_state	<=FLOOR34;
+								direction	<=0
+								engine		<=1;
+							end
+							else begin
+								state	<=IDLE;
+								counter	<=0;
+							end
+						end		
 					end		
-				end
+				end//FLOOR4
 				
 				FLOOR45: begin	
+					letout			<=0;
+					last_direction	<=direction;
 					if(direction) begin //direction up
 						if((active_in_levels[5] == 1)||(active_out_up_levels[5] == 1)) begin
 							state<=FLOOR5; 	//go up to the full floor
 							engine<=0;
+							inactivate_out_up_levels[5] <=1;
 						end	
 						else begin
 							state<=FLOOR56;
@@ -328,27 +544,81 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR5: begin
 					level_display=5;
 					if (!letout) begin
-						state		<= OPEN;
-						last_state	<= FLOOR5;
-						letout		<= 1;
+						state							<=OPEN;
+						saved_state						<=FLOOR5;
+						letout							<=1;
+						inactivate_in_levels[5]			<=0;
+						inactivate_out_up_levels[5]		 =1;
+						inactivate_out_down_levels[5]	 =1;											
 					end 
 					else begin
-						if(active_in_levels|active_out_up_levels|active_out_down_levels < 0) begin 
-							state<=FLOOR01;
-							engine<=2;
-						end	
-						else if(open_btn)	
-							state<=OPEN;
-						else	
-							state<=IDLE;
+						if(direction==last_direction) begin // continue the direction
+							if(direction) begin	//direction up	
+								if((active_in_levels>32)||(active_out_up_levels>32)||(active_out_down_levels>32))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR56;
+									engine		<=2;
+								end	
+								else begin
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end
+									else
+										state	<=WAIT;
+								end
+							end 
+							else begin//direction down
+								if((active_in_levels<32)||(active_out_up_levels<32)||(active_out_down_levels<32))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR45;
+									engine		<=1;
+								end	
+								else begin
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end	
+									else
+										state	<=WAIT;
+								end
+							end
+						end 
+						else begin//diff dir
+							if((active_in_levels>32)||(active_out_up_levels>32)||(active_out_down_levels>32))begin 
+								state		<=CLOSE;
+								saved_state	<=FLOOR56;
+								direction	<=1
+								engine		<=2;
+							end	
+							else if((active_in_levels<32)||(active_out_up_levels<32)||(active_out_down_levels<32))begin //todo
+								state		<=CLOSE;
+								saved_state	<=FLOOR45;
+								direction	<=0
+								engine		<=1;
+							end
+							else begin
+								state	<=IDLE;
+								counter	<=0;
+							end
+						end		
 					end		
-				end
+				end//FLOOR5
 				
 				FLOOR56: begin	
+					letout			<=0;
+					last_direction	<=direction;
 					if(direction) begin //direction up
 						if((active_in_levels[6] == 1)||(active_out_up_levels[6] == 1)) begin
 							state<=FLOOR6; 	//go up to the full floor
 							engine<=0;
+							inactivate_out_up_levels[6] <=1;
 						end	
 						else begin
 							state<=FLOOR67;
@@ -370,26 +640,80 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR6: begin
 					level_display=6;
 					if (!letout) begin
-						state		<= OPEN;
-						last_state	<= FLOOR6;
-						letout		<= 1;
+						state							<=OPEN;
+						saved_state						<=FLOOR6;
+						letout							<=1;
+						inactivate_in_levels[6]			<=0;
+						inactivate_out_up_levels[6]		 =1;
+						inactivate_out_down_levels[6]	 =1;																			
 					end 
 					else begin
-						if(active_in_levels|active_out_up_levels|active_out_down_levels < 0) begin 
-							state<=FLOOR01;
-							engine<=2;
-						end	
-						else if(open_btn)	
-							state<=OPEN;
-						else	
-							state<=IDLE;
+						if(direction==last_direction) begin // continue the direction
+							if(direction) begin	//direction up	
+								if((active_in_levels>64)||(active_out_up_levels>64)||(active_out_down_levels>64))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR67;
+									engine		<=2;
+								end	
+								else begin
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end
+									else
+										state	<=WAIT;
+								end
+							end 
+							else begin//direction down
+								if((active_in_levels<64)||(active_out_up_levels<64)||(active_out_down_levels<64))begin 
+									state		<=CLOSE;
+									saved_state	<=FLOOR56;
+									engine		<=1;
+								end	
+								else begin
+									counter	<=counter+1;
+									engine	<=0;
+									if(counter==4) begin
+										state		<=saved_state;
+										direction	<=!direction;
+										counter		<=0;
+									end	
+									else
+										state	<=WAIT;
+								end
+							end
+						end 
+						else begin//diff dir
+							if((active_in_levels>64)||(active_out_up_levels>64)||(active_out_down_levels>64))begin 
+								state		<=CLOSE;
+								saved_state	<=FLOOR67;
+								direction	<=1
+								engine		<=2;
+							end	
+							else if((active_in_levels<64)||(active_out_up_levels<64)||(active_out_down_levels<64))begin //todo
+								state		<=CLOSE;
+								saved_state	<=FLOOR56;
+								direction	<=0
+								engine		<=1;
+							end
+							else begin
+								state	<=IDLE;
+								counter	<=0;
+							end
+						end		
 					end		
-				end
+				end//FLOOR6
 				
 				FLOOR67: begin	
+					letout			<=0;
+					last_direction	<=direction;
 					if(direction) begin //direction up
 						state<=FLOOR7; 	//go up to the full floor
 						engine<=0;
+						inactivate_out_up_levels[7] <=1;
 					end
 					else begin//direction down
 						if((active_in_levels[6] == 1)||(active_out_down_levels[6] == 1)) begin
@@ -406,16 +730,16 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR7: begin
 					level_display=7;
 					if (!letout) begin
-						state							<= OPEN;
-						last_state						<= FLOOR7;
-						letout							<= 1;
-						inactivate_in_levels[7]			=1;
-						//inactivate_out_up_levels[7]		=1; no up, last floor
+						state							<=OPEN;
+						saved_state						<=FLOOR7;
+						letout							<=1;
+						inactivate_in_levels[7]			<=0;
+						inactivate_out_up_levels[7]		=1; //no up, last floor
 						inactivate_out_down_levels[7]	=1;				
 					end 
 					else begin
 						inactivate_in_levels[7]			=0;
-						//inactivate_out_up_levels[7]		=0;
+						inactivate_out_up_levels[7]		=0;
 						inactivate_out_down_levels[7]	=0;
 						if(active_in_levels>0)||(active_out_down_levels>0)) begin 
 							state		<=FLOOR67;
@@ -427,10 +751,15 @@ parameter BUTTONS_WIDTH = 8
 							state<=OPEN;
 					end	
 				end
-				/*in progress*/
-				/*IDLE: begin
-
-				end*/
+			
+				IDLE: begin
+					if(counter==9)
+						state<=saved_state
+					else begin
+						state<=IDLE;
+						counter	<=counter+1;
+					end
+				end
 				
 		
 				OPEN: begin
@@ -444,10 +773,13 @@ parameter BUTTONS_WIDTH = 8
 					if(open_btn)
 						state<=OPEN;
 					else 
-						state<=last_state;
-				end
+						state<=saved_state;
+				end 
 			
 				WAIT: begin
+					// state<= saved_state kiedy czeka na pełnym floorze
+				
+				
 					if(overload)
 						state<=WAIT;
 					else 
@@ -455,7 +787,7 @@ parameter BUTTONS_WIDTH = 8
 				end
 			
 				default: 
-					state<=OPEN;
+					state<=FLOOR0;
 					
 			endcase
 		end	
