@@ -137,7 +137,15 @@ parameter BUTTONS_WIDTH = 8
 							engine	<=0;
 							inactivate_in_levels[1]		<=1;
 							inactivate_out_up_levels[1] <=1;
+							end	
 						end	
+						else if((active_out_down_levels<4)&&(active_in_levels<4)&&(active_in_levels<2)begin
+							state		<=FLOOR1;	//request z góry zeby jechac na dol
+							engine		<=0;
+							direction	<=0;
+							inactivate_in_levels[1]			<=1;					
+							inactivate_out_down_levels[1] 	<=1;
+						end
 						else begin
 							state	<=FLOOR12;
 							engine	<=2;
@@ -157,6 +165,7 @@ parameter BUTTONS_WIDTH = 8
 					if (!letout) begin
 						state							<=OPEN;
 						saved_state						<=FLOOR1;
+						last_direction					<=direction;
 						letout							<=1;
 						inactivate_in_levels[1]			<=0;
 						inactivate_out_up_levels[1] 	<=0;
@@ -227,10 +236,16 @@ parameter BUTTONS_WIDTH = 8
 					last_direction	<=direction;					
 					if(direction) begin //direction up
 						if((active_in_levels[2] == 1)||(active_out_up_levels[2] == 1)) begin
-							state<=FLOOR2; 	//go up to the full floor
-							engine<=0;
+							state	<=FLOOR2;	//go up to the full floor
+							engine	<=0;
 							inactivate_in_levels[2]		<=1;
-							inactivate_out_up_levels[2] <=1;
+							if(active_out_down_levels<8) begin
+								direction<=0;
+								inactivate_out_down_levels[2] <=1;
+							end
+							else begin
+								inactivate_out_up_levels[2] <=1;
+							end						
 						end	
 						else begin
 							state<=FLOOR23;
@@ -242,7 +257,19 @@ parameter BUTTONS_WIDTH = 8
 							state<=FLOOR1; 	//go down to the full floor
 							engine<=0;
 							inactivate_in_levels[1]			<=1;
-							inactivate_out_down_levels[1] 	<=1;
+							
+							
+							if(active_out_up_levels<8) begin
+								direction<=0;
+								inactivate_out_down_levels[1] <=1;
+							end
+							else begin
+								inactivate_out_up_levels[1] <=1;
+							end	
+							
+							
+							
+							
 						end	
 						else begin
 							state<=FLOOR01;
@@ -254,10 +281,10 @@ parameter BUTTONS_WIDTH = 8
 				
 				FLOOR2: begin
 					level_display=2;
-					
 					if (!letout) begin
 						state							<=OPEN;
 						saved_state						<=FLOOR2;
+						last_direction					<=direction;
 						letout							<=1;
 						inactivate_in_levels[2]			<=0;							
 					end 
