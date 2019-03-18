@@ -19,7 +19,16 @@ module elevator_tb;
  wire [1:0] engine;
  wire [1:0] door;
  wire [2:0] level_display;
+ /*
+ Testy
+ 1. Start w poziomie 0, req z F0 na F7, winda jedzie na F7 i tam zostaje
+ 2. Osoba req z F7 na F0, winda jedzie na F0
+ 3. Osoba req z F7 na dol, winda z F0 jedzie na F7 i jedzie na wybrane pietro (F4)
  
+ 
+ 
+ 
+ */
  
  
 elevator elevator_inst(
