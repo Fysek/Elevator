@@ -61,6 +61,7 @@ parameter BUTTONS_WIDTH = 8
 				WAIT    = 18;
 	
 	buttons buttons_inst(
+		.clk(clk)												,
 		.reset(reset)											,
 		.buttons_blocked(buttons_blocked)						,
 		.btn_in(btn_in)											,

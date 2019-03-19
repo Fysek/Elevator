@@ -14,6 +14,7 @@ module buttons_tb;
 	wire	[BUTTONS_WIDTH-1:0] active_in_levels;
 	wire	[BUTTONS_WIDTH-1:0] active_out_up_levels;
 	wire	[BUTTONS_WIDTH-1:0] active_out_down_levels;
+	wire	[BUTTONS_WIDTH-1:0] enable;
 
  buttons buttons_inst(
 		.reset(reset),
@@ -26,13 +27,14 @@ module buttons_tb;
 		.inactivate_out_down_levels(inactivate_out_down_levels),
 		.active_in_levels(active_in_levels),
 		.active_out_up_levels(active_out_up_levels),
-		.active_out_down_levels(active_out_down_levels)
+		.active_out_down_levels(active_out_down_levels),
+		.enable(enable)
 		);   
 
 initial
 	begin
 	$dumpfile("buttons_tb.vcd");
-	$dumpvars(0,reset,btn_in,btn_up_out,btn_down_out,inactivate_in_levels,inactivate_out_up_levels,inactivate_out_down_levels,active_in_levels,active_out_up_levels,active_out_down_levels);
+	$dumpvars(0,reset,btn_in,btn_up_out,btn_down_out,inactivate_in_levels,inactivate_out_up_levels,inactivate_out_down_levels,active_in_levels,active_out_up_levels,active_out_down_levels,buttons_blocked,enable);
 	btn_in = 0;
 	btn_up_out = 0;
 	btn_down_out = 0;
@@ -96,8 +98,9 @@ initial
 		////////////////////////////////////
 	#10 buttons_blocked	= 1;
 	#10 btn_in[0]		= 1;
-	#10 buttons_blocked	= 3;
+	#30 buttons_blocked	= 3;
 	#10 btn_in[2]		= 1;
+	#20 btn_in[2]		= 0;
 	#10 buttons_blocked	= 0;	
 	#40 btn_in[1]		= 1;
 	    btn_in[2]		= 1;
@@ -108,6 +111,14 @@ initial
 	    btn_up_out[5]	= 1;
 	    btn_down_out[3] = 1;
 	    btn_down_out[6] = 1;
+	#20	btn_in[1]		= 0;
+	    btn_in[2]		= 0;
+	    btn_in[3]		= 0;
+	    btn_in[4]		= 0;
+	#20 btn_in[1]		= 1;
+	    btn_in[2]		= 1;
+	    btn_in[3]		= 1;
+	    btn_in[4]		= 1;		
 	#20	btn_in[1]		= 0;
 	    btn_in[2]		= 0;
 	    btn_in[3]		= 0;
