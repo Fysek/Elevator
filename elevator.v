@@ -1,5 +1,5 @@
 //elevator
-`include "buttons.v"
+//`include "buttons.v"
 
 module elevator
 #(
@@ -24,7 +24,7 @@ parameter BUTTONS_WIDTH = 8
 	reg letout;				//0 - down, 1 - up
 	reg direction;			//0 - down, 1 - up
 	reg last_direction;		//0 - down, 1 - up
-	reg [4:0] buttons_blocked;	//numer - floor blocked 0 - unblocked, 1 - F0, 2 - F1
+	//reg [4:0] buttons_blocked;	//numer - floor blocked 0 - unblocked, 1 - F0, 2 - F1
 	reg [3:0] counter;
 	
 	
@@ -61,9 +61,9 @@ parameter BUTTONS_WIDTH = 8
 				WAIT    = 18;
 	
 	buttons buttons_inst(
-		.clk(clk)												,
+
 		.reset(reset)											,
-		.buttons_blocked(buttons_blocked)						,
+		//.buttons_blocked(buttons_blocked)						,
 		.btn_in(btn_in)											,
 		.btn_up_out(btn_up_out)									,
 		.btn_down_out(btn_down_out)								,
@@ -96,7 +96,7 @@ parameter BUTTONS_WIDTH = 8
 			letout						<=0;
 			door						<=0;
 			counter						<=0;
-			buttons_blocked				<=0;
+			//buttons_blocked				<=0;
 			inactivate_in_levels 		<=0;
 			inactivate_out_up_levels 	<=0;
 			inactivate_out_down_levels	<=0;
@@ -114,21 +114,22 @@ parameter BUTTONS_WIDTH = 8
 			case(state)
 				FLOOR0: begin
 					level_display					 =0;
-					inactivate_in_levels[1]			<=0;
-					inactivate_out_up_levels[1] 	<=0;
+					inactivate_in_levels[0]			<=1;
+					inactivate_out_up_levels[0] 	<=1;
 					if (!letout) begin
 						state							<=OPEN;
 						saved_state						<=FLOOR0;
 						letout							<=1;
 						inactivate_in_levels[0]			<=0;
 					end 
-					else begin
-						inactivate_in_levels[0]			 <=0;												
+					else begin												
 						if((active_in_levels>1)||(active_out_up_levels>0)||(active_out_down_levels>1)) begin 
 							state		<=FLOOR01;
 							direction   <=1;
 							engine		<=2;
 							letout		<=0;
+							inactivate_in_levels[0] 		<=0;
+							inactivate_out_up_levels[0] 	<=0;
 						end	
 						else if(open_btn)	
 							state<=OPEN;
@@ -838,7 +839,7 @@ parameter BUTTONS_WIDTH = 8
 						inactivate_out_down_levels[7]	<=0;				
 					end 
 					else begin
-						if((active_in_levels>0)||(active_out_down_levels>0)) begin 
+						if((active_in_levels>0)||(active_out_down_levels>0)||(active_out_up_levels>0)) begin 
 							state		<=FLOOR67;
 							direction   <=0;
 							engine		<=2;

@@ -64,12 +64,15 @@ initial
 	btn_down_out = 0;
 	#5 reset = 0;
 	#5 reset = 1;
+	/* test 1. go to 7 a back to 0*/
 	#10 btn_in[7] = 1;	
 	#10 btn_in[7] = 0;	
 	#80	btn_down_out[7] = 1;
 	#10	btn_down_out[7] = 0;
-	#100 btn_down_out[0] = 1;		
-	#10 btn_down_out[0] = 0;		
+	#100 btn_up_out[0] = 1;		
+	#10 btn_up_out[0] = 0;	
+	/*test 1. done*/
+	//#600 somethign
 	#600 $finish;
 	end
 
