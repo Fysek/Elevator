@@ -1,4 +1,4 @@
-//buttons
+							   						//buttons
 module buttons
 #(
 parameter BUTTONS_WIDTH = 8
@@ -8,7 +8,7 @@ parameter BUTTONS_WIDTH = 8
 	input							reset,
 	input 		[BUTTONS_WIDTH-1:0] btn_in, // wewnatrz windy
 	input 		[BUTTONS_WIDTH-1:0] btn_up_out, //na zewnatrz do gory
-	input 		[BUTTONS_WIDTH-1:0] btn_down_out,//na zewnatrz na dół
+	input 		[BUTTONS_WIDTH-1:0] btn_down_out,//na zewnatrz na d�
 	input 		[BUTTONS_WIDTH-1:0] inactivate_in_levels, 
 	input 		[BUTTONS_WIDTH-1:0] inactivate_out_up_levels,
 	input 		[BUTTONS_WIDTH-1:0] inactivate_out_down_levels,

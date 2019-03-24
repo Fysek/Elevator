@@ -1,4 +1,4 @@
-//elevator
+													  //elevator
 //iverilog -o ALU ALU.v 
 //iverilog -o ALU_tb ALU_tb.v
 //vvp ALU_tb
@@ -72,7 +72,16 @@ initial
 	#100 btn_up_out[0] = 1;		
 	#10 btn_up_out[0] = 0;	
 	/*test 1. done*/
-	//#600 somethign
+	#400 btn_in[7] = 0;
+	$display("done first test");
+	#10 btn_in[5] = 1;	
+	#10 btn_in[5] = 0;
+	#180 btn_down_out[3] = 1;
+	#10	btn_down_out[3] = 0;
+	$display("done second test");
+	#600 btn_up_out[0] = 1;		
+	#10 btn_up_out[0] = 0;	
+	$display("done third test");	
 	#600 $finish;
 	end
 
