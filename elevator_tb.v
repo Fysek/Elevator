@@ -19,6 +19,8 @@ module elevator_tb;
  wire [1:0] engine;
  wire [1:0] door;
  wire [2:0] level_display;
+ 
+ integer i=0;
  /*
  Testy
  1. Start w poziomie 0, req z F0 na F7, winda jedzie na F7 i tam zostaje
@@ -70,10 +72,12 @@ initial
 	#80	btn_down_out[7] = 1;
 	#10	btn_down_out[7] = 0;
 	#100 btn_up_out[0] = 1;		
-	#10 btn_up_out[0] = 0;	
+	#10 btn_up_out[0] = 0;
+	if (level_display==7) begin
+		$display("Test 1 passed");
+	end	
 	/*test 1. done*/
 	#400 btn_in[7] = 0;
-	$display("done first test");
 	#10 btn_in[5] = 1;	
 	#10 btn_in[5] = 0;
 	#180 btn_down_out[3] = 1;
@@ -81,7 +85,16 @@ initial
 	$display("done second test");
 	#600 btn_up_out[0] = 1;		
 	#10 btn_up_out[0] = 0;	
-	$display("done third test");	
+	$display("done third test");
+	#600 btn_in[1] = 1;	
+	#10 btn_in[1] = 0;
+	#10 btn_in[4] = 1;
+		btn_in[6] = 1;	
+		btn_down_out[7] = 1;	
+	#10 btn_in[4] = 0;
+		btn_in[6] = 0;
+		btn_down_out[7] = 0; 
+	$display("done fourth test");
 	#600 $finish;
 	end
 
