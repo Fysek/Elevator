@@ -93,21 +93,17 @@ parameter BUTTONS_WIDTH = 8
 	begin
 		if(!reset) begin
 			engine 						<=0;
-			letout						<=0;
 			door						<=0;
 			counter						<=0;
 			//buttons_blocked				<=0;
 			inactivate_in_levels 		<=0;
 			inactivate_out_up_levels 	<=0;
 			inactivate_out_down_levels	<=0;
-			//level_display	 			<=0;
-			if(level_display==0) begin
-				state 		<=FLOOR0;
-				direction   <=1;
+			if(letout>=0) begin
+				state 	<= saved_state;
 			end	
 			else begin
-				state 		<=OPEN;
-				direction   <=0;
+				state	<= FLOOR0;
 			end			
 		end
 		else begin
@@ -145,8 +141,10 @@ parameter BUTTONS_WIDTH = 8
 								state	<=IDLE;
 								counter	<=0; 
 							end	
-							else
-								state	<=WAIT;
+							else begin
+								state		<=WAIT;
+								saved_state	<=FLOOR0;
+							end	
 						end							
 					end	
 				end
@@ -159,7 +157,7 @@ parameter BUTTONS_WIDTH = 8
 						if((active_in_levels[1] == 1)||(active_out_up_levels[1] == 1)) begin
 							state	<=FLOOR1;	//go up to the full floor
 							engine	<=0;
-							
+							level_display<=1;
 							inactivate_in_levels[1]		<=1;
 							inactivate_out_up_levels[1] <=1;
 						end	
@@ -167,27 +165,27 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR1;	//request z 1p zeby jechac na dol
 							engine		<=0;
 							direction	<=0;
+							level_display<=1;
 							inactivate_in_levels[1]			<=1;					
 							inactivate_out_down_levels[1] 	<=1;
 						end
 						else begin
 							state			<=FLOOR12;
-							level_display	=1;
+							level_display	<=1;
 							engine			<=2;
 						end	
 					end
 					else begin	//	direction down
 						state	<=FLOOR0;		//go down to the full floor
 						engine	<=0;
-						level_display				<=0;
+						level_display					<=0;
 						inactivate_in_levels[0]			<=1;
 						inactivate_out_up_levels[0] 	<=1;
 						inactivate_out_down_levels[1] 	<=1;						
 					end
 				end
 				
-				FLOOR1: begin
-					level_display				<=1;
+				FLOOR1: begin			
 					if (!letout) begin
 						state							<=OPEN;
 						saved_state						<=FLOOR1;
@@ -265,6 +263,7 @@ parameter BUTTONS_WIDTH = 8
 						if((active_in_levels[2] == 1)||(active_out_up_levels[2] == 1)) begin
 							state	<=FLOOR2;	//go up to the full floor
 							engine	<=0;
+							level_display=2;
 							inactivate_in_levels[2]		<=1;
 							inactivate_out_up_levels[2] <=1;
 						end	
@@ -272,6 +271,7 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR2;	//request z 2p zeby jechac na dol
 							engine		<=0;
 							direction	<=0;
+							level_display=2;
 							inactivate_in_levels[2]			<=1;					
 							inactivate_out_down_levels[2] 	<=1;
 						end																	
@@ -285,6 +285,7 @@ parameter BUTTONS_WIDTH = 8
 						if((active_in_levels[1] == 1)||(active_out_down_levels[1] == 1)) begin
 							state	<=FLOOR1; 	//go down to the full floor
 							engine	<=0;
+							level_display=1;
 							inactivate_in_levels[1]			<=1;
 							inactivate_out_down_levels[1] 	<=1;
 						end	
@@ -292,6 +293,7 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR1;	//request z 2p zeby jechac na 1p a potem gora
 							engine		<=0;
 							direction	<=1;
+							level_display=1;
 							inactivate_in_levels[1]		<=1;					
 							inactivate_out_up_levels[1] <=1;
 						end	
@@ -305,7 +307,6 @@ parameter BUTTONS_WIDTH = 8
 				
 				
 				FLOOR2: begin
-					level_display=2;
 					if (!letout) begin
 						state							<=OPEN;
 						saved_state						<=FLOOR2;
@@ -384,6 +385,7 @@ parameter BUTTONS_WIDTH = 8
 						if((active_in_levels[3] == 1)||(active_out_up_levels[3] == 1)) begin
 							state<=FLOOR3; 	//go up to the full floor
 							engine<=0;
+							level_display=3;
 							inactivate_in_levels[3]		<=1;
 							inactivate_out_up_levels[3] <=1;
 						end	
@@ -391,6 +393,7 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR3;	//request z 3p zeby jechac na dol
 							engine		<=0;
 							direction	<=0;
+							level_display=3;
 							inactivate_in_levels[3]			<=1;					
 							inactivate_out_down_levels[3] 	<=1;
 						end	
@@ -404,6 +407,7 @@ parameter BUTTONS_WIDTH = 8
 						if((active_in_levels[2] == 1)||(active_out_down_levels[2] == 1)) begin
 							state<=FLOOR2; 	//go down to the full floor
 							engine<=0;
+							level_display=2;
 							inactivate_in_levels[2]			<=1;
 							inactivate_out_down_levels[2] 	<=1;
 						end	
@@ -411,6 +415,7 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR2;	//request z 2p zeby jechac na 1p a potem gora
 							engine		<=0;
 							direction	<=1;
+							level_display=2;
 							inactivate_in_levels[2]		<=1;					
 							inactivate_out_up_levels[2] <=1;
 						end	
@@ -423,7 +428,6 @@ parameter BUTTONS_WIDTH = 8
 				end
 				
 				FLOOR3: begin
-					level_display=3;
 					if (!letout) begin
 						state							<=OPEN;
 						saved_state						<=FLOOR3;
@@ -500,6 +504,7 @@ parameter BUTTONS_WIDTH = 8
 						if((active_in_levels[4] == 1)||(active_out_up_levels[4] == 1)) begin
 							state	<=FLOOR4; 	//go up to the full floor
 							engine	<=0;
+							level_display=4;
 							inactivate_in_levels[4]		<=1;
 							inactivate_out_up_levels[4] <=1;
 						end	
@@ -507,6 +512,7 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR4;	//request z 3p zeby jechac na dol
 							engine		<=0;
 							direction	<=0;
+							level_display=4;
 							inactivate_in_levels[4]			<=1;					
 							inactivate_out_down_levels[4] 	<=1;
 						end	
@@ -520,6 +526,7 @@ parameter BUTTONS_WIDTH = 8
 						if((active_in_levels[3] == 1)||(active_out_down_levels[3] == 1)) begin
 							state<=FLOOR3; 	//go down to the full floor
 							engine<=0;
+							level_display=3;
 							inactivate_in_levels[3]			<=1;
 							inactivate_out_down_levels[3] 	<=1;
 						end	
@@ -527,6 +534,7 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR3;	//request z 2p zeby jechac na 1p a potem gora
 							engine		<=0;
 							direction	<=1;
+							level_display=3;
 							inactivate_in_levels[3]		<=1;					
 							inactivate_out_up_levels[3] <=1;
 						end				
@@ -539,7 +547,6 @@ parameter BUTTONS_WIDTH = 8
 				end
 				
 				FLOOR4: begin
-					level_display=4;
 					if (!letout) begin
 						state							<=OPEN;
 						saved_state						<=FLOOR4;
@@ -616,6 +623,7 @@ parameter BUTTONS_WIDTH = 8
 						if((active_in_levels[5] == 1)||(active_out_up_levels[5] == 1)) begin
 							state	<=FLOOR5; 	//go up to the full floor
 							engine	<=0;
+							level_display<=5;
 							inactivate_in_levels[5]		<=1;							
 							inactivate_out_up_levels[5] <=1;
 						end
@@ -623,19 +631,21 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR5;	//request z 3p zeby jechac na dol
 							engine		<=0;
 							direction	<=0;
+							level_display<=5;
 							inactivate_in_levels[5]			<=1;					
 							inactivate_out_down_levels[5] 	<=1;
 						end							
 						else begin
 							state<=FLOOR56;
 							engine<=2;
-							level_display	=5;
+							level_display	<=5;
 						end	
 					end
 					else begin//direction down
 						if((active_in_levels[4] == 1)||(active_out_down_levels[4] == 1)) begin
 							state	<=FLOOR4; 	//go down to the full floor
 							engine	<=0;
+							level_display=4;
 							inactivate_in_levels[4]			<=1;					
 							inactivate_out_down_levels[4] 	<=1;
 						end	
@@ -643,19 +653,19 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR4;	//request z 2p zeby jechac na 1p a potem gora
 							engine		<=0;
 							direction	<=1;
+							level_display<=4;
 							inactivate_in_levels[4]		<=1;					
 							inactivate_out_up_levels[4] <=1;
 						end						
 						else begin
 							state<=FLOOR34;
 							engine<=2;
-							level_display	=4;
+							level_display	<=4;
 						end	
 					end
 				end
 				
-				FLOOR5: begin
-					level_display=5;
+				FLOOR5: begin	
 					if (!letout) begin
 						state							<=OPEN;
 						saved_state						<=FLOOR5;
@@ -730,8 +740,9 @@ parameter BUTTONS_WIDTH = 8
 					last_direction	<=direction;
 					if(direction) begin //direction up
 						if((active_in_levels[6] == 1)||(active_out_up_levels[6] == 1)) begin
-							state<=FLOOR6; 	//go up to the full floor
-							engine<=0;
+							state	<=FLOOR6; 	//go up to the full floor
+							engine	<=0;
+							level_display	<=6;
 							inactivate_in_levels[6]		<=1;	
 							inactivate_out_up_levels[6] <=1;
 						end	
@@ -739,19 +750,21 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR6;	//request z 3p zeby jechac na dol
 							engine		<=0;
 							direction	<=0;
+							level_display	<=6;
 							inactivate_in_levels[6]			<=1;					
 							inactivate_out_down_levels[6] 	<=1;
 						end						
 						else begin
-							state<=FLOOR67;
-							engine<=2;
-							level_display	=6;
+							state		<=FLOOR67;
+							engine		<=2;
+							level_display	<=6;
 						end	
 					end
 					else begin//direction down
 						if((active_in_levels[5] == 1)||(active_out_down_levels[5] == 1)) begin
 							state	<=FLOOR5; 	//go down to the full floor
 							engine	<=0;
+							level_display	<=5;
 							inactivate_in_levels[5]			<=1;					
 							inactivate_out_down_levels[5] 	<=1;							
 						end	
@@ -759,19 +772,19 @@ parameter BUTTONS_WIDTH = 8
 							state		<=FLOOR5;	//request z 2p zeby jechac na 1p a potem gora
 							engine		<=0;
 							direction	<=1;
+							level_display<=5;
 							inactivate_in_levels[5]		<=1;					
 							inactivate_out_up_levels[5] <=1;
 						end						
 						else begin
-							state<=FLOOR45;
-							engine<=2;
-							level_display	=5;
+							state			<=FLOOR45;
+							engine			<=2;
+							level_display	<=5;
 						end	
 					end
 				end
 				
 				FLOOR6: begin
-					level_display=6;
 					if (!letout) begin
 						state							<=OPEN;
 						saved_state						<=FLOOR6;
@@ -845,27 +858,29 @@ parameter BUTTONS_WIDTH = 8
 					letout			<=0;
 					last_direction	<=direction;
 					if(direction) begin //direction up
-						state<=FLOOR7; 	//go up to the full floor
-						engine<=0;
+						state	<=FLOOR7; 	//go up to the full floor
+						engine	<=0;
+						level_display	<= 7;
 						inactivate_in_levels[7] 		<=1;
 						inactivate_out_up_levels[7] 	<=1;
 						inactivate_out_down_levels[7] 	<=1;
 					end
 					else begin//direction down
+						level_display	<=6;
 						if((active_in_levels[6] == 1)||(active_out_down_levels[6] == 1)) begin
 							state<=FLOOR6; 	//go down to the full floor
 							engine<=0;
+							
 						end	
 						else begin
 							state<=FLOOR56;
 							engine<=1;
-							level_display	=6;
+							
 						end	
 					end
 				end
 				
 				FLOOR7: begin
-					level_display=7;
 					if (!letout) begin
 						state							<=OPEN;
 						saved_state						<=FLOOR7;
@@ -877,7 +892,8 @@ parameter BUTTONS_WIDTH = 8
 					end 
 					else begin
 						if((active_in_levels>0)||(active_out_down_levels>0)||(active_out_up_levels>0)) begin 
-							state		<=FLOOR67;
+							state		<=CLOSE;
+							saved_state	<=FLOOR67;
 							direction   <=0;
 							engine		<=1;
 							letout		<=0;
@@ -912,7 +928,6 @@ parameter BUTTONS_WIDTH = 8
 			
 				WAIT: begin
 					state<= saved_state;
-
 				end
 			
 				default: 
