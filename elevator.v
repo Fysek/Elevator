@@ -11,6 +11,8 @@ parameter BUTTONS_WIDTH = 8
 	input 							reset		,
 	input 							open_btn	,
 	input 							close_btn	,
+	input 							sensor_up	,
+	input 							sensor_down	,
 	input 		[BUTTONS_WIDTH-1:0] btn_in		, 	// wewnatrz windy
 	input 		[BUTTONS_WIDTH-1:0] btn_up_out	, 	//na zewnatrz do gory
 	input 		[BUTTONS_WIDTH-1:0] btn_down_out,	//na zewnatrz na dó³
