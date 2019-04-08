@@ -12,8 +12,6 @@ module elevator_tb;
  reg reset;
  reg open_btn;
  reg close_btn;
- reg sensor_up;
- reg sensor_down;
  reg [BUTTONS_WIDTH-1:0] btn_in; // wewnatrz windy
  reg [BUTTONS_WIDTH-1:0] btn_up_out; //na zewnatrz do gory
  reg [BUTTONS_WIDTH-1:0] btn_down_out;
@@ -21,8 +19,6 @@ module elevator_tb;
  wire [1:0] engine;
  wire [1:0] door;
  wire [2:0] level_display;
- 
- integer i=0;
  /*
  Testy
  1. Start w poziomie 0, req z F0 na F7, winda jedzie na F7 i tam zostaje
@@ -40,8 +36,6 @@ elevator elevator_inst(
 		.reset(reset),
 		.open_btn(open_btn),
 		.close_btn(close_btn),
-		.sensor_up(sensor_up),
-		.sensor_down(sensor_down),
 		.btn_in(btn_in),
 		.btn_up_out(btn_up_out),
 		.btn_down_out(btn_down_out),
@@ -76,12 +70,10 @@ initial
 	#80	btn_down_out[7] = 1;
 	#10	btn_down_out[7] = 0;
 	#100 btn_up_out[0] = 1;		
-	#10 btn_up_out[0] = 0;
-	if (level_display==7) begin
-		$display("Test 1 passed");
-	end	
+	#10 btn_up_out[0] = 0;	
 	/*test 1. done*/
 	#400 btn_in[7] = 0;
+	$display("done first test");
 	#10 btn_in[5] = 1;	
 	#10 btn_in[5] = 0;
 	#180 btn_down_out[3] = 1;
@@ -89,16 +81,7 @@ initial
 	$display("done second test");
 	#600 btn_up_out[0] = 1;		
 	#10 btn_up_out[0] = 0;	
-	$display("done third test");
-	#600 btn_in[1] = 1;	
-	#10 btn_in[1] = 0;
-	#10 btn_in[4] = 1;
-		btn_in[6] = 1;	
-		btn_down_out[7] = 1;	
-	#10 btn_in[4] = 0;
-		btn_in[6] = 0;
-		btn_down_out[7] = 0; 
-	$display("done fourth test");
+	$display("done third test");	
 	#600 $finish;
 	end
 
