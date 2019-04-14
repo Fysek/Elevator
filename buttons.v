@@ -1,4 +1,4 @@
-							   						//buttons
+//buttons
 module buttons
 #(
 parameter BUTTONS_WIDTH = 8

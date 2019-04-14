@@ -1,5 +1,5 @@
 //buttons
-module buttons
+module buttons_res
 #(
 parameter BUTTONS_WIDTH = 8
 
@@ -7,34 +7,28 @@ parameter BUTTONS_WIDTH = 8
 (
 	input							clk,
 	input							reset,
-	input		[3:0]			    buttons_blocked, //F - all unblocked
-	input 		[BUTTONS_WIDTH-1:0] btn_in, // wewnatrz windy
-	input 		[BUTTONS_WIDTH-1:0] btn_up_out, //na zewnatrz do gory
-	input 		[BUTTONS_WIDTH-1:0] btn_down_out,//na zewnatrz na dół
+	input		[3:0]			    buttons_blocked, 		//F - all unblocked
+	input 		[BUTTONS_WIDTH-1:0] btn_in, 				//wewnatrz windy
+	input 		[BUTTONS_WIDTH-1:0] btn_up_out, 			//na zewnatrz do gory
+	input 		[BUTTONS_WIDTH-1:0] btn_down_out,			//na zewnatrz na dół
 	input 		[BUTTONS_WIDTH-1:0] inactivate_in_levels, 
 	input 		[BUTTONS_WIDTH-1:0] inactivate_out_up_levels,
 	input 		[BUTTONS_WIDTH-1:0] inactivate_out_down_levels,
 	output reg 	[BUTTONS_WIDTH-1:0] active_in_levels,
     output reg 	[BUTTONS_WIDTH-1:0] active_out_up_levels,
-	output reg 	[BUTTONS_WIDTH-1:0] active_out_down_levels,
-	output reg 	[BUTTONS_WIDTH-1:0] buttons_state,
-	output reg 	[BUTTONS_WIDTH-1:0] l_btn_in,
-	output reg 	[BUTTONS_WIDTH-1:0] l_inactivate_in_levels
+	output reg 	[BUTTONS_WIDTH-1:0] active_out_down_levels
 );
-	reg [3:0] index;
-	//reg [BUTTONS_WIDTH-1:0] buttons_state;
-	//reg [BUTTONS_WIDTH-1:0] l_btn_in;
-	//reg [BUTTONS_WIDTH-1:0] l_inactivate_in_levels;
-
-	//rejestry z poprzednim stanem
-	//sensitive zboczem, kiedy inny ma wyskoki poziom to moze sie zmienic
-	
+	reg [3:0] 				index;
+	reg [BUTTONS_WIDTH-1:0] buttons_state;			//oznacza rejestr ostatniego stanu przycisków
+	reg [BUTTONS_WIDTH-1:0] l_btn_in;				//rejestr z poprzednim stanem
+	reg [BUTTONS_WIDTH-1:0] l_inactivate_in_levels;	//rejestr z poprzednim stanem
+		
 	always @(posedge clk or negedge reset) begin
 		if(!reset) begin
 			l_btn_in 				=0;
 			l_inactivate_in_levels 	=0;
 			active_in_levels 		=0;
-			buttons_state			=8'hFF;//oznacza rejestr ostatniego stanu przycisków
+			buttons_state			=8'hFF;
 		end
 		else begin
 			for(index=0; index<BUTTONS_WIDTH; index=index+1) begin

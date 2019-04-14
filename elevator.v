@@ -1,5 +1,5 @@
-				//elevator
-//`include "buttons.v"
+//elevator
+`include "buttons_res.v"
 
 module elevator
 #(
@@ -7,24 +7,28 @@ parameter BUTTONS_WIDTH = 8
 
 )
 (
-	input 							clk			,
-	input 							reset		,
-	input 							open_btn	,
-	input 							close_btn	,
-	input 		[BUTTONS_WIDTH-1:0] btn_in		, 	// wewnatrz windy
-	input 		[BUTTONS_WIDTH-1:0] btn_up_out	, 	//na zewnatrz do gory
-	input 		[BUTTONS_WIDTH-1:0] btn_down_out,	//na zewnatrz na dó³
-	output reg 	[1:0] 				engine		,	//0-idle 1-down, 2-up
-	output reg 	[1:0] 				door		, 	//0-idle 1-open, 2-close
+	input 							clk				,
+	input 							reset			,
+	input 							open_btn		,
+	input 							close_btn		,
+	input 							overload		,
+	input 							sensor_up		,	
+	input 							sensor_down 	,
+	input 							sensor_inside 	,
+	input 		[BUTTONS_WIDTH-1:0] btn_in 			,
+	input 		[BUTTONS_WIDTH-1:0] btn_up_out		, 	//na zewnatrz do gory
+	input 		[BUTTONS_WIDTH-1:0] btn_down_out	,	//na zewnatrz na dó³
+	output reg 	[1:0] 				engine			,	//0-idle 1-down, 2-up
+	output reg 	[1:0] 				door			, 	//0-idle 1-open, 2-close
 	output reg 	[2:0] 				level_display
 );
     
-	reg reached=0;
-	reg overload=0;
+	reg reached;
+	reg move;				//0 - not moving, 1 - moving
 	reg letout;				//0 - down, 1 - up
 	reg direction;			//0 - down, 1 - up
 	reg last_direction;		//0 - down, 1 - up
-	//reg [4:0] buttons_blocked;	//numer - floor blocked 0 - unblocked, 1 - F0, 2 - F1
+	reg [3:0] buttons_blocked;	//numer - floor blocked 0 - unblocked, 1 - F0, 2 - F1
 	reg [3:0] counter;
 	
 	
@@ -60,10 +64,11 @@ parameter BUTTONS_WIDTH = 8
 				CLOSE   = 17,
 				WAIT    = 18;
 	
-	buttons buttons_inst(
+	buttons_res buttons_inst(
 
+		.clk(clk)												,
 		.reset(reset)											,
-		//.buttons_blocked(buttons_blocked)						,
+		.buttons_blocked(buttons_blocked)						,
 		.btn_in(btn_in)											,
 		.btn_up_out(btn_up_out)									,
 		.btn_down_out(btn_down_out)								,
@@ -85,9 +90,17 @@ parameter BUTTONS_WIDTH = 8
 	active_out_up_levels[7] does not exist
 	inactivate_out_up_levels[7] does not exist
 	beda na 6 pietrze nie da sie wcisnac przycisku 6
-	-dodac kasowanie przycisków
-	-dodac fotokomorke
+
 	*/
+	/*
+	TO_DO
+	-dodac kasowanie przycisków - done
+	-dodac fotokomorke
+	-blokowanie przycisków
+	-flaga move 
+	*/
+	
+	
 	
 	always@(posedge clk or negedge reset)
 	begin
@@ -96,11 +109,12 @@ parameter BUTTONS_WIDTH = 8
 			letout						<=0;
 			door						<=0;
 			counter						<=0;
-			//buttons_blocked				<=0;
+			buttons_blocked				<=0;
 			inactivate_in_levels 		<=0;
 			inactivate_out_up_levels 	<=0;
 			inactivate_out_down_levels	<=0;
 			level_display	 			 =0;
+			move						<=0;
 			if(level_display==0) begin
 				state 		<=FLOOR0;
 				direction   <=1;

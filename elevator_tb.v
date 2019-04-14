@@ -12,6 +12,10 @@ module elevator_tb;
  reg reset;
  reg open_btn;
  reg close_btn;
+ reg overload;
+ reg sensor_up;
+ reg sensor_down;
+ reg sensor_inside;
  reg [BUTTONS_WIDTH-1:0] btn_in; // wewnatrz windy
  reg [BUTTONS_WIDTH-1:0] btn_up_out; //na zewnatrz do gory
  reg [BUTTONS_WIDTH-1:0] btn_down_out;
@@ -36,6 +40,10 @@ elevator elevator_inst(
 		.reset(reset),
 		.open_btn(open_btn),
 		.close_btn(close_btn),
+		.overload(overload),
+		.sensor_up(sensor_up),
+		.sensor_down(sensor_down),
+		.sensor_inside(sensor_inside),
 		.btn_in(btn_in),
 		.btn_up_out(btn_up_out),
 		.btn_down_out(btn_down_out),
