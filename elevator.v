@@ -25,6 +25,7 @@ parameter BUTTONS_WIDTH = 8
 );
     
 	reg reached;
+	reg closing;			//special flag when doors are closing
 	reg move;				//0 - not moving, 1 - moving
 	reg letout;				//0 - down, 1 - up
 	reg direction;			//0 - down, 1 - up
@@ -116,6 +117,7 @@ parameter BUTTONS_WIDTH = 8
 			inactivate_out_down_levels	<=0;
 			level_display	 			 =0;
 			move						<=0;
+			closing						<=0;
 			if(level_display==0) begin
 				state 		<=FLOOR0;
 				direction   <=1;
@@ -911,28 +913,37 @@ parameter BUTTONS_WIDTH = 8
 				
 		
 				OPEN: begin
-					if(!sensor_door) begin //0 means opened 
+					if(!sensor_door) begin //0 means opened OPENED
 						door <=0;
-						state<=WAIT;
+						if(closing==1) begin
+							state<=CLOSE;
+						end	
+						else begin		
+							state<=WAIT; //
+						end
 					end			
-					else begin
+					else begin//NOT OPENED YET	
 						door <=1;
 						state<=OPEN;
-					end	
+					end			
 				end
 			
 				CLOSE: begin
-					if(sensor_inside) begin//
-						state<=CLOSE;
+					if(sensor_inside) begin//0 - not covered 1 - covered
+						state<=OPEN;
+						closing<=1;
 					end	
 					else begin
 						if(sensor_door) begin //1 means closed 
 							door <=0;
 							state<=WAIT;
+							closing<=0;
 						end
 						else begin
-							if(open_btn)
+							closing<=1;
+							if(open_btn) begin
 								state<=OPEN;
+							end	
 							else begin
 								door <=2;
 								state<=CLOSE;

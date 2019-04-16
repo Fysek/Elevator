@@ -1,8 +1,8 @@
-													  //elevator
-//iverilog -o ALU ALU.v 
-//iverilog -o ALU_tb ALU_tb.v
-//vvp ALU_tb
-//gtkwave ALU_tb.vcd
+//elevator
+//iverilog -o elevator elevator.v 
+//iverilog -o elevator_tb elevator_tb.v
+//vvp elevator_tb
+//gtkwave elevator_tb.vcd
 `include "elevator.v"
 
 module elevator_tb;
@@ -16,6 +16,7 @@ module elevator_tb;
  reg sensor_up;
  reg sensor_down;
  reg sensor_inside;
+ reg sensor_door;
  reg [BUTTONS_WIDTH-1:0] btn_in; // wewnatrz windy
  reg [BUTTONS_WIDTH-1:0] btn_up_out; //na zewnatrz do gory
  reg [BUTTONS_WIDTH-1:0] btn_down_out;
@@ -44,6 +45,7 @@ elevator elevator_inst(
 		.sensor_up(sensor_up),
 		.sensor_down(sensor_down),
 		.sensor_inside(sensor_inside),
+		.sensor_door(sensor_door),
 		.btn_in(btn_in),
 		.btn_up_out(btn_up_out),
 		.btn_down_out(btn_down_out),
@@ -59,8 +61,8 @@ always
 		
 initial
 	begin
-		//$dumpfile("elevator_tb.vcd");
-	  	//$dumpvars(0,clk,reset,open_btn,close_btn,btn_in,btn_up_out,btn_down_out,engine_up,engine_down,open_door,level_display);
+		$dumpfile("elevator_tb.vcd");
+	  	$dumpvars(0,clk,reset,open_btn,close_btn,btn_in,btn_up_out,btn_down_out,engine,door,level_display);
 		//$monitor($time,": clk=%b reset=%b open_btn=%b close_btn=%b btn_in=%d btn_up_out=%d btn_down_out=%d | engine_up=%b engine_down=%b open_door=%b close_door=%b level_display=%b"
 		//,clk,reset,open_btn,close_btn,btn_in,btn_up_out,btn_down_out,engine_up,engine_down,open_door,close_door,level_display);
 	
