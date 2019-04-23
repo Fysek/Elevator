@@ -72,6 +72,7 @@ initial
 	btn_in = 0;
 	btn_up_out = 0;
 	btn_down_out = 0;
+	overload = 0;
 	#5 reset = 0;
 	#5 reset = 1;
 	/* test 1. go to 7 a back to 0*/

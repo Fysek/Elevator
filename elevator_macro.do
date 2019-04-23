@@ -1,5 +1,5 @@
 alog -O2 -protect 0 -msg 5 -sve "$dsn/src/elevator.v"
-alog -O2 -protect 0 -msg 5 -sve "$dsn/src/buttons.v"
+alog -O2 -protect 0 -msg 5 -sve "$dsn/src/buttons_res.v"
 alog -O2 -protect 0 -msg 5 -sve "$dsn/src/elevator_tb.v"
 asim +access +r elevator_tb
 wave 

@@ -4,24 +4,18 @@
 module elevator
 #(
 parameter BUTTONS_WIDTH = 8
+parameter DELAY = 8
+parameter BUTTONS_WIDTH = 8
 
 )
 (
 	input 							clk				,
 	input 							reset			,
-	input 							open_btn		,
-	input 							close_btn		,
-	input 							overload		,
-	input 							sensor_up		,	//0 - not reached 1 - reached | sensor inside elevator 
-	input 							sensor_down 	,	//0 - not reached 1 - reached | to get the position
-	input 							sensor_inside 	,	//0 - not covered 1 - covered | covered sensor, door must be open
-	input 							sensor_door 	,	//0 - opened 1 - closed sensor on door state
-	input 		[BUTTONS_WIDTH-1:0] btn_in 			,
-	input 		[BUTTONS_WIDTH-1:0] btn_up_out		, 	//na zewnatrz do gory
-	input 		[BUTTONS_WIDTH-1:0] btn_down_out	,	//na zewnatrz na dó³
-	output reg 	[1:0] 				engine			,	//0-idle 1-down, 2-up
-	output reg 	[1:0] 				door			, 	//0-idle 1-open, 2-close
-	output reg 	[2:0] 				level_display
+	output reg 						sensor_up		,	//0 - not reached 1 - reached | sensor inside elevator 
+	output reg 						sensor_down 	,	//0 - not reached 1 - reached | to get the position
+	output reg 						sensor_inside 	,	//0 - not covered 1 - covered | covered sensor, door must be open
+	output reg						sensor_door 		//0 - opened 1 - closed sensor on door state
+
 );
     
 	reg reached;
@@ -102,7 +96,7 @@ parameter BUTTONS_WIDTH = 8
 	*/
 	
 	
-	assign reached=sensor_down&&sensor_up;
+	//assign reached=sensor_down&&sensor_up;
 	
 	always@(posedge clk or negedge reset)
 	begin
@@ -157,7 +151,7 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR01: begin
 					letout			<=0;
 					last_direction	<=direction;
-					if(reached) begin	
+					if(sensor_up&&sensor_down) begin	
 						if(direction) begin //direction up
 							if((active_in_levels[1] == 1)||(active_out_up_levels[1] == 1)) begin
 								state	<=FLOOR1;	//go up to the full floor
@@ -263,7 +257,7 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR12: begin
 					letout			<=0;
 					last_direction	<=direction;
-					if(reached) begin					
+					if(sensor_up&&sensor_down) begin					
 						if(direction) begin //direction up
 							if((active_in_levels[2] == 1)||(active_out_up_levels[2] == 1)) begin
 								state	<=FLOOR2;	//go up to the full floor
@@ -381,7 +375,7 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR23: begin
 					letout			<=0;
 					last_direction	<=direction;
-					if(reached) begin
+					if(sensor_up&&sensor_down) begin
 						if(direction) begin //direction up
 							if((active_in_levels[3] == 1)||(active_out_up_levels[3] == 1)) begin
 								state<=FLOOR3; 	//go up to the full floor
@@ -498,7 +492,7 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR34: begin	
 					letout			<=0;
 					last_direction	<=direction;
-					if(reached) begin
+					if(sensor_up&&sensor_down) begin
 						if(direction) begin //direction up
 							if((active_in_levels[4] == 1)||(active_out_up_levels[4] == 1)) begin
 								state	<=FLOOR4; 	//go up to the full floor
@@ -617,7 +611,7 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR45: begin	
 					letout			<=0;
 					last_direction	<=direction;
-					if(reached) begin
+					if(sensor_up&&sensor_down) begin
 						if(direction) begin //direction up
 							if((active_in_levels[5] == 1)||(active_out_up_levels[5] == 1)) begin
 								state	<=FLOOR5; 	//go up to the full floor
@@ -736,7 +730,7 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR56: begin	
 					letout			<=0;
 					last_direction	<=direction;
-					if(reached) begin
+					if(sensor_up&&sensor_down) begin
 						if(direction) begin //direction up
 							if((active_in_levels[6] == 1)||(active_out_up_levels[6] == 1)) begin
 								state<=FLOOR6; 	//go up to the full floor
@@ -855,7 +849,7 @@ parameter BUTTONS_WIDTH = 8
 				FLOOR67: begin	
 					letout			<=0;
 					last_direction	<=direction;
-					if(reached) begin
+					if(sensor_up&&sensor_down) begin
 						if(direction) begin //direction up
 							state<=FLOOR7; 	//go up to the full floor
 							engine<=0;
