@@ -1,4 +1,21 @@
 //elevator
+/*
+-direction zmieniamy tylko na pe³nych poziomach
+-na pe³nych poziomach czyscimy rejestry buttonów
+-pierwsze wejscie na pe³ny poziom to FLOOR0->OPEN->CLOSE->FLOOR0
+-zmiana direction mzoe byc tylko jezeli jest w wait 5 razy
+active_out_down_levels[1] does not exist
+inactivate_out_down_levels[1] does not exist
+active_out_up_levels[7] does not exist
+inactivate_out_up_levels[7] does not exist
+beda na 6 pietrze nie da sie wcisnac przycisku 6
+
+TO_DO
+-dodac kasowanie przycisków - done
+-dodac fotokomorke
+-blokowanie przycisków
+-flaga move 
+*/
 `include "buttons_res.v"
 
 module elevator
@@ -15,23 +32,25 @@ parameter BUTTONS_WIDTH = 8
 	input 							sensor_up		,	//0 - not reached 1 - reached | sensor inside elevator 
 	input 							sensor_down 	,	//0 - not reached 1 - reached | to get the position
 	input 							sensor_inside 	,	//0 - not covered 1 - covered | covered sensor, door must be open
-	input 							sensor_door 	,	//0 - opened 1 - closed sensor on door state
+	input 		[1:0] 				sensor_door 	,	//0 - between 1 - open 2 - close
 	input 		[BUTTONS_WIDTH-1:0] btn_in 			,
 	input 		[BUTTONS_WIDTH-1:0] btn_up_out		, 	//na zewnatrz do gory
 	input 		[BUTTONS_WIDTH-1:0] btn_down_out	,	//na zewnatrz na dó³
-	output reg 	[1:0] 				engine			,	//0-idle 1-down, 2-up
-	output reg 	[1:0] 				door			, 	//0-idle 1-open, 2-close
-	output reg 	[2:0] 				level_display
+	output reg 	[1:0] 				engine			,	//0 - idle 1 - down 2 - up
+	output reg 	[1:0] 				door			, 	//0 - idle 1 - open 2 - close
+	//output reg 	[4:0] 				test_state		,	//state only for testing
+	output reg 	[2:0] 				level_display	
+	
 );
     
-	reg reached;
-	reg closing;			//special flag when doors are closing
-	reg move;				//0 - not moving, 1 - moving
-	reg letout;				//0 - down, 1 - up
-	reg direction;			//0 - down, 1 - up
-	reg last_direction;		//0 - down, 1 - up
+	reg reached;				//used for sensors of elevator position
+	reg closing;				//special flag when doors are closing
+	reg move;					//0 - not moving, 1 - moving
+	reg letout;					//0 - down, 1 - up
+	reg direction;				//0 - down, 1 - up
+	reg last_direction;			//0 - down, 1 - up
 	reg [3:0] buttons_blocked;	//numer - floor blocked 0 - unblocked, 1 - F0, 2 - F1
-	reg [3:0] counter;
+	reg [3:0] counter;			//wait and idle counter
 
 	//buttons regs
 	reg  [BUTTONS_WIDTH-1:0] inactivate_in_levels;
@@ -40,7 +59,6 @@ parameter BUTTONS_WIDTH = 8
 	wire [BUTTONS_WIDTH-1:0] active_in_levels;
 	wire [BUTTONS_WIDTH-1:0] active_out_up_levels;
 	wire [BUTTONS_WIDTH-1:0] active_out_down_levels;
-
 	//end buttons regs
 	
 	reg[4:0] state, saved_state, move_state;
@@ -66,7 +84,6 @@ parameter BUTTONS_WIDTH = 8
 				WAIT    = 18;
 	
 	buttons_res buttons_inst(
-
 		.clk(clk)												,
 		.reset(reset)											,
 		.buttons_blocked(buttons_blocked)						,
@@ -80,28 +97,8 @@ parameter BUTTONS_WIDTH = 8
 		.active_out_up_levels(active_out_up_levels)				,
 		.active_out_down_levels(active_out_down_levels)
 		);
-	
-	/*
-	-direction zmieniamy tylko na pe³nych poziomach
-	-na pe³nych poziomach czyscimy rejestry buttonów
-	-pierwsze wejscie na pe³ny poziom to FLOOR0->OPEN->CLOSE->FLOOR0
-	-zmiana direction mzoe byc tylko jezeli jest w wait 5 razy
-	active_out_down_levels[1] does not exist
-	inactivate_out_down_levels[1] does not exist
-	active_out_up_levels[7] does not exist
-	inactivate_out_up_levels[7] does not exist
-	beda na 6 pietrze nie da sie wcisnac przycisku 6
-
-	*/
-	/*
-	TO_DO
-	-dodac kasowanie przycisków - done
-	-dodac fotokomorke
-	-blokowanie przycisków
-	-flaga move 
-	*/
-	
-	
+		
+	//assign test_state=state;
 	assign reached=sensor_down&&sensor_up;
 	
 	always@(posedge clk or negedge reset)
@@ -913,7 +910,7 @@ parameter BUTTONS_WIDTH = 8
 				
 		
 				OPEN: begin
-					if(!sensor_door)begin //0 means opened OPENED
+					if(sensor_door==1)begin //1 means opened OPENED
 						door <=0;
 						if(closing==1) begin
 							state<=CLOSE;
@@ -934,7 +931,7 @@ parameter BUTTONS_WIDTH = 8
 						closing<=1;
 					end	
 					else begin
-						if(sensor_door) begin //1 means closed 
+						if(sensor_door==2) begin //2 means closed 
 							door <=0;
 							state<=WAIT;
 							closing<=0;
