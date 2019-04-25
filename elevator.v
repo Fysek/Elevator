@@ -43,7 +43,7 @@ parameter BUTTONS_WIDTH = 8
 	
 );
     
-	reg reached;				//used for sensors of elevator position
+	
 	reg closing;				//special flag when doors are closing
 	reg move;					//0 - not moving, 1 - moving
 	reg letout;					//0 - down, 1 - up
@@ -51,6 +51,7 @@ parameter BUTTONS_WIDTH = 8
 	reg last_direction;			//0 - down, 1 - up
 	reg [3:0] buttons_blocked;	//numer - floor blocked 0 - unblocked, 1 - F0, 2 - F1
 	reg [3:0] counter;			//wait and idle counter
+	wire reached;				//used for sensors of elevator position
 
 	//buttons regs
 	reg  [BUTTONS_WIDTH-1:0] inactivate_in_levels;
@@ -84,21 +85,21 @@ parameter BUTTONS_WIDTH = 8
 				WAIT    = 18;
 	
 	buttons_res buttons_inst(
-		.clk(clk)												,
-		.reset(reset)											,
-		.buttons_blocked(buttons_blocked)						,
-		.btn_in(btn_in)											,
-		.btn_up_out(btn_up_out)									,
-		.btn_down_out(btn_down_out)								,
-		.inactivate_in_levels(inactivate_in_levels)				,
-		.inactivate_out_up_levels(inactivate_out_up_levels)		,
-		.inactivate_out_down_levels(inactivate_out_down_levels)	,
-		.active_in_levels(active_in_levels)						,
-		.active_out_up_levels(active_out_up_levels)				,
-		.active_out_down_levels(active_out_down_levels)
+		.clk						(clk)							,
+		.reset						(reset)							,
+		.buttons_blocked			(buttons_blocked)				,
+		.btn_in						(btn_in)						,
+		.btn_up_out					(btn_up_out)					,
+		.btn_down_out				(btn_down_out)					,
+		.inactivate_in_levels		(inactivate_in_levels)			,
+		.inactivate_out_up_levels	(inactivate_out_up_levels)		,
+		.inactivate_out_down_levels	(inactivate_out_down_levels)	,
+		.active_in_levels			(active_in_levels)				,
+		.active_out_up_levels		(active_out_up_levels)			,
+		.active_out_down_levels		(active_out_down_levels)
 		);
 		
-	//assign test_state=state;
+	
 	assign reached=sensor_down&&sensor_up;
 	
 	always@(posedge clk or negedge reset)

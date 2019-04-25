@@ -2,26 +2,26 @@
 
 module test_module
 #(
-parameter BUTTONS_WIDTH = 8
-parameter DELAY_ENGINE = 10
+parameter BUTTONS_WIDTH = 8,
+parameter DELAY_ENGINE = 10,
 parameter DELAY_DOOR = 10
 )
 (
-	input 							clk				,
-	input 							reset			,	
-	input  		[1:0] 				engine			,	//0 - idle 1 - down 2 - up
-	input 	 	[1:0] 				door			,	//0 - idle 1 - open 2 - close
-	output reg	[1:0] 				sensor_door 	,	//0 - between 1 - open 2 - close
-	output reg 						sensor_up		,	//0 - not reached 1 - reached | sensor inside elevator 
-	output reg 						sensor_down 		//0 - not reached 1 - reached | to get the position
+	input 				clk				,
+	input 				reset			,	
+	input  		[1:0] 	engine			,	//0 - idle 1 - down 2 - up
+	input 	 	[1:0] 	door			,	//0 - idle 1 - open 2 - close
+	output reg	[1:0] 	sensor_door 	,	//0 - between 1 - open 2 - close
+	//output reg	[1:0] 	last_engine 	,	//0 - between 1 - open 2 - close
+	//output reg	[1:0] 	last_door 	,	//0 - between 1 - open 2 - close
+	//output reg 	[4:0]	counter_engine 	,	//0 - not reached 1 - reached | to get the position
+	//output reg 	[4:0]	counter_door 		//0 - not reached 1 - reached | to get the position
+	output reg 			sensor_up		,	//0 - not reached 1 - reached | sensor inside elevator 
+	output reg 			sensor_down 		//0 - not reached 1 - reached | to get the position
+
 
 );
     
-	/*
-	up i down wtedy kiedy winda jedzie chwile
-	door wtedy gdy winda sie dlugo otwiera lub zamyka
-	*/
-	
 	reg [1:0] last_engine;
 	reg [1:0] last_door;
 	
@@ -38,47 +38,41 @@ parameter DELAY_DOOR = 10
 			sensor_up		<=0;
 			sensor_down		<=0;
 			sensor_door		<=0;
+		end	
 		else begin
 			//engine
-			if(engine==last_engine) begin
-				if(counter_engine==DELAY_ENGINE) begin
-					sensor_up		<=1;
-					sensor_down		<=1;
-					counter_engine	<=0;
-				end
-				else begin
-					sensor_up		<=0;
-				    sensor_down		<=0;
-					counter_engine	<=counter_engine+1;
+			if(engine>0)begin
+				if(engine==last_engine) begin
+					if(counter_engine==DELAY_ENGINE) begin
+						sensor_up		<=1;
+						sensor_down		<=1;
+						counter_engine	<=0;
+					end
+					else begin
+						sensor_up		<=0;
+						sensor_down		<=0;
+						counter_engine	<=counter_engine+1;
+					end	
 				end	
-			end		
+			end	
 			else begin 
 				counter_engine	<=0;
 			end	
-			//door		
-			if(door==last_door) begin	
-				if(counter_door==DELAY_DOOR) begin
-					sensor_door		<=door;
-					counter_door	<=0;
-				end
-				else begin
-					sensor_door		<=0;
-					counter_door	<=counter_door+1;
+			//door
+			if(door>0)begin		
+				if(door==last_door) begin	
+					if(counter_door==DELAY_DOOR) begin
+						sensor_door		<=door;
+						counter_door	<=0;
+					end
+					else begin
+						sensor_door		<=0;
+						counter_door	<=counter_door+1;
+					end	
 				end	
 			end	
 			else begin 
 				sensor_door		<=0;
-				if(door==2) begin //wczesniej były 1 czyli sie otwieraly teraz zamykaja
-					
-					counter_door	<=0;
-				end
-				else if(door==1) begin //wczesniej były 2 czyli sie zamykaly teraz otwieraja
-				
-				end
-				else begin //nic sie nie dzialo
-				
-				end
-				
 				counter_door	<=0;
 			end
 			//last

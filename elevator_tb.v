@@ -4,6 +4,7 @@
 //vvp elevator_tb
 //gtkwave elevator_tb.vcd
 `include "elevator.v"
+`include "test_module.v"
 
 module elevator_tb;
  //inputs
@@ -13,13 +14,13 @@ module elevator_tb;
  reg open_btn;
  reg close_btn;
  reg overload;
- reg sensor_up;
- reg sensor_down;
  reg sensor_inside;
- reg sensor_door;
  reg [BUTTONS_WIDTH-1:0] btn_in; // wewnatrz windy
  reg [BUTTONS_WIDTH-1:0] btn_up_out; //na zewnatrz do gory
  reg [BUTTONS_WIDTH-1:0] btn_down_out;
+ wire sensor_up;
+ wire sensor_down;
+ wire [1:0] sensor_door;
  //outputs
  wire [1:0] engine;
  wire [1:0] door;
@@ -30,13 +31,10 @@ module elevator_tb;
  2. Osoba req z F7 na F0, winda jedzie na F0
  3. Osoba req z F7 na dol, winda z F0 jedzie na F7 i jedzie na wybrane pietro (F4)
  
- 
- 
- 
  */
  
  
-elevator elevator_inst(
+elevator elevator_inst( 
 		.clk(clk),
 		.reset(reset),
 		.open_btn(open_btn),
@@ -53,6 +51,19 @@ elevator elevator_inst(
 		.door(door),
 		.level_display(level_display)
 		);
+		
+test_module test_module_inst(	
+		.clk			(clk			),
+		.reset			(reset			),
+		.engine			(engine			),
+		.door			(door			),
+		.sensor_door 	(sensor_door 	),
+		.sensor_up		(sensor_up		),
+		.sensor_down 	(sensor_down 	)
+		); 		
+		
+		
+		
 
 always
 	begin
