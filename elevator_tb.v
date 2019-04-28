@@ -62,12 +62,9 @@ test_module test_module_inst(
 		.sensor_down 	(sensor_down 	)
 		); 		
 		
-		
-		
-
 always
 	begin
-		#10 clk=!clk;
+		#5 clk=!clk;
 	end	
 		
 initial
@@ -87,24 +84,21 @@ initial
 	#5 reset = 0;
 	#5 reset = 1;
 	/* test 1. go to 7 a back to 0*/
-	#10 btn_in[7] = 1;	
-	#10 btn_in[7] = 0;	
-	#80	btn_down_out[7] = 1;
+	#20 btn_in[7] = 1;	
+	#20 btn_in[7] = 0;	
+	#800 btn_down_out[7] = 1;
 	#10	btn_down_out[7] = 0;
-	#100 btn_up_out[0] = 1;		
-	#10 btn_up_out[0] = 0;	
-	/*test 1. done*/
-	#400 btn_in[7] = 0;
+	/*test 1. done*/	
 	$display("done first test");
-	#10 btn_in[5] = 1;	
-	#10 btn_in[5] = 0;
-	#180 btn_down_out[3] = 1;
-	#10	btn_down_out[3] = 0;
+	#300 btn_in[5] = 1;	
+	#10 btn_in[5] = 0; 
+	#800 btn_down_out[3] = 1;
+	#10	btn_down_out[3] = 0; /*
 	$display("done second test");
-	#600 btn_up_out[0] = 1;		
+	#600 btn_up_out[0] = 1;		  
 	#10 btn_up_out[0] = 0;	
-	$display("done third test");	
-	#600 $finish;
+	$display("done third test");	 */
+	#3000 $finish;
 	end
 
 endmodule
