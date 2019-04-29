@@ -24,6 +24,7 @@ module elevator_tb;
  //outputs
  wire [1:0] engine;
  wire [1:0] door;
+ wire 		direction;
  wire [2:0] level_display;
  /*
  Testy
@@ -49,6 +50,7 @@ elevator elevator_inst(
 		.btn_down_out(btn_down_out),
 		.engine(engine),
 		.door(door),
+		.direction(direction),
 		.level_display(level_display)
 		);
 		
