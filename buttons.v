@@ -10,11 +10,11 @@ parameter BUTTONS_WIDTH = 8
 	input 		[BUTTONS_WIDTH-1:0] btn_up_out, //na zewnatrz do gory
 	input 		[BUTTONS_WIDTH-1:0] btn_down_out,//na zewnatrz na dó³
 	input 		[BUTTONS_WIDTH-1:0] inactivate_in_levels, 
-	input 		[BUTTONS_WIDTH-1:0] inactivate_out_up_levels,
-	input 		[BUTTONS_WIDTH-1:0] inactivate_out_down_levels,
+	input 		[BUTTONS_WIDTH-2:0] inactivate_out_up_levels,
+	input 		[BUTTONS_WIDTH-1:1] inactivate_out_down_levels,
 	output reg 	[BUTTONS_WIDTH-1:0] active_in_levels,
-    output reg 	[BUTTONS_WIDTH-1:0] active_out_up_levels,
-	output reg 	[BUTTONS_WIDTH-1:0] active_out_down_levels
+    output reg 	[BUTTONS_WIDTH-2:0] active_out_up_levels,
+	output reg 	[BUTTONS_WIDTH-1:1] active_out_down_levels
 );
 	reg[3:0] index;
 	

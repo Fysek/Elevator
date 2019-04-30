@@ -9,14 +9,14 @@ parameter BUTTONS_WIDTH = 8
 	input							reset,
 	input		[3:0]			    buttons_blocked, 		//F - all unblocked
 	input 		[BUTTONS_WIDTH-1:0] btn_in, 				//wewnatrz windy
-	input 		[BUTTONS_WIDTH-1:0] btn_up_out, 			//na zewnatrz do gory
-	input 		[BUTTONS_WIDTH-1:0] btn_down_out,			//na zewnatrz na dół
+	input 		[BUTTONS_WIDTH-2:0] btn_up_out, 			//na zewnatrz do gory
+	input 		[BUTTONS_WIDTH-1:1] btn_down_out,			//na zewnatrz na dół
 	input 		[BUTTONS_WIDTH-1:0] inactivate_in_levels, 
-	input 		[BUTTONS_WIDTH-1:0] inactivate_out_up_levels,
-	input 		[BUTTONS_WIDTH-1:0] inactivate_out_down_levels,
+	input 		[BUTTONS_WIDTH-2:0] inactivate_out_up_levels,
+	input 		[BUTTONS_WIDTH-1:1] inactivate_out_down_levels,
 	output reg 	[BUTTONS_WIDTH-1:0] active_in_levels,
-    output reg 	[BUTTONS_WIDTH-1:0] active_out_up_levels,
-	output reg 	[BUTTONS_WIDTH-1:0] active_out_down_levels
+    output reg 	[BUTTONS_WIDTH-2:0] active_out_up_levels,
+	output reg 	[BUTTONS_WIDTH-1:1] active_out_down_levels
 );
 	reg [3:0] 				index;
 	reg [BUTTONS_WIDTH-1:0] buttons_state;			//oznacza rejestr ostatniego stanu przycisków

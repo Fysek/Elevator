@@ -12,12 +12,11 @@ module elevator_tb;
  reg clk;
  reg reset;
  reg open_btn;
- reg close_btn;
  reg overload;
  reg sensor_inside;
  reg [BUTTONS_WIDTH-1:0] btn_in; // wewnatrz windy
- reg [BUTTONS_WIDTH-1:0] btn_up_out; //na zewnatrz do gory
- reg [BUTTONS_WIDTH-1:0] btn_down_out;
+ reg [BUTTONS_WIDTH-2:0] btn_up_out; //na zewnatrz do gory
+ reg [BUTTONS_WIDTH-1:1] btn_down_out;
  wire sensor_up;
  wire sensor_down;
  wire [1:0] sensor_door;
@@ -39,7 +38,6 @@ elevator elevator_inst(
 		.clk(clk),
 		.reset(reset),
 		.open_btn(open_btn),
-		.close_btn(close_btn),
 		.overload(overload),
 		.sensor_up(sensor_up),
 		.sensor_down(sensor_down),
@@ -72,13 +70,12 @@ always
 initial
 	begin
 		$dumpfile("elevator_tb.vcd");
-	  	$dumpvars(0,clk,reset,open_btn,close_btn,btn_in,btn_up_out,btn_down_out,engine,door,level_display);
+	  	$dumpvars(0,clk,reset,open_btn,btn_in,btn_up_out,btn_down_out,engine,door,level_display);
 		//$monitor($time,": clk=%b reset=%b open_btn=%b close_btn=%b btn_in=%d btn_up_out=%d btn_down_out=%d | engine_up=%b engine_down=%b open_door=%b close_door=%b level_display=%b"
 		//,clk,reset,open_btn,close_btn,btn_in,btn_up_out,btn_down_out,engine_up,engine_down,open_door,close_door,level_display);
 	
 	clk = 1'b0;
 	open_btn = 0;
-	close_btn = 0;
 	btn_in = 0;
 	btn_up_out = 0;
 	btn_down_out = 0;

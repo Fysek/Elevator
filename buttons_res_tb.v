@@ -7,14 +7,14 @@ module buttons_res_tb;
 	reg 						reset;
 	reg 	[3:0]				buttons_blocked;
 	reg 	[BUTTONS_WIDTH-1:0] btn_in; 
-	reg 	[BUTTONS_WIDTH-1:0] btn_up_out; 
-	reg 	[BUTTONS_WIDTH-1:0] btn_down_out;
+	reg 	[BUTTONS_WIDTH-2:0] btn_up_out; 
+	reg 	[BUTTONS_WIDTH-1:1] btn_down_out;
 	reg 	[BUTTONS_WIDTH-1:0] inactivate_in_levels;
-	reg 	[BUTTONS_WIDTH-1:0] inactivate_out_up_levels;
-	reg 	[BUTTONS_WIDTH-1:0] inactivate_out_down_levels;
+	reg 	[BUTTONS_WIDTH-2:0] inactivate_out_up_levels;
+	reg 	[BUTTONS_WIDTH-1:1] inactivate_out_down_levels;
 	wire	[BUTTONS_WIDTH-1:0] active_in_levels;
-	wire	[BUTTONS_WIDTH-1:0] active_out_up_levels;
-	wire	[BUTTONS_WIDTH-1:0] active_out_down_levels;
+	wire	[BUTTONS_WIDTH-2:0] active_out_up_levels;
+	wire	[BUTTONS_WIDTH-1:1] active_out_down_levels;
 
 /*
 testy 
