@@ -143,8 +143,6 @@ parameter DELAY_WAIT = 5
 							saved_state						<=FLOOR01;
 							direction   					<=1;
 							i_engine						<=2;
-							inactivate_in_levels[0] 		<=0;
-							inactivate_out_up_levels[0] 	<=0;
 						end	
 						else 
 							state	<=IDLE;
@@ -178,8 +176,8 @@ parameter DELAY_WAIT = 5
 						else begin	//	direction down
 							state							<=FLOOR0;		//go down to the full floor
 							engine							<=0;
-							inactivate_in_levels[0]			<=1;
-							inactivate_out_down_levels[1] 	<=1;						
+							inactivate_in_levels[0]			<=1; 
+							inactivate_out_up_levels[0]		<=1;										
 						end
 					end
 					else begin
@@ -202,7 +200,7 @@ parameter DELAY_WAIT = 5
 					else begin					
 						if(direction==i_direction) begin // continue the direction
 							if(direction) begin	//direction up	
-								if((active_in_levels>2)||(active_out_up_levels>2))begin 
+								if((active_in_levels>3)||(active_out_up_levels>3))begin 
 									state		<=CLOSE;
 									saved_state	<=FLOOR12;
 									i_engine	<=2;
@@ -220,7 +218,7 @@ parameter DELAY_WAIT = 5
 								end
 							end 
 							else begin//direction down
-								if((active_in_levels==1)||(active_out_up_levels==1))begin 
+								if((active_in_levels[0]==1)||(active_out_up_levels[0]==1))begin 
 									state		<=CLOSE;
 									saved_state	<=FLOOR01;
 									i_engine	<=1;
@@ -239,13 +237,13 @@ parameter DELAY_WAIT = 5
 							end
 						end 
 						else begin
-							if((active_in_levels>2)||(active_out_up_levels>2))begin//up
+							if((active_in_levels>3)||(active_out_up_levels>3))begin//up
 								state		<=CLOSE;
 								saved_state	<=FLOOR12;
 								direction	<=1;
 								i_engine	<=2;
 							end	
-							else if((active_in_levels==1)||(active_out_up_levels==1))begin//down ||(active_out_down_levels==1) no sense
+							else if((active_in_levels[0]==1)||(active_out_up_levels[0]==1))begin//down ||(active_out_down_levels==1) no sense
 								state		<=CLOSE;
 								saved_state	<=FLOOR01;
 								direction	<=0;
@@ -323,7 +321,7 @@ parameter DELAY_WAIT = 5
 					else begin
 						if(direction==i_direction) begin // continue the direction
 							if(direction) begin	//direction up			
-								if((active_in_levels>4)||(active_out_up_levels>4)||(active_out_down_levels>4))begin 
+								if((active_in_levels>7)||(active_out_up_levels>7)||(active_out_down_levels>3))begin 
 									state		<=CLOSE;
 									saved_state	<=FLOOR23;
 									i_engine	<=2;
@@ -342,7 +340,7 @@ parameter DELAY_WAIT = 5
 							end 
 							else begin//direction down
 								inactivate_out_down_levels[2] <=0;
-								if((active_in_levels<4&&active_in_levels>0)||(active_out_up_levels<4&&active_out_up_levels>0)||(active_out_down_levels<4&&active_out_down_levels>0))begin
+								if((active_in_levels<=7&&active_in_levels>0)||(active_out_up_levels<=7&&active_out_up_levels>0)||(active_out_down_levels<=3&&active_out_down_levels>0))begin
 									state		<=CLOSE;
 									saved_state	<=FLOOR12;
 									i_engine	<=1;
@@ -361,13 +359,13 @@ parameter DELAY_WAIT = 5
 							end
 						end 
 						else begin//diff dir
-							if((active_in_levels>4)||(active_out_up_levels>4)||(active_out_down_levels>4))begin 
+							if((active_in_levels>7)||(active_out_up_levels>7)||(active_out_down_levels>3))begin 
 								state		<=CLOSE;
 								saved_state	<=FLOOR23;
 								direction	<=1;
 								i_engine	<=2;
 							end	
-							else if((active_in_levels<4&&active_in_levels>0)||(active_out_up_levels<4&&active_out_up_levels>0)||(active_out_down_levels<4&&active_out_down_levels>0))begin
+							else if((active_in_levels<=7&&active_in_levels>0)||(active_out_up_levels<=7&&active_out_up_levels>0)||(active_out_down_levels<=3&&active_out_down_levels>0))begin
 								state		<=CLOSE;
 								saved_state	<=FLOOR12;
 								direction	<=0;
@@ -445,7 +443,7 @@ parameter DELAY_WAIT = 5
 					else begin
 						if(direction==i_direction) begin // continue the direction
 							if(direction) begin	//direction up	
-								if((active_in_levels>8)||(active_out_up_levels>8)||(active_out_down_levels>8))begin 
+								if((active_in_levels>15)||(active_out_up_levels>15)||(active_out_down_levels>7))begin 
 									state		<=CLOSE;
 									saved_state	<=FLOOR34;
 									i_engine	<=2;
@@ -463,7 +461,7 @@ parameter DELAY_WAIT = 5
 								end
 							end 
 							else begin//direction down
-								if((active_in_levels<8&&active_in_levels>0)||(active_out_up_levels<8&&active_out_up_levels>0)||(active_out_down_levels<8&&active_out_down_levels>0))begin//ale wieksze od 1 
+								if((active_in_levels<=15&&active_in_levels>0)||(active_out_up_levels<=15&&active_out_up_levels>0)||(active_out_down_levels<=7&&active_out_down_levels>0))begin//ale wieksze od 1 
 									state		<=CLOSE;
 									saved_state	<=FLOOR23;
 									i_engine 	<=1;
@@ -482,13 +480,13 @@ parameter DELAY_WAIT = 5
 							end
 						end 
 						else begin//diff dir
-							if((active_in_levels>8)||(active_out_up_levels>=8)||(active_out_down_levels>8))begin 
+							if((active_in_levels>15)||(active_out_up_levels>15)||(active_out_down_levels>7))begin 
 								state		<=CLOSE;
 								saved_state	<=FLOOR34;
 								direction	<=1;
 								i_engine	<=2;
 							end	
-							else if((active_in_levels<8&&active_in_levels>0)||(active_out_up_levels<8&&active_out_up_levels>0)||(active_out_down_levels<=8&&active_out_down_levels>0))begin
+							else if((active_in_levels<=15&&active_in_levels>0)||(active_out_up_levels<=15&&active_out_up_levels>0)||(active_out_down_levels<=7&&active_out_down_levels>0))begin
 								state		<=CLOSE;
 								saved_state	<=FLOOR23;
 								direction	<=0;
@@ -566,7 +564,7 @@ parameter DELAY_WAIT = 5
 					else begin
 						if(direction==i_direction) begin // continue the direction
 							if(direction) begin	//direction up	
-								if((active_in_levels>16)||(active_out_up_levels>16)||(active_out_down_levels>16))begin 
+								if((active_in_levels>31)||(active_out_up_levels>31)||(active_out_down_levels>15))begin 
 									state		<=CLOSE;
 									saved_state	<=FLOOR45;
 									i_engine	<=2;
@@ -584,7 +582,7 @@ parameter DELAY_WAIT = 5
 								end
 							end 
 							else begin//direction down
-								if((active_in_levels<16&&active_in_levels>0)||(active_out_up_levels<16&&active_out_up_levels>0)||(active_out_down_levels<16&&active_out_down_levels>0))begin
+								if((active_in_levels<=31&&active_in_levels>0)||(active_out_up_levels<=31&&active_out_up_levels>0)||(active_out_down_levels<=15&&active_out_down_levels>0))begin
 									state		<=CLOSE;
 									saved_state	<=FLOOR34;
 									i_engine	<=1;
@@ -603,13 +601,13 @@ parameter DELAY_WAIT = 5
 							end
 						end 
 						else begin//diff dir
-							if((active_in_levels>16)||(active_out_up_levels>16)||(active_out_down_levels>16))begin 
+							if((active_in_levels>31)||(active_out_up_levels>31)||(active_out_down_levels>15))begin 
 								state		<=CLOSE;
 								saved_state	<=FLOOR45;
 								direction	<=1;
 								i_engine	<=2;
 							end	
-							else if((active_in_levels<16&&active_in_levels>0)||(active_out_up_levels<16&&active_out_up_levels>0)||(active_out_down_levels<16&&active_out_down_levels>0))begin
+							else if((active_in_levels<=31&&active_in_levels>0)||(active_out_up_levels<=31&&active_out_up_levels>0)||(active_out_down_levels<=15&&active_out_down_levels>0))begin
 								state		<=CLOSE;
 								saved_state	<=FLOOR34;
 								direction	<=0;
@@ -687,7 +685,7 @@ parameter DELAY_WAIT = 5
 					else begin
 						if(direction==i_direction) begin // continue the direction
 							if(direction) begin	//direction up	
-								if((active_in_levels>32)||(active_out_up_levels>32)||(active_out_down_levels>32))begin 
+								if((active_in_levels>63)||(active_out_up_levels>63)||(active_out_down_levels>31))begin 
 									state		<=CLOSE;
 									saved_state	<=FLOOR56;
 									i_engine	<=2;
@@ -705,7 +703,7 @@ parameter DELAY_WAIT = 5
 								end
 							end 
 							else begin//direction down
-								if((active_in_levels<32&&active_in_levels>0)||(active_out_up_levels<32&&active_out_up_levels>0)||(active_out_down_levels<32&&active_out_down_levels>0))begin 
+								if((active_in_levels<=63&&active_in_levels>0)||(active_out_up_levels<=63&&active_out_up_levels>0)||(active_out_down_levels<=31&&active_out_down_levels>0))begin 
 									state		<=CLOSE;
 									saved_state	<=FLOOR45;
 									i_engine	<=1;
@@ -724,13 +722,13 @@ parameter DELAY_WAIT = 5
 							end
 						end 
 						else begin//diff dir
-							if((active_in_levels>32)||(active_out_up_levels>32)||(active_out_down_levels>32))begin 
+							if((active_in_levels>63)||(active_out_up_levels>63)||(active_out_down_levels>31))begin 
 								state		<=CLOSE;
 								saved_state	<=FLOOR56;
 								direction	<=1;
 								i_engine	<=2;
 							end	
-							else if((active_in_levels<32&&active_in_levels>0)||(active_out_up_levels<32&&active_out_up_levels>0)||(active_out_down_levels<32&&active_out_down_levels>0))begin
+							else if((active_in_levels<=63&&active_in_levels>0)||(active_out_up_levels<=63&&active_out_up_levels>0)||(active_out_down_levels<=31&&active_out_down_levels>0))begin
 								state		<=CLOSE;
 								saved_state	<=FLOOR45;
 								direction	<=0;
@@ -808,7 +806,7 @@ parameter DELAY_WAIT = 5
 					else begin
 						if(direction==i_direction) begin // continue the direction
 							if(direction) begin	//direction up	
-								if((active_in_levels>64)||(active_out_up_levels>64)||(active_out_down_levels>64))begin 
+								if((active_in_levels>127)||(active_out_up_levels>127)||(active_out_down_levels>63))begin 
 									state		<=CLOSE;
 									saved_state	<=FLOOR67;
 									i_engine	<=2;
@@ -826,7 +824,7 @@ parameter DELAY_WAIT = 5
 								end
 							end 
 							else begin//direction down
-								if((active_in_levels<64&&active_in_levels>0)||(active_out_up_levels<64&&active_out_up_levels>0)||(active_out_down_levels<64&&active_out_down_levels>0))begin
+								if((active_in_levels<=127&&active_in_levels>0)||(active_out_up_levels<=127&&active_out_up_levels>0)||(active_out_down_levels<=63&&active_out_down_levels>0))begin
 									state		<=CLOSE;
 									saved_state <=FLOOR56;
 									i_engine	<=1;
@@ -845,13 +843,13 @@ parameter DELAY_WAIT = 5
 							end
 						end 
 						else begin//diff dir
-							if((active_in_levels>64)||(active_out_up_levels>64)||(active_out_down_levels>64))begin 
+							if((active_in_levels>127)||(active_out_up_levels>127)||(active_out_down_levels>63))begin 
 								state		<=CLOSE;
 								saved_state	<=FLOOR67;
 								direction	<=1;
 								i_engine	<=2;
 							end	
-							else if((active_in_levels<64&&active_in_levels>0)||(active_out_up_levels<64&&active_out_up_levels>0)||(active_out_down_levels<64&&active_out_down_levels>0))begin
+							else if((active_in_levels<=127&&active_in_levels>0)||(active_out_up_levels<=127&&active_out_up_levels>0)||(active_out_down_levels<=63&&active_out_down_levels>0))begin
 								state		<=CLOSE;
 								saved_state	<=FLOOR56;
 								direction	<=0;
@@ -892,7 +890,7 @@ parameter DELAY_WAIT = 5
 					end		
 				end
 				
-				FLOOR7: begin//no idle here
+				FLOOR7: begin
 					level_display=7;
 					if (!letout) begin
 						state							<=OPEN;

@@ -83,6 +83,44 @@ initial
 	#5 reset = 0;
 	#5 reset = 1;
 	/* test 1. go to 7 a back to 0*/
+	#100 btn_up_out[6] = 1;	
+	#10 btn_up_out[6] = 0;
+	#300 btn_up_out[0] = 1;	
+	#10 btn_up_out[0] = 0;
+	#100 btn_up_out[1] = 1;	
+	#10 btn_up_out[1] = 0;	 
+	#100 btn_up_out[2] = 1;	
+	#10 btn_up_out[2] = 0;	
+	#100 btn_up_out[3] = 1;	
+	#10 btn_up_out[3] = 0;	
+	#100 btn_up_out[4] = 1;	
+	#10 btn_up_out[4] = 0;
+	#100 btn_up_out[5] = 1;	
+	#10 btn_up_out[5] = 0;
+	#3500 reset = 0;
+	#100 reset = 1;
+	/* test 1. go to 7 a back to 0*/   
+	#100 btn_up_out[4] = 1;	
+	#10 btn_up_out[4] = 0;
+	#300 btn_up_out[0] = 1;	
+	#10 btn_up_out[0] = 0;
+	#100 btn_up_out[1] = 1;	
+	#10 btn_up_out[1] = 0;	 
+	#100 btn_up_out[2] = 1;	
+	#10 btn_up_out[2] = 0;
+	#100 btn_up_out[3] = 1;	
+	#10 btn_up_out[3] = 0;
+	#100 btn_up_out[4] = 1;	
+	#10 btn_up_out[4] = 0;
+	#2000 reset = 0;
+	#100 reset = 1;
+	#20 btn_in[3] = 1;	
+	#20 btn_in[3] = 0;	
+	#800 btn_down_out[7] = 1;
+	#10	btn_down_out[7] = 0;
+	#5 reset = 0;
+	#5 reset = 1;
+	/* test 1. go to 7 a back to 0*/
 	#20 btn_in[7] = 1;	
 	#20 btn_in[7] = 0;	
 	#800 btn_down_out[7] = 1;
