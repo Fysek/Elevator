@@ -138,7 +138,7 @@ parameter DELAY_WAIT = 5
 						letout						<=1;
 					end 
 					else begin												
-						if((active_in_levels>1)||(active_out_up_levels>0)||(active_out_down_levels>1)) begin 
+						if((active_in_levels>1)||(active_out_up_levels>0)||(active_out_down_levels>0)) begin 
 							state							<=CLOSE;
 							saved_state						<=FLOOR01;
 							direction   					<=1;
@@ -160,7 +160,7 @@ parameter DELAY_WAIT = 5
 								inactivate_in_levels[1]		<=1;
 								inactivate_out_up_levels[1] <=1;
 							end	
-							else if((active_out_down_levels[1]==1)&&(active_out_up_levels[1]!=1)&&(active_in_levels<4))begin
+							else if((active_out_down_levels[1]==1)&&(active_out_down_levels<2)&&(active_out_up_levels<2)&&(active_in_levels<4))begin
 								state							<=FLOOR1;	//request z 1p zeby jechac na dol
 								engine							<=0;
 								direction						<=0;
@@ -243,7 +243,7 @@ parameter DELAY_WAIT = 5
 								direction	<=1;
 								i_engine	<=2;
 							end	
-							else if((active_in_levels[0]==1)||(active_out_up_levels[0]==1))begin//down ||(active_out_down_levels==1) no sense
+							else if((active_in_levels[0]==1)||(active_out_up_levels[0]==1))begin//down
 								state		<=CLOSE;
 								saved_state	<=FLOOR01;
 								direction	<=0;
@@ -267,7 +267,7 @@ parameter DELAY_WAIT = 5
 								inactivate_in_levels[2]		<=1;
 								inactivate_out_up_levels[2] <=1;
 							end	
-							else if((active_out_down_levels[2]==1)&&(active_out_up_levels[2]!=1)&&(active_in_levels<8))begin
+							else if((active_out_down_levels[2]==1)&&(active_out_down_levels<4)&&(active_out_up_levels<4)&&(active_in_levels<8))begin
 								state							<=FLOOR2;	//request z 2p zeby jechac na dol
 								engine							<=0;
 								direction						<=0;
@@ -328,7 +328,7 @@ parameter DELAY_WAIT = 5
 								end	
 								else begin
 									counter	<=counter+1;
-									engine	<=0;
+									engine	<=0;//necessary?
 									if(counter==DELAY_WAIT) begin
 										state		<=saved_state;
 										direction	<=!direction;
@@ -347,7 +347,7 @@ parameter DELAY_WAIT = 5
 								end	
 								else begin
 									counter	<=counter+1;
-									engine	<=0;
+									engine	<=0;//necessary?
 									if(counter==DELAY_WAIT) begin
 										state		<=saved_state;
 										direction	<=!direction;
@@ -383,13 +383,13 @@ parameter DELAY_WAIT = 5
 					i_direction	<=direction;
 					if(reached) begin
 						if(direction) begin //direction up
-							if((active_in_levels[3] == 1)||(active_out_up_levels[3] == 1)) begin
+							if((active_in_levels[3]==1)||(active_out_up_levels[3]==1)) begin
 								state						<=FLOOR3; 	//go up to the full floor
 								engine						<=0;
 								inactivate_in_levels[3]		<=1;
 								inactivate_out_up_levels[3] <=1;
 							end	
-							else if((active_out_down_levels[3]==1)&&(active_out_up_levels[3]!=1)&&(active_in_levels<16))begin
+							else if((active_out_down_levels[3]==1)&&(active_out_down_levels<8)&&(active_out_up_levels<8)&&(active_in_levels<16))begin
 								state							<=FLOOR3;	//request z 3p zeby jechac na dol
 								engine							<=0;
 								direction						<=0;
@@ -403,13 +403,13 @@ parameter DELAY_WAIT = 5
 							end	
 						end
 						else begin//direction down
-							if((active_in_levels[2] == 1)||(active_out_down_levels[2] == 1)) begin
+							if((active_in_levels[2]==1)||(active_out_down_levels[2]==1)) begin
 								state							<=FLOOR2; 	//go down to the full floor
 								engine							<=0;
 								inactivate_in_levels[2]			<=1;
 								inactivate_out_down_levels[2] 	<=1;
 							end	
-							else if((active_out_up_levels[2]==1)&&(active_out_down_levels[2]!=1)&&(active_in_levels>16))begin
+							else if((active_out_up_levels[2]==1)&&(active_out_up_levels>3)&&(active_out_down_levels>3)&&(active_in_levels>3))begin
 								state						<=FLOOR2;	//request z 2p zeby jechac na 1p a potem gora
 								engine						<=0;
 								direction					<=1;
@@ -510,7 +510,7 @@ parameter DELAY_WAIT = 5
 								inactivate_in_levels[4]		<=1;
 								inactivate_out_up_levels[4] <=1;
 							end	
-							else if((active_out_down_levels[4]==1)&&(active_out_up_levels[4]!=1)&&(active_in_levels<32))begin
+							else if((active_out_down_levels[4]==1)&&(active_out_down_levels<16)&&(active_out_up_levels<16)&&(active_in_levels<32))begin
 								state							<=FLOOR4;	//request z 3p zeby jechac na dol
 								engine							<=0;
 								direction						<=0;
@@ -625,13 +625,13 @@ parameter DELAY_WAIT = 5
 					i_direction	<=direction;
 					if(reached) begin
 						if(direction) begin //direction up
-							if((active_in_levels[5] == 1)||(active_out_up_levels[5] == 1)) begin
+							if((active_in_levels[5]==1)||(active_out_up_levels[5]==1)) begin
 								state						<=FLOOR5; 	//go up to the full floor
 								engine						<=0;
 								inactivate_in_levels[5]		<=1;							
 								inactivate_out_up_levels[5] <=1;
 							end
-							else if((active_out_down_levels[5]==1)&&(active_out_up_levels[5]!=1)&&(active_in_levels<64))begin
+							else if((active_out_down_levels[5]==1)&&(active_out_down_levels<32)&&(active_out_up_levels<32)&&(active_in_levels<64))begin
 								state							<=FLOOR5;	//request z 3p zeby jechac na dol
 								engine							<=0;
 								direction						<=0;
@@ -651,8 +651,8 @@ parameter DELAY_WAIT = 5
 								inactivate_in_levels[4]			<=1;					
 								inactivate_out_down_levels[4] 	<=1;
 							end	
-							else if((active_out_up_levels[4]==1)&&(active_out_down_levels[4]!=1)&&(active_in_levels>64))begin
-								state						<=FLOOR4;	//request z 2p zeby jechac na 1p a potem gora
+							else if((active_out_up_levels[4]==1)&&(active_in_levels>64))begin
+								state						<=FLOOR4;	//request z 5p zeby jechac na 4p a potem gora
 								engine						<=0;
 								direction					<=1;
 								inactivate_in_levels[4]		<=1;					
@@ -746,14 +746,14 @@ parameter DELAY_WAIT = 5
 					i_direction	<=direction;
 					if(reached) begin
 						if(direction) begin //direction up
-							if((active_in_levels[6] == 1)||(active_out_up_levels[6] == 1)) begin
+							if((active_in_levels[6]==1)||(active_out_up_levels[6]==1)) begin
 								state						<=FLOOR6; 	//go up to the full floor
 								engine						<=0;
 								inactivate_in_levels[6]		<=1;	
 								inactivate_out_up_levels[6] <=1;
 							end	
-							else if((active_out_down_levels[6]==1)&&(active_out_up_levels[6]!=1)&&(active_in_levels<128))begin
-								state							<=FLOOR6;	//request z 3p zeby jechac na dol
+							else if((active_out_down_levels[6]==1)&&(active_out_down_levels<64)&&(active_in_levels<128))begin
+								state							<=FLOOR6;	//request z 6p zeby jechac na dol
 								engine							<=0;
 								direction						<=0;
 								inactivate_in_levels[6]			<=1;					
@@ -766,14 +766,14 @@ parameter DELAY_WAIT = 5
 							end	
 						end
 						else begin//direction down
-							if((active_in_levels[5] == 1)||(active_out_down_levels[5] == 1)) begin
+							if((active_in_levels[5]==1)||(active_out_down_levels[5]==1)) begin
 								state							<=FLOOR5; 	//go down to the full floor
 								engine							<=0;
 								inactivate_in_levels[5]			<=1;					
 								inactivate_out_down_levels[5] 	<=1;							
 							end	
-							else if((active_out_up_levels[5]==1)&&(active_out_down_levels[5]!=1)&&(active_in_levels>128))begin
-								state						<=FLOOR5;	//request z 2p zeby jechac na 1p a potem gora
+							else if((active_out_up_levels[5]==1))&&(active_out_down_levels>31||active_out_down_levels==0)&&(active_in_levels>63||active_in_levels==0))begin
+								state						<=FLOOR5;	//request z 5p zeby jechac na 6p a potem gora
 								engine						<=0;
 								direction					<=1;
 								inactivate_in_levels[5]		<=1;					
@@ -874,9 +874,18 @@ parameter DELAY_WAIT = 5
 						end
 						else begin//direction down
 							if((active_in_levels[6] == 1)||(active_out_down_levels[6] == 1)) begin
-								state	<=FLOOR6; 	//go down to the full floor
-								engine	<=0;
+								state							<=FLOOR6; 	//go down to the full floor
+								engine							<=0;
+								inactivate_in_levels[6]			<=1;					
+								inactivate_out_down_levels[6] 	<=1;
 							end	
+							else if((active_out_up_levels[6]==1)&&(active_out_down_levels[6]!=1)&&(active_in_levels>127||active_in_levels==0))begin
+								state						<=FLOOR6;	//request z 7p zeby jechac na 6p a potem gora
+								engine						<=0;
+								direction					<=1;
+								inactivate_in_levels[6]		<=1;					
+								inactivate_out_up_levels[6] <=1;
+							end
 							else begin
 								state	<=FLOOR56;
 								engine	<=1;
