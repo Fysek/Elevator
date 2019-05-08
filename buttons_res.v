@@ -8,7 +8,6 @@ parameter BUTTONS_WIDTH = 8
 (
 	input							clk,
 	input							reset,
-	input		[3:0]			    buttons_blocked, 		//F - all unblocked
 	input 		[BUTTONS_WIDTH-1:0] btn_in, 				//wewnatrz windy
 	input 		[BUTTONS_WIDTH-2:0] btn_up_out, 			//na zewnatrz do gory
 	input 		[BUTTONS_WIDTH-1:1] btn_down_out,			//na zewnatrz na dół
@@ -41,16 +40,14 @@ parameter BUTTONS_WIDTH = 8
 				end	
 				else begin 	
 					if(btn_in[index] == 1) begin
-						if(l_btn_in[index] == 0) begin
-							if(buttons_blocked!=index) begin				
-								if(buttons_state[index]) begin
-									active_in_levels[index] = 1;
-								end		
-								else begin 
-									active_in_levels[index] = 0;
-								end	
-								buttons_state[index]=!buttons_state[index];								
-							end
+						if(l_btn_in[index] == 0) begin				
+							if(buttons_state[index]) begin
+								active_in_levels[index] = 1;
+							end		
+							else begin 
+								active_in_levels[index] = 0;
+							end	
+							buttons_state[index]=!buttons_state[index];								
 						end	
 					end	
 				end	

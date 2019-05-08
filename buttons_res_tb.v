@@ -5,7 +5,6 @@ module buttons_res_tb;
 	parameter BUTTONS_WIDTH = 8;
 	reg 						clk;
 	reg 						reset;
-	reg 	[3:0]				buttons_blocked;
 	reg 	[BUTTONS_WIDTH-1:0] btn_in; 
 	reg 	[BUTTONS_WIDTH-2:0] btn_up_out; 
 	reg 	[BUTTONS_WIDTH-1:1] btn_down_out;
@@ -19,14 +18,12 @@ module buttons_res_tb;
 /*
 testy 
 1 - kasowanie on/off
-2 - blokowanie przyciskow
-3 - kasowanie rejestrami
+2 - kasowanie rejestrami
 */
 
  buttons_res buttons_inst(
 		.clk(clk),
 		.reset(reset),
-		.buttons_blocked(buttons_blocked),
 		.btn_in(btn_in),
 		.btn_up_out(btn_up_out),
 		.btn_down_out(btn_down_out),
@@ -45,7 +42,7 @@ always
 initial
 	begin
 	$dumpfile("buttons_tb.vcd");
-	$dumpvars(0,clk,reset,btn_in,inactivate_in_levels,active_in_levels,buttons_blocked,btn_up_out,active_out_up_levels,inactivate_out_up_levels,btn_down_out,active_out_down_levels,inactivate_out_down_levels);
+	$dumpvars(0,clk,reset,btn_in,inactivate_in_levels,active_in_levels,btn_up_out,active_out_up_levels,inactivate_out_up_levels,btn_down_out,active_out_down_levels,inactivate_out_down_levels);
 	clk 		= 0;
 	btn_in 		= 0;
 	btn_up_out 	= 0;
@@ -53,7 +50,6 @@ initial
 	inactivate_in_levels = 0;
 	inactivate_out_up_levels 	= 0;
 	inactivate_out_down_levels 	= 0;
-	buttons_blocked				= 4'hF;
 	#10 reset 					= 0;
 	#10 reset 					= 1;
 	$display("First test started");
@@ -130,107 +126,6 @@ initial
 		btn_in[1]				= 1;
 	#10 btn_in[1]				= 0;
 		btn_in[2]				= 1;
-	#10 btn_in[2]				= 0;
-		btn_in[3]				= 1;
-	#10 btn_in[3]				= 0;
-		btn_in[4]				= 1;
-	#10 btn_in[4]				= 0;
-		btn_in[5]				= 1;
-	#10 btn_in[5]				= 0;
-		btn_in[6]				= 1;
-	#10 btn_in[6]				= 0;
-		btn_in[7]				= 1;
-	#10 btn_in[7]				= 0;
-		buttons_blocked			= 0;
-		btn_in[0]				= 1;		
-	#10 btn_in[0]				= 0;
-		buttons_blocked			= 1;
-		btn_in[1]				= 1;	
-	#10 btn_in[1]				= 0;
-		buttons_blocked			= 2;
-		btn_in[2]				= 1;
-	#10 btn_in[2]				= 0;
-		buttons_blocked			= 3;
-		btn_in[3]				= 1;		
-	#10 btn_in[3]				= 0;
-		buttons_blocked			= 4;	
-		btn_in[4]				= 1;		
-	#10 btn_in[4]				= 0;
-		buttons_blocked			= 5;	
-		btn_in[5]				= 1;		
-	#10 btn_in[5]				= 0;
-		buttons_blocked			= 6;
-		btn_in[6]				= 1;		
-	#10 btn_in[6]				= 0;
-		buttons_blocked			= 7;	
-		btn_in[7]				= 1;			
-	#10 btn_in[7]				= 0;
-		buttons_blocked			= 0;
-		btn_in[0]				= 1;		
-	#10 btn_in[0]				= 0;
-		buttons_blocked			= 1;
-		btn_in[1]				= 1;	
-	#10 btn_in[1]				= 0;
-		buttons_blocked			= 2;
-		btn_in[2]				= 1;
-	#10 btn_in[2]				= 0;
-		buttons_blocked			= 3;
-		btn_in[3]				= 1;		
-	#10 btn_in[3]				= 0;
-		buttons_blocked			= 4;	
-		btn_in[4]				= 1;		
-	#10 btn_in[4]				= 0;
-		buttons_blocked			= 5;	
-		btn_in[5]				= 1;		
-	#10 btn_in[5]				= 0;
-		buttons_blocked			= 6;
-		btn_in[6]				= 1;		
-	#10 btn_in[6]				= 0;
-		buttons_blocked			= 7;	
-		btn_in[7]				= 1;			
-	#10 btn_in[7]				= 0;
-		buttons_blocked			= 4'hF;	
-		btn_in[0]				= 1;
-	#10 btn_in[0]				= 0;
-		btn_in[1]				= 1;
-	#10 btn_in[1]				= 0;
-		btn_in[2]				= 1;
-	#10 btn_in[2]				= 0;
-		btn_in[3]				= 1;
-	#10 btn_in[3]				= 0;
-		btn_in[4]				= 1;
-	#10 btn_in[4]				= 0;
-		btn_in[5]				= 1;
-	#10 btn_in[5]				= 0;
-		btn_in[6]				= 1;
-	#10 btn_in[6]				= 0;
-		btn_in[7]				= 1;
-	#10 btn_in[7]				= 0;
-		btn_in[0]				= 1;
-	#10 btn_in[0]				= 0;
-		btn_in[1]				= 1;
-	#10 btn_in[1]				= 0;
-		btn_in[2]				= 1;
-	#10 btn_in[2]				= 0;
-		btn_in[3]				= 1;
-	#10 btn_in[3]				= 0;
-		btn_in[4]				= 1;
-	#10 btn_in[4]				= 0;
-		btn_in[5]				= 1;
-	#10 btn_in[5]				= 0;
-		btn_in[6]				= 1;
-	#10 btn_in[6]				= 0;
-		btn_in[7]				= 1;
-	#10 btn_in[7]				= 0;	
-	$display("Second test finished");
-	#10 reset 					= 0;
-	#10 reset 					= 1;
-	$display("Third test started");
-	#10 btn_in[0]				= 1;
-	#10 btn_in[0]				= 0;
-		btn_in[1]				= 1;
-	#10 btn_in[1]				= 0;
-		btn_in[2]				= 1;
 		inactivate_in_levels [0] = 1;
 	#10 btn_in[2]				= 0;
 		btn_in[3]				= 1;
@@ -276,10 +171,10 @@ initial
 	#10 btn_in[7]				= 0;
 		btn_in[0]				= 1;
 	#10 btn_in[0]				= 0;
-	$display("Third test finished");
+	$display("Second test finished");
 	#10 reset 					= 0;
 	#10 reset 					= 1;
-	$display("Fourth test started");
+	$display("Third test started");
 	#10 btn_up_out[0]					= 1;
 	#10 btn_up_out[0]			 		= 0;
 		btn_up_out[1]			 		= 1;
@@ -336,10 +231,10 @@ initial
 	#10 inactivate_out_up_levels [5] 	= 0;
 		inactivate_out_up_levels [6] 	= 1;
 	#10 inactivate_out_up_levels [6] 	= 0;
-	$display("Fourth test finished");
+	$display("Third test finished");
 	#10 reset 					= 0;
 	#10 reset 					= 1;
-	$display("Fifth test started");
+	$display("Fourth test started");
 	#10 btn_down_out[1]					= 1;
 	#10 btn_down_out[1]					= 0;
 		btn_down_out[2]					= 1;
@@ -396,7 +291,7 @@ initial
 	#10 inactivate_out_down_levels [6] 	= 0;
 		inactivate_out_down_levels [7] 	= 1;
 	#10 inactivate_out_down_levels [7] 	= 0;
-	$display("Fifth test finished");
+	$display("Fourth test finished");
 	#10 $finish;
 	end	
 

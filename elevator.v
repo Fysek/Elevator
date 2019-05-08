@@ -47,7 +47,6 @@ parameter DELAY_WAIT = 5
 	reg 		letout;				//0 - down, 1 - up
 	reg 		i_direction;		//0 - down, 1 - up
 	reg [1:0]	i_engine;			//0 - idle 1 - down 2 - up saved state of engine, sent after door closed
-	reg [3:0] 	buttons_blocked;	//numer - floor blocked 0 - unblocked, 1 - F0, 2 - F1
 	reg [7:0] 	counter;			//wait and idle counter
 	wire 		reached;			//assign reached=sensor_down&&sensor_up;
 	
@@ -85,7 +84,6 @@ parameter DELAY_WAIT = 5
 	buttons_res buttons_inst(
 		.clk						(clk)							,
 		.reset						(reset)							,
-		.buttons_blocked			(buttons_blocked)				,
 		.btn_in						(btn_in)						,
 		.btn_up_out					(btn_up_out)					,
 		.btn_down_out				(btn_down_out)					,
@@ -109,7 +107,6 @@ parameter DELAY_WAIT = 5
 			letout						<=0;
 			door						<=0;
 			counter						<=0;
-			buttons_blocked				<=0;
 			inactivate_in_levels 		<=0;
 			inactivate_out_up_levels 	<=0;
 			inactivate_out_down_levels	<=0;
@@ -772,7 +769,7 @@ parameter DELAY_WAIT = 5
 								inactivate_in_levels[5]			<=1;					
 								inactivate_out_down_levels[5] 	<=1;							
 							end	
-							else if((active_out_up_levels[5]==1))&&(active_out_down_levels>31||active_out_down_levels==0)&&(active_in_levels>63||active_in_levels==0))begin
+							else if((active_out_up_levels[5]==1)&&(active_out_down_levels>31||active_out_down_levels==0)&&(active_in_levels>63||active_in_levels==0))begin
 								state						<=FLOOR5;	//request z 5p zeby jechac na 6p a potem gora
 								engine						<=0;
 								direction					<=1;
