@@ -87,7 +87,6 @@ parameter DELAY_WAIT = 10
 	buttons_res buttons_inst(
 		.clk						(clk)							,
 		.reset						(reset)							,
-		.buttons_blocked			(buttons_blocked)				,
 		.btn_in						(btn_in)						,
 		.btn_up_out					(btn_up_out)					,
 		.btn_down_out				(btn_down_out)					,
@@ -133,14 +132,15 @@ parameter DELAY_WAIT = 10
 		
 			case(state)
 				FLOOR0: begin
-					level_display					 =0;	
-					inactivate_in_levels[0]			<=0;
-					inactivate_out_up_levels[0]		<=0;
+					level_display=0;	
 					if (!letout) begin
-						state		<=OPEN;
-						saved_state	<=FLOOR0;
-						letout		<=1;
-						opening		<=1;
+						state							<=OPEN;
+						saved_state						<=FLOOR0;
+						i_direction						<=direction;
+						letout							<=1;
+						opening							<=1;
+						inactivate_in_levels[0]			<=0;
+						inactivate_out_up_levels[0]		<=0;
 					end 
 					else begin												
 						if((active_in_levels>1)||(active_out_up_levels>0)||(active_out_down_levels>0)) begin 
@@ -199,6 +199,7 @@ parameter DELAY_WAIT = 10
 						saved_state						<=FLOOR1;
 						i_direction						<=direction;
 						letout							<=1;
+						opening							<=1;
 						inactivate_in_levels[1]			<=0;
 						inactivate_out_up_levels[1] 	<=0;
 						inactivate_out_down_levels[1] 	<=0;
@@ -324,6 +325,7 @@ parameter DELAY_WAIT = 10
 						saved_state						<=FLOOR2;
 						i_direction						<=direction;
 						letout							<=1;
+						opening							<=1;
 						inactivate_in_levels[2]			<=0;
 						inactivate_out_up_levels[2]		<=0;
 						inactivate_out_down_levels[2]	<=0;							
@@ -393,7 +395,7 @@ parameter DELAY_WAIT = 10
 				end//FLOOR2
 					
 				FLOOR23: begin
-					letout			<=0;
+					letout		<=0;
 					i_direction	<=direction;
 					if(reached) begin
 						if(direction) begin //direction up
@@ -450,6 +452,7 @@ parameter DELAY_WAIT = 10
 						saved_state						<=FLOOR3;
 						i_direction						<=direction;
 						letout							<=1;
+						opening							<=1;
 						inactivate_in_levels[3]			<=0;
 						inactivate_out_up_levels[3]		<=0;
 						inactivate_out_down_levels[3]	<=0;															
@@ -575,6 +578,7 @@ parameter DELAY_WAIT = 10
 						saved_state						<=FLOOR4;
 						i_direction						<=direction;
 						letout							<=1;
+						opening							<=1;
 						inactivate_in_levels[4]			<=0;
 						inactivate_out_up_levels[4]		<=0;
 						inactivate_out_down_levels[4]	<=0;								
@@ -700,6 +704,7 @@ parameter DELAY_WAIT = 10
 						saved_state						<=FLOOR5;
 						i_direction						<=direction;
 						letout							<=1;
+						opening							<=1;
 						inactivate_in_levels[5]			<=0;
 						inactivate_out_up_levels[5]		<=0;
 						inactivate_out_down_levels[5]	<=0;											
@@ -825,6 +830,7 @@ parameter DELAY_WAIT = 10
 						saved_state						<=FLOOR6;
 						i_direction						<=direction;
 						letout							<=1;
+						opening							<=1;
 						inactivate_in_levels[6]			<=0;
 						inactivate_out_up_levels[6]		<=0;
 						inactivate_out_down_levels[6]	<=0;																			
@@ -936,6 +942,7 @@ parameter DELAY_WAIT = 10
 						saved_state						<=FLOOR7;
 						i_direction						<=direction;
 						letout							<=1;
+						opening							<=1;
 						inactivate_in_levels[7]			<=0;
 						inactivate_out_down_levels[7]	<=0;				
 					end 
@@ -1010,11 +1017,17 @@ parameter DELAY_WAIT = 10
 				end	
 			
 				WAIT: begin	
-					if(waiting) begin
+					if(waiting||opening) begin
 						if(counter==DELAY_WAIT) begin
-							state	<=CLOSE;
-							counter	<=0;	
-							waiting	<=0;
+							counter	<=0;
+							if(waiting) begin
+								state	<=CLOSE;//wait before close
+								waiting	<=0;
+							end	
+							else begin
+								state	<=saved_state;//wait after open
+								opening	<=0;							
+							end				
 						end		
 						else begin
 							state	<=WAIT;
