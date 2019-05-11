@@ -1,3 +1,4 @@
+
 //elevator
 //iverilog -o elevator elevator.v 
 //iverilog -o elevator_tb elevator_tb.v
@@ -25,7 +26,10 @@ module elevator_tb;
  wire [1:0] engine;
  wire [1:0] door;
  wire 		direction;
- wire [2:0] level_display;
+ wire [2:0] level_display;	
+ 
+ reg waits; //only for testing
+ 
  /*
  Testy
  1. Start w poziomie 0, req z F0 na F7, winda jedzie na F7 i tam zostaje
@@ -82,7 +86,23 @@ initial
 	btn_up_out = 0;
 	btn_down_out = 0;
 	overload = 0;  
-	/* test 1. btn_in test */ 
+	/*test 1. reset test full floor*/
+	 #5 reset = 0;
+	#95 reset = 1;
+	#200  btn_in[6] = 1;
+	#10  btn_in[6] = 0;
+	#1700 reset = 0;
+	#95   reset = 1;
+	#500 waits = 0;//wait
+	/*test 2. reset test half floor*/
+	 #5 reset = 0;
+	#95 reset = 1;
+	#200  btn_in[0] = 1;
+	#10  btn_in[0] = 0;
+	#800 reset = 0;
+	#95   reset = 1;
+	#700 waits = 0;//wait
+	/* test 3. btn_in test */ 
 	#5 reset = 0;
 	#95 reset = 1;
 	#200 btn_in[0] = 1;	
@@ -90,31 +110,33 @@ initial
 	#200 btn_in[1] = 1;	
 	#10  btn_in[1] = 0;	
 	#600 btn_in[2] = 1;	
-	#10  btn_in[2] = 0;	
-	#600 btn_in[3] = 1;	
-	#10  btn_in[3] = 0;		
-	#600 btn_in[4] = 1;	
-	#10  btn_in[4] = 0;		
-	#600 btn_in[5] = 1;	
-	#10  btn_in[5] = 0;		
-	#600 btn_in[6] = 1;	
-	#10  btn_in[6] = 0;	
-	#600 btn_in[7] = 1;	
-	#10  btn_in[7] = 0;
-	#600 btn_in[6] = 1;	
-	#10  btn_in[6] = 0;	
-	#600 btn_in[5] = 1;	
-	#10  btn_in[5] = 0;		
-	#600 btn_in[4] = 1;	
-	#10  btn_in[4] = 0;	
-	#600 btn_in[3] = 1;	
-	#10  btn_in[3] = 0;
-	#600 btn_in[2] = 1;	
+		 btn_in[1] = 1;	
 	#10  btn_in[2] = 0;
-	#600 btn_in[1] = 1;	
-	#10  btn_in[1] = 0;
-	#2500  btn_in[0] = 0;//wait	
-	/* test 2. all btn_in at once*/ 
+		 btn_in[1] = 0;		
+	#600 btn_in[3] = 1;	
+		 btn_in[2] = 1;
+	#10  btn_in[3] = 0;	
+		 btn_in[2] = 0;	
+	#700 btn_in[4] = 1;
+		 btn_in[3] = 1;
+	#10  btn_in[4] = 0;
+		 btn_in[3] = 0;	
+	#700 btn_in[5] = 1;
+		 btn_in[4] = 1;
+	#10  btn_in[5] = 0;	
+		 btn_in[4] = 0;	
+	#700 btn_in[6] = 1;	
+		 btn_in[5] = 1;
+	#10  btn_in[6] = 0;	
+		 btn_in[5] = 0;	
+	#700 btn_in[7] = 1;	
+		 btn_in[6] = 1;
+	#10  btn_in[7] = 0;
+		 btn_in[6] = 0;	
+	#2000  waits = 0;//wait	  
+	#2000  waits = 0;//wait	
+	#1800  waits = 0;//wait	
+	/* test 4. all btn_in at once*/ 
 	#5 reset = 0;
 	#95 reset = 1;
 	#200 btn_in[0] = 1;
@@ -133,20 +155,72 @@ initial
 		 btn_in[5] = 0;	
 		 btn_in[6] = 0;	
 		 btn_in[7] = 0;	
-	#6000  btn_in[0] = 0;//wait		  
-		/* test 1. go to 6 a back to 0, stop at lev 1*/ 
+	#2200  waits = 0;//wait	  
+	#2200  waits = 0;//wait	
+	#2200  waits = 0;//wait		  
+	/* test 5. btn_up_out test*/ 
 	#5 reset = 0;
-	#5 reset = 1;
-	#200 btn_in[6] = 1;	
-	#10 btn_in[6] = 0;	
-	#300 btn_up_out[0] = 1;	
-	#10 btn_up_out[0] = 0;
-	#300 btn_down_out[1] = 1;	
-	#10 btn_down_out[1] = 0; 
-	#2500 btn_up_out[0] = 0;//wait 
-	#500 btn_up_out[0] = 0;//wait 
-	
-	
+	#95 reset = 1;	
+	#200 btn_up_out[0] = 1;	
+	#10  btn_up_out[0] = 0;	
+	#200 btn_up_out[1] = 1;	
+	#10  btn_up_out[1] = 0;	
+	#600 btn_up_out[2] = 1;	
+		 btn_up_out[1] = 1;	
+	#10  btn_up_out[2] = 0;
+		 btn_up_out[1] = 0;		
+	#600 btn_up_out[3] = 1;	
+		 btn_up_out[2] = 1;
+	#10  btn_up_out[3] = 0;	
+		 btn_up_out[2] = 0;	
+	#700 btn_up_out[4] = 1;
+		 btn_up_out[3] = 1;
+	#10  btn_up_out[4] = 0;
+		 btn_up_out[3] = 0;	
+	#700 btn_up_out[5] = 1;
+		 btn_up_out[4] = 1;
+	#10  btn_up_out[5] = 0;	
+		 btn_up_out[4] = 0;	
+	#700 btn_up_out[6] = 1;	
+		 btn_up_out[5] = 1;
+	#10  btn_up_out[6] = 0;	
+		 btn_up_out[5] = 0;	
+	#100 btn_up_out[6] = 1;	
+	#10  btn_up_out[6] = 0;	
+	/*postcondition: go to floor 0*/	 
+	#2000  waits = 0;//wait	  
+	#2000  waits = 0;//wait	
+	#1800  waits = 0;//wait	  
+	#100   waits = 0;//wait
+	#100   btn_in[0] = 1;	//error to fix
+	#10	   btn_in[0] = 0;
+	#100   btn_in[0] = 1;
+	#10	   btn_in[0] = 0;
+	#1500  btn_in[0] = 0;//wait
+	/* test 6. all btn_up_out at once*/ 
+	#5 reset = 0;
+	#95 reset = 1;	   
+	#200 waits = 0;//wait
+	#200 btn_up_out[0] = 1;
+		 btn_up_out[1] = 1;		
+		 btn_up_out[2] = 1;		
+		 btn_up_out[3] = 1;		
+		 btn_up_out[4] = 1;		
+		 btn_up_out[5] = 1;		
+		 btn_up_out[6] = 1;	
+		 btn_up_out[7] = 1;			 
+	#10  btn_up_out[0] = 0;	
+		 btn_up_out[1] = 0;	
+		 btn_up_out[2] = 0;	
+		 btn_up_out[3] = 0;	
+		 btn_up_out[4] = 0;	
+		 btn_up_out[5] = 0;	
+		 btn_up_out[6] = 0;	
+		 btn_up_out[7] = 0;	
+	#2200  btn_in[0] = 0;//wait	  
+	#2200  btn_in[0] = 0;//wait	
+	#2200  btn_in[0] = 0;//wait
+	/**********************/
 	/* test 4. go to 7 a back to 0*/ 
 	#5 reset = 0;
 	#95 reset = 1;

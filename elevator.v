@@ -105,7 +105,6 @@ parameter DELAY_WAIT = 10
 	begin
 		if(!reset) begin
 			engine 						<=0;
-			i_engine 					<=0;
 			i_direction					<=0;
 			letout						<=0;
 			door						<=0;
@@ -117,19 +116,10 @@ parameter DELAY_WAIT = 10
 			closing						<=0; 
 			waiting						<=0;
 			opening						<=0;
-			level_display	 			 =0;
-			if(level_display==0) begin
-				state 		<=FLOOR0;
-				direction   <=1;
-			end	
-			else begin
-				state 		<=saved_state;
-				direction   <=0;
-			end			
+			direction   				<=0;	
+			state 						<=saved_state;
 		end
 		else begin
-		
-		
 			case(state)
 				FLOOR0: begin
 					level_display=0;	
@@ -175,6 +165,7 @@ parameter DELAY_WAIT = 10
 							end
 							else begin
 								state		<=FLOOR12;
+								saved_state	<=FLOOR12;
 								i_engine	<=2;
 							end	
 						end
@@ -283,8 +274,9 @@ parameter DELAY_WAIT = 10
 								inactivate_out_down_levels[2] 	<=1;
 							end																	
 							else begin
-								state	<=FLOOR23;
-								i_engine<=2;
+								state		<=FLOOR23;
+								saved_state	<=FLOOR23;
+								i_engine	<=2;
 							end	
 						end
 						else begin//direction 0
@@ -302,7 +294,8 @@ parameter DELAY_WAIT = 10
 								inactivate_out_up_levels[1] <=1;
 							end	
 							else begin
-								state	<=FLOOR01;
+								state		<=FLOOR01;
+								saved_state	<=FLOOR01;
 								i_engine<=1;
 							end	
 						end
@@ -405,8 +398,9 @@ parameter DELAY_WAIT = 10
 								inactivate_out_down_levels[3] 	<=1;
 							end	
 							else begin
-								state	<=FLOOR34;
-								i_engine<=2;
+								state		<=FLOOR34;
+								saved_state	<=FLOOR34;
+								i_engine	<=2;
 							end	
 						end
 						else begin//direction down
@@ -424,8 +418,9 @@ parameter DELAY_WAIT = 10
 								inactivate_out_up_levels[2] <=1;
 							end	
 							else begin
-								state	<=FLOOR12;
-								i_engine<=1;
+								state		<=FLOOR12;
+								saved_state	<=FLOOR12;
+								i_engine	<=1;
 							end	
 						end
 					end	
@@ -527,8 +522,9 @@ parameter DELAY_WAIT = 10
 								inactivate_out_down_levels[4] 	<=1;
 							end	
 							else begin
-								state	<=FLOOR45;
-								i_engine<=2;
+								state		<=FLOOR45;
+								saved_state	<=FLOOR45;
+								i_engine	<=2;
 							end	
 						end
 						else begin//direction down
@@ -546,8 +542,9 @@ parameter DELAY_WAIT = 10
 								inactivate_out_up_levels[3] <=1;
 							end				
 							else begin
-								state	<=FLOOR23;
-								i_engine<=1;
+								state		<=FLOOR23;
+								saved_state	<=FLOOR23;
+								i_engine	<=1;
 							end	
 						end
 					end	
@@ -649,8 +646,9 @@ parameter DELAY_WAIT = 10
 								inactivate_out_down_levels[5] 	<=1;
 							end							
 							else begin
-								state	<=FLOOR56;
-								i_engine<=2;
+								state		<=FLOOR56;
+								saved_state	<=FLOOR56;
+								i_engine	<=2;
 							end	
 						end
 						else begin//direction down
@@ -668,8 +666,9 @@ parameter DELAY_WAIT = 10
 								inactivate_out_up_levels[4] <=1;
 							end						
 							else begin
-								state	<=FLOOR34;
-								i_engine<=1;
+								state		<=FLOOR34;
+								saved_state	<=FLOOR34;
+								i_engine	<=1;
 							end	
 						end
 					end	
@@ -771,8 +770,9 @@ parameter DELAY_WAIT = 10
 								inactivate_out_down_levels[6] 	<=1;
 							end						
 							else begin
-								state	<=FLOOR67;
-								i_engine<=2;
+								state		<=FLOOR67;
+								saved_state	<=FLOOR67;
+								i_engine	<=2;
 							end	
 						end
 						else begin//direction down
@@ -790,8 +790,9 @@ parameter DELAY_WAIT = 10
 								inactivate_out_up_levels[5] <=1;
 							end						
 							else begin
-								state	<=FLOOR45;
-								i_engine<=1;
+								state		<=FLOOR45;
+								saved_state	<=FLOOR45;
+								i_engine	<=1;
 							end	
 						end
 					end	
@@ -899,8 +900,9 @@ parameter DELAY_WAIT = 10
 								inactivate_out_up_levels[6] <=1;
 							end
 							else begin
-								state	<=FLOOR56;
-								i_engine<=1;
+								state		<=FLOOR56;
+								saved_state	<=FLOOR56;
+								i_engine	<=1;
 							end	
 						end
 					end	

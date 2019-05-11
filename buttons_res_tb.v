@@ -15,6 +15,8 @@ module buttons_res_tb;
 	wire	[BUTTONS_WIDTH-2:0] active_out_up_levels;
 	wire	[BUTTONS_WIDTH-1:1] active_out_down_levels;
 
+	reg waits;
+
 /*
 testy 
 1 - kasowanie on/off
@@ -292,6 +294,47 @@ initial
 		inactivate_out_down_levels [7] 	= 1;
 	#10 inactivate_out_down_levels [7] 	= 0;
 	$display("Fourth test finished");
+	/* test 5. btn_up_out test*/ 
+	#5 reset = 0;
+	#95 reset = 1;	
+	#200 btn_up_out[0] = 1;	
+	#10  btn_up_out[0] = 0;	
+	#200 btn_up_out[1] = 1;	
+	#10  btn_up_out[1] = 0;	
+	#600 btn_up_out[2] = 1;	
+		 btn_up_out[1] = 1;	
+	#10  btn_up_out[2] = 0;
+		 btn_up_out[1] = 0;		
+	#600 btn_up_out[3] = 1;	
+		 btn_up_out[2] = 1;
+	#10  btn_up_out[3] = 0;	
+		 btn_up_out[2] = 0;	
+	#700 btn_up_out[4] = 1;
+		 btn_up_out[3] = 1;
+	#10  btn_up_out[4] = 0;
+		 btn_up_out[3] = 0;	
+	#700 btn_up_out[5] = 1;
+		 btn_up_out[4] = 1;
+	#10  btn_up_out[5] = 0;	
+		 btn_up_out[4] = 0;	
+	#700 btn_up_out[6] = 1;	
+		 btn_up_out[5] = 1;
+	#10  btn_up_out[6] = 0;	
+		 btn_up_out[5] = 0;	
+	#700 btn_up_out[7] = 1;	
+		 btn_up_out[6] = 1;
+	#10  btn_up_out[7] = 0;
+		 btn_up_out[6] = 0;	
+	/*postcondition: go to floor 0*/	 
+	#2000  waits = 0;//wait	  
+	#2000  waits = 0;//wait	
+	#1800  waits = 0;//wait	  
+	#100   waits = 0;//wait
+	#100   btn_in[0] = 1;	//error to fix
+	#10	   btn_in[0] = 0;
+	#100   btn_in[0] = 1;
+	#10	   btn_in[0] = 0;
+	#1500  btn_in[0] = 0;//wait
 	#10 $finish;
 	end	
 
