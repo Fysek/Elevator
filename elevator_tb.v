@@ -12,6 +12,7 @@ module elevator_tb;
  reg clk;
  reg reset;
  reg open_btn;
+ reg close_btn;
  reg overload;
  reg sensor_inside;
  reg [BUTTONS_WIDTH-1:0] btn_in; // wewnatrz windy
@@ -38,6 +39,7 @@ elevator elevator_inst(
 		.clk(clk),
 		.reset(reset),
 		.open_btn(open_btn),
+		.close_btn(close_btn),
 		.overload(overload),
 		.sensor_up(sensor_up),
 		.sensor_down(sensor_down),
@@ -80,7 +82,59 @@ initial
 	btn_up_out = 0;
 	btn_down_out = 0;
 	overload = 0;  
-	/* test 1. go to 6 a back to 0, stop at lev 1*/ 
+	/* test 1. btn_in test */ 
+	#5 reset = 0;
+	#95 reset = 1;
+	#200 btn_in[0] = 1;	
+	#10  btn_in[0] = 0;	
+	#200 btn_in[1] = 1;	
+	#10  btn_in[1] = 0;	
+	#600 btn_in[2] = 1;	
+	#10  btn_in[2] = 0;	
+	#600 btn_in[3] = 1;	
+	#10  btn_in[3] = 0;		
+	#600 btn_in[4] = 1;	
+	#10  btn_in[4] = 0;		
+	#600 btn_in[5] = 1;	
+	#10  btn_in[5] = 0;		
+	#600 btn_in[6] = 1;	
+	#10  btn_in[6] = 0;	
+	#600 btn_in[7] = 1;	
+	#10  btn_in[7] = 0;
+	#600 btn_in[6] = 1;	
+	#10  btn_in[6] = 0;	
+	#600 btn_in[5] = 1;	
+	#10  btn_in[5] = 0;		
+	#600 btn_in[4] = 1;	
+	#10  btn_in[4] = 0;	
+	#600 btn_in[3] = 1;	
+	#10  btn_in[3] = 0;
+	#600 btn_in[2] = 1;	
+	#10  btn_in[2] = 0;
+	#600 btn_in[1] = 1;	
+	#10  btn_in[1] = 0;
+	#2500  btn_in[0] = 0;//wait	
+	/* test 2. all btn_in at once*/ 
+	#5 reset = 0;
+	#95 reset = 1;
+	#200 btn_in[0] = 1;
+		 btn_in[1] = 1;		
+		 btn_in[2] = 1;		
+		 btn_in[3] = 1;		
+		 btn_in[4] = 1;		
+		 btn_in[5] = 1;		
+		 btn_in[6] = 1;	
+		 btn_in[7] = 1;			 
+	#10  btn_in[0] = 0;	
+		 btn_in[1] = 0;	
+		 btn_in[2] = 0;	
+		 btn_in[3] = 0;	
+		 btn_in[4] = 0;	
+		 btn_in[5] = 0;	
+		 btn_in[6] = 0;	
+		 btn_in[7] = 0;	
+	#6000  btn_in[0] = 0;//wait		  
+		/* test 1. go to 6 a back to 0, stop at lev 1*/ 
 	#5 reset = 0;
 	#5 reset = 1;
 	#200 btn_in[6] = 1;	
@@ -90,40 +144,10 @@ initial
 	#300 btn_down_out[1] = 1;	
 	#10 btn_down_out[1] = 0; 
 	#2500 btn_up_out[0] = 0;//wait 
-	/* test 2. btn_in test */ 
-	#5 reset = 0;
-	#95 reset = 1;
-	#200 btn_in[0] = 1;	
-	#10  btn_in[0] = 0;	
-	#200 btn_in[1] = 1;	
-	#10  btn_in[1] = 0;	
-	#200 btn_in[2] = 1;	
-	#10  btn_in[2] = 0;	
-	#200 btn_in[3] = 1;	
-	#10  btn_in[3] = 0;		
-	#200 btn_in[4] = 1;	
-	#10  btn_in[4] = 0;		
-	#200 btn_in[5] = 1;	
-	#10  btn_in[5] = 0;		
-	#200 btn_in[6] = 1;	
-	#10  btn_in[6] = 0;	
-	#200 btn_in[7] = 1;	
-	#10  btn_in[7] = 0;
-	#200 btn_in[6] = 1;	
-	#10  btn_in[6] = 0;	
-	#200 btn_in[5] = 1;	
-	#10  btn_in[5] = 0;		
-	#200 btn_in[4] = 1;	
-	#10  btn_in[4] = 0;	
-	#200 btn_in[3] = 1;	
-	#10  btn_in[3] = 0;
-	#200 btn_in[2] = 1;	
-	#10  btn_in[2] = 0;
-	#200 btn_in[1] = 1;	
-	#10  btn_in[1] = 0;
-	#200 btn_in[0] = 1;	
-	#10  btn_in[0] = 0;	
-	/* test 2. go to 7 a back to 0*/ 
+	#500 btn_up_out[0] = 0;//wait 
+	
+	
+	/* test 4. go to 7 a back to 0*/ 
 	#5 reset = 0;
 	#95 reset = 1;
 	#100 btn_up_out[6] = 1;	
@@ -142,7 +166,7 @@ initial
 	#10 btn_up_out[5] = 0;	  
 	#3500 reset = 0;
 	#100 reset = 1;
- 	/* test 2. go to 7 a back to 0*/  
+ 	/* test 3. all btn_in at once*/  
 	#100 btn_up_out[4] = 1;	
 	#10 btn_up_out[4] = 0;
 	#300 btn_up_out[0] = 1;	
