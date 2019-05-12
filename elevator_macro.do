@@ -16,7 +16,8 @@ asim +access +r elevator_tb
 #add wave -noreg {/elevator_tb/elevator_inst/active_out_up_levels}
 #add wave -noreg {/elevator_tb/elevator_inst/active_out_down_levels}
 #add wave -noreg {/elevator_tb/door}		 
-#add wave -noreg {/elevator_tb/engine}
+#add wave -noreg {/elevator_tb/engine}	 
+#add wave -noreg {/elevator_tb/level_display}
 
 #add wave -noreg {/elevator_tb/elevator_inst/saved_state}
 #add wave -noreg {/elevator_tb/btn_in} 

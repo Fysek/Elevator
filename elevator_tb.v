@@ -87,7 +87,7 @@ initial
 	btn_down_out = 0;
 	overload = 0;  
 	/*test 1. reset test full floor*/
-	 #5 reset = 0;
+	#5 reset = 0;
 	#95 reset = 1;
 	#200  btn_in[6] = 1;
 	#10  btn_in[6] = 0;
@@ -95,7 +95,7 @@ initial
 	#95   reset = 1;
 	#500 waits = 0;//wait
 	/*test 2. reset test half floor*/
-	 #5 reset = 0;
+	#5 reset = 0;
 	#95 reset = 1;
 	#200  btn_in[0] = 1;
 	#10  btn_in[0] = 0;
@@ -196,10 +196,10 @@ initial
 	#10	   btn_in[0] = 0;
 	#100   btn_in[0] = 1;
 	#10	   btn_in[0] = 0;
-	#1500  btn_in[0] = 0;//wait
+	#1500  waits = 0;//wait
 	/* test 6. all btn_up_out at once*/ 
-	#5 reset = 0;
-	#95 reset = 1;	   
+	#5   reset = 0;
+	#95  reset = 1;	   
 	#200 waits = 0;//wait
 	#200 btn_up_out[0] = 1;
 		 btn_up_out[1] = 1;		
@@ -207,76 +207,109 @@ initial
 		 btn_up_out[3] = 1;		
 		 btn_up_out[4] = 1;		
 		 btn_up_out[5] = 1;		
-		 btn_up_out[6] = 1;	
-		 btn_up_out[7] = 1;			 
+		 btn_up_out[6] = 1;					 
 	#10  btn_up_out[0] = 0;	
 		 btn_up_out[1] = 0;	
 		 btn_up_out[2] = 0;	
 		 btn_up_out[3] = 0;	
 		 btn_up_out[4] = 0;	
 		 btn_up_out[5] = 0;	
-		 btn_up_out[6] = 0;	
-		 btn_up_out[7] = 0;	
-	#2200  btn_in[0] = 0;//wait	  
-	#2200  btn_in[0] = 0;//wait	
-	#2200  btn_in[0] = 0;//wait
-	/**********************/
-	/* test 4. go to 7 a back to 0*/ 
+		 btn_up_out[6] = 0;			 
+	#2200  waits = 0;//wait	  
+	#2200  waits = 0;//wait	
+	#2200  waits = 0;//wait	   
+	/* test 7. btn_down_out test*/ 
 	#5 reset = 0;
-	#95 reset = 1;
-	#100 btn_up_out[6] = 1;	
-	#10 btn_up_out[6] = 0;
-	#300 btn_up_out[0] = 1;	
-	#10 btn_up_out[0] = 0;
-	#100 btn_up_out[1] = 1;	
-	#10 btn_up_out[1] = 0;	 
-	#100 btn_up_out[2] = 1;	
-	#10 btn_up_out[2] = 0;	
-	#100 btn_up_out[3] = 1;	
-	#10 btn_up_out[3] = 0;	
-	#100 btn_up_out[4] = 1;	
-	#10 btn_up_out[4] = 0;
-	#100 btn_up_out[5] = 1;	
-	#10 btn_up_out[5] = 0;	  
-	#3500 reset = 0;
-	#100 reset = 1;
- 	/* test 3. all btn_in at once*/  
-	#100 btn_up_out[4] = 1;	
-	#10 btn_up_out[4] = 0;
-	#300 btn_up_out[0] = 1;	
-	#10 btn_up_out[0] = 0;
-	#100 btn_up_out[1] = 1;	
-	#10 btn_up_out[1] = 0;	 
-	#100 btn_up_out[2] = 1;	
-	#10 btn_up_out[2] = 0;
-	#100 btn_up_out[3] = 1;	
-	#10 btn_up_out[3] = 0;
-	#100 btn_up_out[4] = 1;	
-	#10 btn_up_out[4] = 0;
-	#2000 reset = 0;
-	#100 reset = 1;
-	#20 btn_in[3] = 1;	
-	#20 btn_in[3] = 0;	
-	#800 btn_down_out[7] = 1;
-	#10	btn_down_out[7] = 0;
+	#95 reset = 1;		
+	#200 btn_down_out[1] = 1;	
+	#10  btn_down_out[1] = 0;	
+	#400 btn_down_out[2] = 1;		 	
+	#10  btn_down_out[2] = 0;
+	#100 btn_down_out[3] = 1;		
+	#10  btn_down_out[3] = 0;			
+	#100 btn_down_out[4] = 1;
+	#10  btn_down_out[4] = 0;	
+	#100 btn_down_out[5] = 1;
+	#10  btn_down_out[5] = 0;		
+	#100 btn_down_out[6] = 1;	
+	#10  btn_down_out[6] = 0;			
+	#100 btn_down_out[7] = 1;	 	
+	#10  btn_down_out[7] = 0;		 
+	#2000  waits = 0;//wait	  
+	#2800  waits = 0;//wait	  
+	/* test 8. all btn_down_out at once*/ 
 	#5 reset = 0;
-	#5 reset = 1;
-	/* test 1. go to 7 a back to 0*/
-	#20 btn_in[7] = 1;	
-	#20 btn_in[7] = 0;	
-	#800 btn_down_out[7] = 1;
-	#10	btn_down_out[7] = 0;
-	/*test 1. done*/	
-	$display("done first test");
-	#300 btn_in[5] = 1;	
-	#10 btn_in[5] = 0; 
-	#800 btn_down_out[3] = 1;
-	#10	btn_down_out[3] = 0; /*
-	$display("done second test");
-	#600 btn_up_out[0] = 1;		  
-	#10 btn_up_out[0] = 0;	
-	$display("done third test");	 */
-	#3000 $finish;
+	#95 reset = 1;	   
+	#200 waits = 0;//wait
+	#200 btn_down_out[1] = 1;		
+		 btn_down_out[2] = 1;		
+		 btn_down_out[3] = 1;		
+		 btn_down_out[4] = 1;		
+		 btn_down_out[5] = 1;		
+		 btn_down_out[6] = 1;	
+		 btn_down_out[7] = 1;			 
+	#10  btn_down_out[1] = 0;	
+		 btn_down_out[2] = 0;	
+		 btn_down_out[3] = 0;	
+		 btn_down_out[4] = 0;	
+		 btn_down_out[5] = 0;	
+		 btn_down_out[6] = 0;	
+		 btn_down_out[7] = 0;	
+	#2200  waits = 0;//wait	  
+	#2200  waits = 0;//wait	
+	#2200  waits = 0;//wait	  
+	/* test 9. start-up-in-down-in*/ 
+	#5 reset = 0;
+	#95 reset = 1;	   
+	#200 waits = 0;//wait
+	#200 btn_up_out[3] = 1;					 
+	#10  btn_up_out[3] = 0;	
+	#1200 btn_in[6] = 1;	
+	#10  btn_in[6] = 0;	
+	#800 btn_down_out[4] = 1;	
+	#10  btn_down_out[4] = 0;	
+	#600 btn_in[0] = 1;	
+	#10  btn_in[0] = 0;
+	#1700  waits = 0;//wait
+	/* test 10. start-down-in-up-in(same dir)-in(other dir)*/ 
+	#5 reset = 0;
+	#95 reset = 1;	   
+	#200 waits = 0;//wait
+	#200 btn_down_out[5] = 1;					 
+	#10  btn_down_out[5] = 0;	
+	#1200 btn_in[2] = 1;	
+	#10  btn_in[2] = 0;	
+	#800 btn_up_out[4] = 1;	
+	#10  btn_up_out[4] = 0;	
+	#900 btn_in[6] = 1;	
+	 	 btn_in[0] = 1;
+	#10  btn_in[6] = 0;
+		 btn_in[0] = 0;
+	#2400  waits = 0;//wait	 
+	/* test 11. start-up-in-down-in(same dir)-in(other dir)*/ 
+	#5 reset = 0;
+	#95 reset = 1;	   
+	#200 waits = 0;//wait
+	#200 btn_up_out[2] = 1;					 
+	#10  btn_up_out[2] = 0;	
+	#700 btn_in[7] = 1;	
+	#10  btn_in[7] = 0;	
+	#800 btn_down_out[4] = 1;	
+	#10  btn_down_out[4] = 0;	
+	#1100 btn_in[5] = 1;	
+	 	 btn_in[1] = 1;
+	#10  btn_in[5] = 0;
+		 btn_in[1] = 0;
+	/*postcondition: go to floor 0*/
+	#1500  waits = 0;//wait		
+	#100 btn_in[0] = 1;	
+	#10  btn_in[0] = 0;	 
+	#2000  waits = 0;//wait	
+	/* test xx. open button */ 
+	/* test xx. close button*/ 
+	/* test xx. buttons blocked? */ 	
+	/**********************/  
+	#500 $finish;
 	end
 
 endmodule
