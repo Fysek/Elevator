@@ -22,6 +22,9 @@ parameter BUTTONS_WIDTH = 8
 	reg [BUTTONS_WIDTH-1:0] buttons_state;			//oznacza rejestr ostatniego stanu przycisków
 	reg [BUTTONS_WIDTH-1:0] l_btn_in;				//rejestr z poprzednim stanem
 	reg [BUTTONS_WIDTH-1:0] l_inactivate_in_levels;	//rejestr z poprzednim stanem
+	reg [BUTTONS_WIDTH-1:0] l_active_in_levels;	//rejestr z poprzednim stanem
+		
+	assign 	l_active_in_levels=active_in_levels;
 		
 	always @(posedge clk or negedge reset) begin
 		if(!reset) begin
@@ -34,8 +37,10 @@ parameter BUTTONS_WIDTH = 8
 			for(index=0; index<BUTTONS_WIDTH; index=index+1) begin
 				if (inactivate_in_levels[index] == 1) begin
 					if (l_inactivate_in_levels[index] == 0) begin
-						active_in_levels[index] = 0;
-						buttons_state[index]=!buttons_state[index];
+						if (l_active_in_levels[index] == 1) begin
+							active_in_levels[index] = 0;
+							buttons_state[index]=!buttons_state[index];
+						end	
 					end	
 				end	
 				else begin 	

@@ -321,10 +321,6 @@ initial
 		 btn_up_out[5] = 1;
 	#10  btn_up_out[6] = 0;	
 		 btn_up_out[5] = 0;	
-	#700 btn_up_out[7] = 1;	
-		 btn_up_out[6] = 1;
-	#10  btn_up_out[7] = 0;
-		 btn_up_out[6] = 0;	
 	/*postcondition: go to floor 0*/	 
 	#2000  waits = 0;//wait	  
 	#2000  waits = 0;//wait	

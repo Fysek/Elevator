@@ -50,7 +50,6 @@ parameter DELAY_OPEN = 10  //wait after open ~6s
 	reg 		letout;				//0 - down, 1 - up
 	reg 		i_direction;		//0 - down, 1 - up
 	reg [1:0]	i_engine;			//0 - idle 1 - down 2 - up saved state of engine, sent after door closed
-	//reg [3:0] 	buttons_blocked;	//numer - floor blocked 0 - unblocked, 1 - F0, 2 - F1
 	reg [7:0] 	counter;			//wait and idle counter
 	wire 		reached;			//assign reached=sensor_down&&sensor_up;
 	

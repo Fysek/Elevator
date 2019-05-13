@@ -82,17 +82,19 @@ initial
 	
 	clk = 1'b0;
 	open_btn = 0;
+	close_btn = 0;
 	btn_in = 0;
 	btn_up_out = 0;
 	btn_down_out = 0;
 	overload = 0;  
+	sensor_inside = 0;
 	/*test 1. reset test full floor*/
 	#5 reset = 0;
 	#95 reset = 1;
 	#200  btn_in[6] = 1;
 	#10  btn_in[6] = 0;
 	#1700 reset = 0;
-	#95   reset = 1;
+	#200   reset = 1;
 	#500 waits = 0;//wait
 	/*test 2. reset test half floor*/
 	#5 reset = 0;
@@ -192,8 +194,6 @@ initial
 	#2000  waits = 0;//wait	
 	#1800  waits = 0;//wait	  
 	#100   waits = 0;//wait
-	#100   btn_in[0] = 1;	//error to fix
-	#10	   btn_in[0] = 0;
 	#100   btn_in[0] = 1;
 	#10	   btn_in[0] = 0;
 	#1500  waits = 0;//wait
@@ -305,9 +305,75 @@ initial
 	#100 btn_in[0] = 1;	
 	#10  btn_in[0] = 0;	 
 	#2000  waits = 0;//wait	
-	/* test xx. open button */ 
-	/* test xx. close button*/ 
-	/* test xx. buttons blocked? */ 	
+	/* test 12. open button */ 
+	#5 reset = 0;
+	#95 reset = 1;
+	#200 waits = 0;//wait
+	#200 btn_up_out[2] = 1;					 
+	#10  btn_up_out[2] = 0;	
+	#700 btn_in[5] = 1;	
+	#10  btn_in[5] = 0;	
+	#1000 btn_in[0] = 1;	
+	#10  btn_in[0] = 0;	
+	#300 open_btn = 1;	
+	#2000 open_btn = 0;
+	#1000 waits = 0;//wait	
+	/* test 13. close button*/ 
+	#5 reset = 0;
+	#95 reset = 1; 
+	#10 close_btn = 1;	
+	#100 close_btn = 0;
+	#200 waits = 0;//wait
+	#200 btn_down_out[4] = 1;					 
+	#10  btn_down_out[4] = 0;
+	#700 btn_in[2] = 1;	
+	#10  btn_in[2] = 0;	 
+	#100 close_btn = 1;	
+	#200 close_btn = 0;	 
+	#100 open_btn = 1;	
+	#300 open_btn = 0;	
+		 close_btn = 1;	
+	#200 close_btn = 0;
+	#100 btn_in[0] = 1;	
+	#10  btn_in[0] = 0;	
+	#1200 waits = 0;//wait	
+	/* test 14. blocking buttons*/ 
+	#5 reset = 0;
+	#95 reset = 1; 
+	#100 btn_in[5] = 1;	
+	#10  btn_in[5] = 0;
+	#700 btn_in[5] = 1;	
+	#10  btn_in[5] = 0;		
+	#1000 btn_in[1] = 1;	
+	#10  btn_in[1] = 0;
+	#800 btn_in[1] = 1;	
+	#10  btn_in[1] = 0;
+	#400 waits = 0;//wait
+	/* test 15. overload */
+	#5 reset = 0;
+	#95 reset = 1; 
+	#200 btn_in[4] = 1;	
+	#10  btn_in[4] = 0;
+	#10	 overload = 1;
+	#1000 overload = 0;
+	#400 overload = 1;
+	#200 overload = 0; 
+	#300 overload = 1;
+	#700 overload = 0;
+	#100 waits = 0;//wait
+	/* test 16. sensor_inside */ 
+	#5 reset = 0;
+	#95 reset = 1; 
+	#200 btn_in[5] = 1;	
+	#10  btn_in[5] = 0;
+	#10	 sensor_inside = 1;
+	#1000 sensor_inside = 0;
+	#400 sensor_inside = 1;
+	#200 sensor_inside = 0; 
+	#300 sensor_inside = 1;
+	#700 sensor_inside = 0;
+	#100 waits = 0;//wait	   
+	/* test xx.  */ 
 	/**********************/  
 	#500 $finish;
 	end
