@@ -3,7 +3,7 @@
 module buttons_res_tb;
 
 	parameter BUTTONS_WIDTH = 8;
-	reg 						clk;
+	reg 						clock;
 	reg 						reset;
 	reg 	[BUTTONS_WIDTH-1:0] btn_in; 
 	reg 	[BUTTONS_WIDTH-2:0] btn_up_out; 
@@ -24,7 +24,7 @@ testy
 */
 
  buttons_res buttons_inst(
-		.clk(clk),
+		.clock(clock),
 		.reset(reset),
 		.btn_in(btn_in),
 		.btn_up_out(btn_up_out),
@@ -38,14 +38,14 @@ testy
 		);   
 always
 	begin
-		#5 clk=!clk;
+		#5 clock=!clock;
 	end	
 			
 initial
 	begin
 	$dumpfile("buttons_tb.vcd");
-	$dumpvars(0,clk,reset,btn_in,inactivate_in_levels,active_in_levels,btn_up_out,active_out_up_levels,inactivate_out_up_levels,btn_down_out,active_out_down_levels,inactivate_out_down_levels);
-	clk 		= 0;
+	$dumpvars(0,clock,reset,btn_in,inactivate_in_levels,active_in_levels,btn_up_out,active_out_up_levels,inactivate_out_up_levels,btn_down_out,active_out_down_levels,inactivate_out_down_levels);
+	clock 		= 0;
 	btn_in 		= 0;
 	btn_up_out 	= 0;
 	btn_down_out = 0;

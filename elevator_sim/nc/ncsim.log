@@ -1,0 +1,67 @@
+ncsim: 15.20-s010: (c) Copyright 1995-2016 Cadence Design Systems, Inc.
+
+-------------------------------------
+Relinquished control to SimVision...
+ncsim> 
+ncsim> source /tools/cadence/2016-17/RHELx86/INCISIVE_15.20.010/tools/inca/files/ncsimrc
+ncsim> database -open waves -into waves.shm -default
+Created default SHM database waves
+ncsim> probe -create -shm elevator_tb.sensor_up elevator_tb.sensor_inside elevator_tb.waits elevator_tb.bell_out elevator_tb.bell elevator_tb.btn_in elevator_tb.door elevator_tb.level_display elevator_tb.overload elevator_tb.sensor_down elevator_tb.sensor_door elevator_tb.reset elevator_tb.open_btn elevator_tb.engine elevator_tb.direction elevator_tb.close_btn elevator_tb.clk elevator_tb.btn_up_out elevator_tb.btn_down_out
+Created probe 1
+ncsim> run
+Simulation complete via $finish(1) at time 119735 NS + 0
+./elevator_tb.v:517 	#500 $finish;
+ncsim> probe -create -shm elevator_tb.elevator_inst.state elevator_tb.elevator_inst.sensor_inside elevator_tb.elevator_inst.sensor_up
+Created probe 2
+ncsim> stop -create -object elevator_tb.elevator_inst.state -name elevator_tb.elevator_inst.state
+Created stop elevator_tb.elevator_inst.state
+ncsim> stop -create -object elevator_tb.elevator_inst.state -name elevator_tb.elevator_inst.state
+ncsim: *E,STCRDP: Stop name elevator_tb.elevator_inst.state already in use.
+ncsim> stop -create -object elevator_tb.elevator_inst.state -name elevator_tb.elevator_inst.state
+ncsim: *E,STCRDP: Stop name elevator_tb.elevator_inst.state already in use.
+ncsim> stop -create -object elevator_tb.elevator_inst.state -name elevator_tb.elevator_inst.state
+ncsim: *E,STCRDP: Stop name elevator_tb.elevator_inst.state already in use.
+ncsim> stop -create -object elevator_tb.elevator_inst.state -name elevator_tb.elevator_inst.state
+ncsim: *E,STCRDP: Stop name elevator_tb.elevator_inst.state already in use.
+ncsim> run
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> run
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> stop -create -object elevator_tb.elevator_inst.state -name elevator_tb.elevator_inst.state
+ncsim: *E,STCRDP: Stop name elevator_tb.elevator_inst.state already in use.
+ncsim> stop -create -object elevator_tb.elevator_inst.state -name elevator_tb.elevator_inst.state
+ncsim: *E,STCRDP: Stop name elevator_tb.elevator_inst.state already in use.
+ncsim> stop -create -object elevator_tb.elevator_inst.state -name elevator_tb.elevator_inst.state
+ncsim: *E,STCRDP: Stop name elevator_tb.elevator_inst.state already in use.
+ncsim> stop -create -object elevator_tb.elevator_inst.state -name elevator_tb.elevator_inst.state
+ncsim: *E,STCRDP: Stop name elevator_tb.elevator_inst.state already in use.
+ncsim> stop -create -object elevator_tb.elevator_inst.state -name elevator_tb.elevator_inst.state
+ncsim: *E,STCRDP: Stop name elevator_tb.elevator_inst.state already in use.
+ncsim> run
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> probe -create -shm elevator_tb.elevator_inst.clk elevator_tb.elevator_inst.close_btn elevator_tb.elevator_inst.active_in_levels elevator_tb.elevator_inst.active_out_down_levels elevator_tb.elevator_inst.active_out_up_levels elevator_tb.elevator_inst.overload elevator_tb.elevator_inst.reached elevator_tb.elevator_inst.reset elevator_tb.elevator_inst.opening elevator_tb.elevator_inst.open_btn elevator_tb.elevator_inst.level_display
+Created probe 3
+ncsim> run
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> run
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> run 10
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> run 10
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> run 10
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> run 10
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> run 10
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> run 10
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> run 10
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> run 10000
+ncsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+ncsim> ^C
+ncsim> exit
+ncsim: Memory Usage - 30.3M program + 28.9M data = 59.1M total (63.5M Peak)
+ncsim: CPU Usage - 38.5s system + 17.6s user = 56.1s total (1750.2s, 3.2% cpu)

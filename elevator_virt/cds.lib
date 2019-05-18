@@ -1,0 +1,3 @@
+INCLUDE /tools/DesignKits/UMC/180/bu/cds.lib
+
+DEFINE elevator /home/student/pssw115/Documents/elevator_virt/elevator

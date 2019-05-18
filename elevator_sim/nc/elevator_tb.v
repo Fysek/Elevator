@@ -11,7 +11,7 @@ parameter DELAY_OPEN = 10
 module elevator_tb;
  //inputs
  parameter BUTTONS_WIDTH = 8;
- reg clock;
+ reg clk;
  reg reset;
  reg open_btn;
  reg close_btn;
@@ -35,7 +35,7 @@ module elevator_tb;
  
 
 elevator elevator_inst( 
-		.clock(clock),
+		.clk(clk),
 		.reset(reset),
 		.open_btn(open_btn),
 		.close_btn(close_btn),
@@ -56,7 +56,7 @@ elevator elevator_inst(
 		);
 		
 test_module test_module_inst(	
-		.clock			(clock			),
+		.clk			(clk			),
 		.reset			(reset			),
 		.engine			(engine			),
 		.door			(door			),
@@ -67,17 +67,17 @@ test_module test_module_inst(
 		
 always
 	begin
-		#5 clock=!clock;
+		#5 clk=!clk;
 	end	
 		
 initial
 	begin
 		$dumpfile("elevator_tb.vcd");
-	  	$dumpvars(0,clock,reset,open_btn,btn_in,btn_up_out,btn_down_out,engine,door,level_display);
-		//$monitor($time,": clock=%b reset=%b open_btn=%b close_btn=%b btn_in=%d btn_up_out=%d btn_down_out=%d | engine_up=%b engine_down=%b open_door=%b close_door=%b level_display=%b"
-		//,clock,reset,open_btn,close_btn,btn_in,btn_up_out,btn_down_out,engine_up,engine_down,open_door,close_door,level_display);
+	  	$dumpvars(0,clk,reset,open_btn,btn_in,btn_up_out,btn_down_out,engine,door,level_display);
+		//$monitor($time,": clk=%b reset=%b open_btn=%b close_btn=%b btn_in=%d btn_up_out=%d btn_down_out=%d | engine_up=%b engine_down=%b open_door=%b close_door=%b level_display=%b"
+		//,clk,reset,open_btn,close_btn,btn_in,btn_up_out,btn_down_out,engine_up,engine_down,open_door,close_door,level_display);
 	
-	clock = 1'b0;
+	clk = 1'b0;
 	open_btn = 0;
 	close_btn = 0;
 	btn_in = 0;
@@ -518,3 +518,4 @@ initial
 	end
 
 endmodule
+

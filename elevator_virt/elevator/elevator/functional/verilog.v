@@ -1,3 +1,5 @@
+//Verilog HDL for "elevator", "elevator" "functional"
+
 
 `include "buttons_res.v"
 
@@ -9,23 +11,21 @@ parameter DELAY_WAIT = 10, //wait to change dir time ~500ms
 parameter DELAY_OPEN = 10  //wait after open ~6s
 )
 (
-	input 							clock			,
+	input 							clk				,
 	input 							reset			,
 	input 							open_btn		,
 	input 							close_btn		,
 	input 							overload		,
-	input 							bell			,
 	input 							sensor_up		,	//0 - not reached 1 - reached | sensor inside elevator 
 	input 							sensor_down 	,	//0 - not reached 1 - reached | to get the position
 	input 							sensor_inside 	,	//0 - not covered 1 - covered | covered sensor, door must be open
 	input 		[1:0] 				sensor_door 	,	//0 - between 1 - open 2 - close
 	input 		[BUTTONS_WIDTH-1:0] btn_in 			,
 	input 		[BUTTONS_WIDTH-2:0] btn_up_out		, 	//na zewnatrz do gory
-	input 		[BUTTONS_WIDTH-1:1] btn_down_out	,	//na zewnatrz na dó³
+	input 		[BUTTONS_WIDTH-1:1] btn_down_out	,	//na zewnatrz na d
 	output reg 	[1:0] 				engine			,	//0 - idle 1 - down 2 - up
 	output reg 	[1:0] 				door			, 	//0 - idle 1 - open 2 - close
 	output reg 						direction		,	//0 - down, 1 - up
-	output reg 						bell_out		,	//0 - off, 1 - on
 	output reg 	[2:0] 				level_display	
 	
 );
@@ -72,7 +72,7 @@ parameter DELAY_OPEN = 10  //wait after open ~6s
 				WAIT    = 18;
 	
 	buttons_res buttons_inst(
-		.clock						(clock)							,
+		.clk						(clk)							,
 		.reset						(reset)							,
 		.btn_in						(btn_in)						,
 		.btn_up_out					(btn_up_out)					,
@@ -88,20 +88,7 @@ parameter DELAY_OPEN = 10  //wait after open ~6s
 	
 	assign reached=sensor_down&&sensor_up;
 	
-	always@(posedge clock or negedge reset)
-	begin
-		if(!reset) begin
-			bell_out<=0;
-		end
-		else begin
-			if(bell)
-				bell_out<=1;
-			else
-				bell_out<=0;
-		end	
-	end
-	
-	always@(posedge clock or negedge reset)
+	always@(posedge clk or negedge reset)
 	begin
 		if(!reset) begin
 			engine 						<=0;

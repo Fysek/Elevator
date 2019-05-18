@@ -4,12 +4,12 @@
 module elevator
 #(
 parameter BUTTONS_WIDTH = 8, 
-parameter DELAY_IDLE = 15, //idle state time ~5s=5000
-parameter DELAY_WAIT = 10, //wait to change dir time ~500ms 
-parameter DELAY_OPEN = 10  //wait after open ~6s
+parameter DELAY_IDLE = 5000, //idle state time ~5s=5000
+parameter DELAY_WAIT = 500, //wait to change dir time ~500ms 
+parameter DELAY_OPEN = 6000  //wait after open ~6s
 )
 (
-	input 							clock			,
+	input 							clock				,
 	input 							reset			,
 	input 							open_btn		,
 	input 							close_btn		,
@@ -21,7 +21,7 @@ parameter DELAY_OPEN = 10  //wait after open ~6s
 	input 		[1:0] 				sensor_door 	,	//0 - between 1 - open 2 - close
 	input 		[BUTTONS_WIDTH-1:0] btn_in 			,
 	input 		[BUTTONS_WIDTH-2:0] btn_up_out		, 	//na zewnatrz do gory
-	input 		[BUTTONS_WIDTH-1:1] btn_down_out	,	//na zewnatrz na d�
+	input 		[BUTTONS_WIDTH-1:1] btn_down_out	,	//na zewnatrz na dó³
 	output reg 	[1:0] 				engine			,	//0 - idle 1 - down 2 - up
 	output reg 	[1:0] 				door			, 	//0 - idle 1 - open 2 - close
 	output reg 						direction		,	//0 - down, 1 - up

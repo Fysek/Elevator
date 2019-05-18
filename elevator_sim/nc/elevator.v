@@ -9,7 +9,7 @@ parameter DELAY_WAIT = 10, //wait to change dir time ~500ms
 parameter DELAY_OPEN = 10  //wait after open ~6s
 )
 (
-	input 							clock			,
+	input 							clk				,
 	input 							reset			,
 	input 							open_btn		,
 	input 							close_btn		,
@@ -21,7 +21,7 @@ parameter DELAY_OPEN = 10  //wait after open ~6s
 	input 		[1:0] 				sensor_door 	,	//0 - between 1 - open 2 - close
 	input 		[BUTTONS_WIDTH-1:0] btn_in 			,
 	input 		[BUTTONS_WIDTH-2:0] btn_up_out		, 	//na zewnatrz do gory
-	input 		[BUTTONS_WIDTH-1:1] btn_down_out	,	//na zewnatrz na d�
+	input 		[BUTTONS_WIDTH-1:1] btn_down_out	,	//na zewnatrz na dó³
 	output reg 	[1:0] 				engine			,	//0 - idle 1 - down 2 - up
 	output reg 	[1:0] 				door			, 	//0 - idle 1 - open 2 - close
 	output reg 						direction		,	//0 - down, 1 - up
@@ -72,15 +72,15 @@ parameter DELAY_OPEN = 10  //wait after open ~6s
 				WAIT    = 18;
 	
 	buttons_res buttons_inst(
-		.clock						(clock)							,
-		.reset						(reset)							,
-		.btn_in						(btn_in)						,
-		.btn_up_out					(btn_up_out)					,
-		.btn_down_out				(btn_down_out)					,
+		.clk			(clk)							,
+		.reset			(reset)							,
+		.btn_in			       (btn_in)				,
+		.btn_up_out			(btn_up_out)				,
+		.btn_down_out			(btn_down_out)				,
 		.inactivate_in_levels		(inactivate_in_levels)			,
 		.inactivate_out_up_levels	(inactivate_out_up_levels)		,
 		.inactivate_out_down_levels	(inactivate_out_down_levels)	,
-		.active_in_levels			(active_in_levels)				,
+		.active_in_levels		(active_in_levels)				,
 		.active_out_up_levels		(active_out_up_levels)			,
 		.active_out_down_levels		(active_out_down_levels)
 		);
@@ -88,7 +88,7 @@ parameter DELAY_OPEN = 10  //wait after open ~6s
 	
 	assign reached=sensor_down&&sensor_up;
 	
-	always@(posedge clock or negedge reset)
+	always@(posedge clk or negedge reset)
 	begin
 		if(!reset) begin
 			bell_out<=0;
@@ -101,7 +101,7 @@ parameter DELAY_OPEN = 10  //wait after open ~6s
 		end	
 	end
 	
-	always@(posedge clock or negedge reset)
+	always@(posedge clk or negedge reset)
 	begin
 		if(!reset) begin
 			engine 						<=0;

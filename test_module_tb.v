@@ -6,7 +6,7 @@ module test_module_tb;
 	parameter DELAY_ENGINE	= 10;
 	parameter DELAY_DOOR 	= 10;
 	
-	reg 			clk			;
+	reg 			clock			;
 	reg 			reset		;
 	reg 	[1:0] 	engine		;
 	reg 	[1:0] 	door	    ;
@@ -15,7 +15,7 @@ module test_module_tb;
 	wire  			sensor_down ;
 	
  test_module test_module_inst(
-		.clk		(clk		),
+		.clock		(clock		),
 		.reset		(reset		),
 		.engine		(engine		),
 		.door	    (door	    ),
@@ -26,14 +26,14 @@ module test_module_tb;
 		
 	always
 	begin
-		#5 clk=!clk;
+		#5 clock=!clock;
 	end		
 			
 initial
 	begin
 	$dumpfile("test_module_tb.vcd");
-	$dumpvars(0,clk,reset,engine,door,sensor_door,sensor_up,sensor_down);
-	clk = 0;
+	$dumpvars(0,clock,reset,engine,door,sensor_door,sensor_up,sensor_down);
+	clock = 0;
 	door = 0;
 	engine = 0;
 	#5 reset 	= 0;
