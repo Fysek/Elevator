@@ -22,7 +22,7 @@ parameter BUTTONS_WIDTH = 8
 	reg [BUTTONS_WIDTH-1:0] buttons_state;			//oznacza rejestr ostatniego stanu przycisków
 	reg [BUTTONS_WIDTH-1:0] l_btn_in;				//rejestr z poprzednim stanem
 	reg [BUTTONS_WIDTH-1:0] l_inactivate_in_levels;	//rejestr z poprzednim stanem
-	reg [BUTTONS_WIDTH-1:0] l_active_in_levels;	//rejestr z poprzednim stanem
+	wire [BUTTONS_WIDTH-1:0] l_active_in_levels;	//rejestr z poprzednim stanem
 		
 	assign 	l_active_in_levels=active_in_levels;
 		

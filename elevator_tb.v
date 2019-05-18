@@ -1,9 +1,10 @@
-
-//elevator
-//iverilog -o elevator elevator.v 
-//iverilog -o elevator_tb elevator_tb.v
-//vvp elevator_tb
-//gtkwave elevator_tb.vcd
+/*
+Testy dla parametrów:
+parameter BUTTONS_WIDTH = 8, 
+parameter DELAY_IDLE = 15,
+parameter DELAY_WAIT = 10, 
+parameter DELAY_OPEN = 10 
+*/
 `include "elevator.v"
 `include "test_module.v"
 
@@ -15,6 +16,7 @@ module elevator_tb;
  reg open_btn;
  reg close_btn;
  reg overload;
+ reg bell;
  reg sensor_inside;
  reg [BUTTONS_WIDTH-1:0] btn_in; // wewnatrz windy
  reg [BUTTONS_WIDTH-2:0] btn_up_out; //na zewnatrz do gory
@@ -26,25 +28,19 @@ module elevator_tb;
  wire [1:0] engine;
  wire [1:0] door;
  wire 		direction;
+ wire 		bell_out;
  wire [2:0] level_display;	
  
  reg waits; //only for testing
  
- /*
- Testy
- 1. Start w poziomie 0, req z F0 na F7, winda jedzie na F7 i tam zostaje
- 2. Osoba req z F7 na F0, winda jedzie na F0
- 3. Osoba req z F7 na dol, winda z F0 jedzie na F7 i jedzie na wybrane pietro (F4)
- 
- */
- 
- 
+
 elevator elevator_inst( 
 		.clk(clk),
 		.reset(reset),
 		.open_btn(open_btn),
 		.close_btn(close_btn),
 		.overload(overload),
+		.bell(bell),
 		.sensor_up(sensor_up),
 		.sensor_down(sensor_down),
 		.sensor_inside(sensor_inside),
@@ -55,6 +51,7 @@ elevator elevator_inst(
 		.engine(engine),
 		.door(door),
 		.direction(direction),
+		.bell_out(bell_out),
 		.level_display(level_display)
 		);
 		
@@ -88,6 +85,7 @@ initial
 	btn_down_out = 0;
 	overload = 0;  
 	sensor_inside = 0;
+	bell = 0;
 	/*test 1. reset test full floor*/
 	#5 reset = 0;
 	#95 reset = 1;
@@ -349,7 +347,22 @@ initial
 	#800 btn_in[1] = 1;	
 	#10  btn_in[1] = 0;
 	#400 waits = 0;//wait
-	/* test 15. overload */
+	/* test 15. bell button*/ 
+	#5 reset = 0;
+	#95 reset = 1; 
+	#100 bell = 1;	
+	#300 bell = 0;
+	#300 waits = 0;//wait
+	#200 bell = 1;	
+	#500 bell = 0;
+	#500 waits = 0;//wait
+	#100 bell = 1;	
+	#600 bell = 0;
+	#200 waits = 0;//wait
+	#100 bell = 1;	
+	#500 bell = 0;
+	#400 waits = 0;//wait
+	/* test 16. overload */
 	#5 reset = 0;
 	#95 reset = 1; 
 	#200 btn_in[4] = 1;	
@@ -361,7 +374,7 @@ initial
 	#300 overload = 1;
 	#700 overload = 0;
 	#100 waits = 0;//wait
-	/* test 16. sensor_inside */ 
+	/* test 17. sensor_inside */ 
 	#5 reset = 0;
 	#95 reset = 1; 
 	#200 btn_in[5] = 1;	
@@ -373,7 +386,7 @@ initial
 	#300 sensor_inside = 1;
 	#700 sensor_inside = 0;
 	#100 waits = 0;//wait	   
-	/* test 17. random test 1  */ 
+	/* test 18. random test 1  */ 
 	#5 reset = 0;
 	#95 reset = 1; 
 	#200 btn_in[2] = 1;	
@@ -444,7 +457,7 @@ initial
 	#300 open_btn = 0;
 	#2000 waits = 0;//wait	
 	#2000 waits = 0;//wait
-	/* test 18. random test 2  */ 
+	/* test 19. random test 2  */ 
 	#5 reset = 0;
 	#95 reset = 1; 
 	#200 btn_in[5] = 1;	
