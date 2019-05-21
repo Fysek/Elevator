@@ -4,9 +4,9 @@
 module elevator
 #(
 parameter BUTTONS_WIDTH = 8, 
-parameter DELAY_IDLE = 15, //idle state time ~5s=5000
-parameter DELAY_WAIT = 10, //wait to change dir time ~500ms 
-parameter DELAY_OPEN = 10  //wait after open ~6s
+parameter DELAY_IDLE = 5000, //idle state time ~5s=5000
+parameter DELAY_WAIT = 500, //wait to change dir time ~500ms 
+parameter DELAY_OPEN = 6000  //wait after open ~6s
 )
 (
 	input 							clock			,
@@ -37,7 +37,7 @@ parameter DELAY_OPEN = 10  //wait after open ~6s
 	reg 		letout;				//0 - down, 1 - up
 	reg 		i_direction;		//0 - down, 1 - up
 	reg [1:0]	i_engine;			//0 - idle 1 - down 2 - up saved state of engine, sent after door closed
-	reg [7:0] 	counter;			//wait and idle counter
+	reg [15:0] 	counter;			//wait and idle counter
 	wire 		reached;			//assign reached=sensor_down&&sensor_up;
 	
 	//buttons regs

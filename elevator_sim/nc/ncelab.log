@@ -1,3 +1,49 @@
 ncelab: 15.20-s010: (c) Copyright 1995-2016 Cadence Design Systems, Inc.
-ncelab: Memory Usage - 40.1M program + 16.9M data = 57.0M total (Peak 60.1M)
-ncelab: CPU Usage - 0.0s system + 0.1s user = 0.1s total (0.3s, 22.6% cpu)
+  TLATNX2M \active_out_up_levels_reg[0] (.GN (n_60), .D (n_58), .Q
+                                       |
+ncelab: *E,CUVMUR (./elevator_syn.v,39|39): instance 'elevator_tb_syn.elevator_inst.buttons_inst.\active_out_up_levels_reg[0] ' of design unit 'TLATNX2M' is unresolved in 'worklib.buttons_res:module'.
+  NAND2BXLM g2152(.AN (l_btn_in[0]), .B (btn_in[0]), .Y (n_126));
+                |
+ncelab: *E,CUVMUR (./elevator_syn.v,43|16): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2152' of design unit 'NAND2BXLM' is unresolved in 'worklib.buttons_res:module'.
+  NOR3XLM g2153(.A (inactivate_out_down_levels[7]), .B (n_0), .C
+              |
+ncelab: *E,CUVMUR (./elevator_syn.v,44|14): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2153' of design unit 'NOR3XLM' is unresolved in 'worklib.buttons_res:module'.
+  DFFRQX2M \l_inactivate_in_levels_reg[2] (.RN (reset), .CK (clock), .D
+                                         |
+ncelab: *E,CUVMUR (./elevator_syn.v,48|41): instance 'elevator_tb_syn.elevator_inst.buttons_inst.\l_inactivate_in_levels_reg[2] ' of design unit 'DFFRQX2M' is unresolved in 'worklib.buttons_res:module'.
+  CLKAND2X2M g2164(.A (reset), .B (btn_down_out[7]), .Y (n_59));
+                 |
+ncelab: *E,CUVMUR (./elevator_syn.v,66|17): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2164' of design unit 'CLKAND2X2M' is unresolved in 'worklib.buttons_res:module'.
+  CLKINVX2M g2174(.A (inactivate_in_levels[1]), .Y (n_125));
+                |
+ncelab: *E,CUVMUR (./elevator_syn.v,82|16): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2174' of design unit 'CLKINVX2M' is unresolved in 'worklib.buttons_res:module'.
+  INVX2M g2178(.A (reset), .Y (n_0));
+             |
+ncelab: *E,CUVMUR (./elevator_syn.v,83|13): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2178' of design unit 'INVX2M' is unresolved in 'worklib.buttons_res:module'.
+  OAI2B1XLM g2851(.A0 (n_50), .A1N (active_in_levels[1]), .B0 (n_25),
+                |
+ncelab: *E,CUVMUR (./elevator_syn.v,124|16): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2851' of design unit 'OAI2B1XLM' is unresolved in 'worklib.buttons_res:module'.
+  OAI21XLM g2855(.A0 (inactivate_in_levels[5]), .A1 (n_46), .B0 (n_29),
+               |
+ncelab: *E,CUVMUR (./elevator_syn.v,126|15): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2855' of design unit 'OAI21XLM' is unresolved in 'worklib.buttons_res:module'.
+  AOI221XLM g2862(.A0 (l_btn_in[1]), .A1 (n_125), .B0
+                |
+ncelab: *E,CUVMUR (./elevator_syn.v,138|16): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2862' of design unit 'AOI221XLM' is unresolved in 'worklib.buttons_res:module'.
+  AOI2BB2XLM g2873(.A0N (n_129), .A1N (active_in_levels[3]), .B0
+                 |
+ncelab: *E,CUVMUR (./elevator_syn.v,142|17): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2873' of design unit 'AOI2BB2XLM' is unresolved in 'worklib.buttons_res:module'.
+  NOR2XLM g2887(.A (n_9), .B (btn_in[1]), .Y (n_37));
+              |
+ncelab: *E,CUVMUR (./elevator_syn.v,164|14): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2887' of design unit 'NOR2XLM' is unresolved in 'worklib.buttons_res:module'.
+  NAND3XLM g2893(.A (inactivate_out_up_levels[0]), .B
+               |
+ncelab: *E,CUVMUR (./elevator_syn.v,175|15): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2893' of design unit 'NAND3XLM' is unresolved in 'worklib.buttons_res:module'.
+  NAND3BXLM g2899(.AN (active_in_levels[1]), .B (btn_in[1]), .C (n_8),
+                |
+ncelab: *E,CUVMUR (./elevator_syn.v,191|16): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2899' of design unit 'NAND3BXLM' is unresolved in 'worklib.buttons_res:module'.
+  NOR2BXLM g2904(.AN (btn_down_out[2]), .B (n_0), .Y (n_16));
+               |
+ncelab: *E,CUVMUR (./elevator_syn.v,204|15): instance 'elevator_tb_syn.elevator_inst.buttons_inst.g2904' of design unit 'NOR2BXLM' is unresolved in 'worklib.buttons_res:module'.
+ncelab: *F,MAXERR: maximum error count reached (15).
+ncelab: Memory Usage - 40.1M program + 18.1M data = 58.1M total (Peak 58.1M)
+ncelab: CPU Usage - 0.0s system + 0.0s user = 0.0s total (0.1s, 16.3% cpu)

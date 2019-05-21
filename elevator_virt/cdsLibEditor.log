@@ -1,0 +1,107 @@
+\o Program:		@(#)$CDS: cdsLibEditor version 6.1.7 - CAT35 04/10/2016 16:16 (sjfnl137) $
+\o Sub version:		sub-version  IC6.1.7 - CAT35.15s014 
+\o Arguments:		-cdslib /home/student/pssw115/Documents/elevator_virt/cds.lib -mpssession virtuoso10479 -mpshost lab513-pc1 
+\o Working Directory:	lab513-pc1:/home/student/pssw115/Documents/elevator_virt
+\o 64-bit offsets
+\a nrSetWindowVisibility(cdsLibEditor "show")
+\o Qt version: 		4.8.5
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrListItemAction(cdsLibEditor->mainTable 0 0)
+\o Active cell: 0 0 "analogLib"
+\a nrResizeWindow(cdsLibEditor list(138 161 500 400))
+\a nrResizeWindow(cdsLibEditor list(2337 271 500 400))
+\a nrListItemAction(cdsLibEditor->mainTable 6 1)
+\o Active cell: 6 1 ""
+\a nrListItemAction(cdsLibEditor->mainTable 6 0)
+\o Active cell: 6 0 ""
+\a cdsLibEditor->editAddLibButton->value = t
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115/Documents/elevator_virt"
+\a newLibraryDialog->useMappedName->value = nil
+\a nrSetWindowVisibility(newLibraryDialog "show")
+\a nrSetCurrentWindow(newLibraryDialog)
+\a nrResizeWindow(newLibraryDialog list(2312 175 531 513))
+\a newLibraryDialog->dirListWidget->value = ".."
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115/Documents/elevator_virt/.."
+\a nrListItemAction(newLibraryDialog->dirListWidget 0 0)
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115/Documents"
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = ".."
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115/Documents/.."
+\a nrListItemAction(newLibraryDialog->dirListWidget 0 0)
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115"
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = ".."
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115/.."
+\a nrListItemAction(newLibraryDialog->dirListWidget 0 0)
+\a newLibraryDialog->filePathComboBox->value = "/home/student"
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = ".."
+\a newLibraryDialog->filePathComboBox->value = "/home/student/.."
+\a newLibraryDialog->dirListWidget->value = "DYPLOM"
+\a newLibraryDialog->filePathComboBox->value = "/home/student/DYPLOM"
+\a nrListItemAction(newLibraryDialog->dirListWidget 1 0)
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = ".."
+\a newLibraryDialog->filePathComboBox->value = "/home/student/DYPLOM/.."
+\a nrListItemAction(newLibraryDialog->dirListWidget 0 0)
+\a newLibraryDialog->filePathComboBox->value = "/home/student"
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = "pssw115"
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115"
+\a nrListItemAction(newLibraryDialog->dirListWidget 2 0)
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = ".."
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115/.."
+\a nrListItemAction(newLibraryDialog->dirListWidget 0 0)
+\a newLibraryDialog->filePathComboBox->value = "/home/student"
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = ".."
+\a newLibraryDialog->filePathComboBox->value = "/home/student/.."
+\a newLibraryDialog->dirListWidget->value = "DYPLOM"
+\a newLibraryDialog->filePathComboBox->value = "/home/student/DYPLOM"
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->filePathComboBox->value = "/home/student"
+\a newLibraryDialog->libraryListBox->value = "biblioteka"
+\a newLibraryDialog->useMappedName->value = t
+\a newLibraryDialog->libraryName->value = "biblioteka"
+\a newLibraryDialog->dirListWidget->value = "pssw115"
+\a newLibraryDialog->libraryListBox->value = nil
+\a newLibraryDialog->useMappedName->value = nil
+\a newLibraryDialog->libraryName->value = ""
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115"
+\a nrListItemAction(newLibraryDialog->dirListWidget 2 0)
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = "Documents"
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115/Documents"
+\a newLibraryDialog->dirListWidget->value = "Pictures"
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115/Pictures"
+\a newLibraryDialog->dirListWidget->value = "Desktop"
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115/Desktop"
+\a newLibraryDialog->dirListWidget->value = ".."
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115/.."
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->filePathComboBox->value = "/home/student/pssw115"
+\a nrListItemAction(newLibraryDialog->dirListWidget 0 0)
+\a newLibraryDialog->filePathComboBox->value = "/home/student"
+\a newLibraryDialog->libraryListBox->value = "biblioteka"
+\a newLibraryDialog->useMappedName->value = t
+\a newLibraryDialog->libraryName->value = "biblioteka"
+\a newLibraryDialog->applyButton->value = t
+\a nrListItemRename(cdsLibEditor->mainTable, 6 0 "biblioteka")
+\a newLibraryDialog->libraryListBox->value = nil
+\a newLibraryDialog->useMappedName->value = nil
+\a newLibraryDialog->libraryName->value = ""
+\a nrListItemAction(cdsLibEditor->mainTable 7 0)
+\o Active cell: 7 0 ""
+\a newLibraryDialog->okButton->value = t
+\o ERROR (CLE-214): Provide a library name. 
+\a nrSetWindowVisibility(errorDialog "show")
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrSetCurrentWindow(errorDialog)
+\a nrResizeWindow(errorDialog list(2510 370 195 122))
+\a errorDialog->errorOkButton->value = t
+\a nrSetCurrentWindow(cdsLibEditor)
+\a cdsLibEditor->fileSaveButton->value = t
+\a cdsLibEditor->fileExitButton->value = t
+\a nrSetWindowVisibility(cdsLibEditor "hide")
+\a exit(0)

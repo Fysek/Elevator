@@ -38,7 +38,7 @@ testy
 		);   
 always
 	begin
-		#5 clock=!clock;
+		#1 clock=!clock;
 	end	
 			
 initial
