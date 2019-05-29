@@ -4,13 +4,14 @@
 module elevator
 #(
 parameter BUTTONS_WIDTH = 8, 
-parameter DELAY_IDLE = 5000, //idle state time ~5s=5000
-parameter DELAY_WAIT = 500, //wait to change dir time ~500ms 
-parameter DELAY_OPEN = 6000  //wait after open ~6s
+parameter DELAY_IDLE = 15, //idle state time ~5s=5000
+parameter DELAY_WAIT = 10, //wait to change dir time ~500ms 
+parameter DELAY_OPEN = 10  //wait after open ~6s
 )
 (
 	input 							clock			,
-	input 							reset			,
+	input 							an_reset		,
+	input 							emrgncy_enable	,
 	input 							open_btn		,
 	input 							close_btn		,
 	input 							overload		,
@@ -26,14 +27,15 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 	output reg 	[1:0] 				door			, 	//0 - idle 1 - open 2 - close
 	output reg 						direction		,	//0 - down, 1 - up
 	output reg 						bell_out		,	//0 - off, 1 - on
-	output reg 	[2:0] 				level_display	
+	output reg 	[3:0] 				level_display	
 	
 );
     
 	
 	reg 		closing;			//special flag when doors are closing
 	reg 		opening;			//special flag when doors are opening 
-	reg 		waiting;			//special flag for wait when people are leaving
+	reg 		waiting;			//special flag for wait when people are leaving	 
+	reg			emergency;			//0-no, 1-yes
 	reg 		letout;				//0 - down, 1 - up
 	reg 		i_direction;		//0 - down, 1 - up
 	reg [1:0]	i_engine;			//0 - idle 1 - down 2 - up saved state of engine, sent after door closed
@@ -73,7 +75,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 	
 	buttons_res buttons_inst(
 		.clock						(clock)							,
-		.reset						(reset)							,
+		.an_reset					(an_reset)							,
 		.btn_in						(btn_in)						,
 		.btn_up_out					(btn_up_out)					,
 		.btn_down_out				(btn_down_out)					,
@@ -88,9 +90,9 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 	
 	assign reached=sensor_down&&sensor_up;
 	
-	always@(posedge clock or negedge reset)
+	always@(posedge clock or negedge an_reset)
 	begin
-		if(!reset) begin
+		if(!an_reset) begin
 			bell_out<=0;
 		end
 		else begin
@@ -101,9 +103,9 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 		end	
 	end
 	
-	always@(posedge clock or negedge reset)
+	always@(posedge clock or negedge an_reset)
 	begin
-		if(!reset) begin
+		if(!an_reset) begin
 			engine 						<=0;
 			i_direction					<=0;
 			letout						<=0;
@@ -115,8 +117,13 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 			closing						<=0; 
 			waiting						<=0;
 			opening						<=0;
-			direction   				<=0;	
+			direction   				<=0;										    
 			state 						<=saved_state;
+		end
+		else if(emrgncy_enable)begin
+			door			<=0;
+			engine			<=0;
+			level_display	=15;
 		end
 		else begin
 			case(state)

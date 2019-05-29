@@ -7,7 +7,7 @@ parameter BUTTONS_WIDTH = 8
 )
 (
 	input							clock,
-	input							reset,
+	input							an_reset,
 	input 		[BUTTONS_WIDTH-1:0] btn_in, 				//wewnatrz windy
 	input 		[BUTTONS_WIDTH-2:0] btn_up_out, 			//na zewnatrz do gory
 	input 		[BUTTONS_WIDTH-1:1] btn_down_out,			//na zewnatrz na dół
@@ -26,8 +26,8 @@ parameter BUTTONS_WIDTH = 8
 		
 	assign 	l_active_in_levels=active_in_levels;
 		
-	always @(posedge clock or negedge reset) begin
-		if(!reset) begin
+	always @(posedge clock or negedge an_reset) begin
+		if(!an_reset) begin
 			l_btn_in 				=0;
 			l_inactivate_in_levels 	=0;
 			active_in_levels 		=0;
@@ -63,7 +63,7 @@ parameter BUTTONS_WIDTH = 8
 	end		
 
 	always @(*) begin
-		if(!reset) begin
+		if(!an_reset) begin
 			active_out_up_levels	=0;
 			active_out_down_levels	=0;
 		end

@@ -8,7 +8,7 @@ parameter DELAY_DOOR = 10
 )
 (
 	input 				clock				,
-	input 				reset			,	
+	input 				an_reset			,	
 	input  		[1:0] 	engine			,	//0 - idle 1 - down 2 - up
 	input 	 	[1:0] 	door			,	//0 - idle 1 - open 2 - close
 	output reg	[1:0] 	sensor_door 	,	//0 - between 1 - open 2 - close
@@ -24,9 +24,9 @@ parameter DELAY_DOOR = 10
 	integer counter_engine;
 	integer counter_door;
 	
-	always@(posedge clock or negedge reset)
+	always@(posedge clock or negedge an_reset)
 	begin
-		if(!reset) begin
+		if(!an_reset) begin
 			counter_door 	<=0;
 			counter_engine 	<=0;
 			last_engine		<=0;

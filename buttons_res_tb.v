@@ -4,7 +4,7 @@ module buttons_res_tb;
 
 	parameter BUTTONS_WIDTH = 8;
 	reg 						clock;
-	reg 						reset;
+	reg 						an_reset;
 	reg 	[BUTTONS_WIDTH-1:0] btn_in; 
 	reg 	[BUTTONS_WIDTH-2:0] btn_up_out; 
 	reg 	[BUTTONS_WIDTH-1:1] btn_down_out;
@@ -25,7 +25,7 @@ testy
 
  buttons_res buttons_inst(
 		.clock(clock),
-		.reset(reset),
+		.an_reset(an_reset),
 		.btn_in(btn_in),
 		.btn_up_out(btn_up_out),
 		.btn_down_out(btn_down_out),
@@ -44,7 +44,7 @@ always
 initial
 	begin
 	$dumpfile("buttons_tb.vcd");
-	$dumpvars(0,clock,reset,btn_in,inactivate_in_levels,active_in_levels,btn_up_out,active_out_up_levels,inactivate_out_up_levels,btn_down_out,active_out_down_levels,inactivate_out_down_levels);
+	$dumpvars(0,clock,an_reset,btn_in,inactivate_in_levels,active_in_levels,btn_up_out,active_out_up_levels,inactivate_out_up_levels,btn_down_out,active_out_down_levels,inactivate_out_down_levels);
 	clock 		= 0;
 	btn_in 		= 0;
 	btn_up_out 	= 0;
@@ -52,8 +52,8 @@ initial
 	inactivate_in_levels = 0;
 	inactivate_out_up_levels 	= 0;
 	inactivate_out_down_levels 	= 0;
-	#10 reset 					= 0;
-	#10 reset 					= 1;
+	#10 an_reset 					= 0;
+	#10 an_reset 					= 1;
 	$display("First test started");
 	#10 btn_in[0]				= 1;
 	#10 btn_in[0]				= 0;
@@ -120,8 +120,8 @@ initial
 		btn_in[7]				= 1;
 	#10 btn_in[7]				= 0;		
 	$display("First test finished");
-	#10 reset 					= 0;
-	#10 reset 					= 1;
+	#10 an_reset 					= 0;
+	#10 an_reset 					= 1;
 	$display("Second test started");	
 	#10 btn_in[0]				= 1;
 	#10 btn_in[0]				= 0;
@@ -174,8 +174,8 @@ initial
 		btn_in[0]				= 1;
 	#10 btn_in[0]				= 0;
 	$display("Second test finished");
-	#10 reset 					= 0;
-	#10 reset 					= 1;
+	#10 an_reset 					= 0;
+	#10 an_reset 					= 1;
 	$display("Third test started");
 	#10 btn_up_out[0]					= 1;
 	#10 btn_up_out[0]			 		= 0;
@@ -234,8 +234,8 @@ initial
 		inactivate_out_up_levels [6] 	= 1;
 	#10 inactivate_out_up_levels [6] 	= 0;
 	$display("Third test finished");
-	#10 reset 					= 0;
-	#10 reset 					= 1;
+	#10 an_reset 					= 0;
+	#10 an_reset 					= 1;
 	$display("Fourth test started");
 	#10 btn_down_out[1]					= 1;
 	#10 btn_down_out[1]					= 0;
@@ -295,8 +295,8 @@ initial
 	#10 inactivate_out_down_levels [7] 	= 0;
 	$display("Fourth test finished");
 	/* test 5. btn_up_out test*/ 
-	#5 reset = 0;
-	#95 reset = 1;	
+	#5 an_reset = 0;
+	#95 an_reset = 1;	
 	#200 btn_up_out[0] = 1;	
 	#10  btn_up_out[0] = 0;	
 	#200 btn_up_out[1] = 1;	

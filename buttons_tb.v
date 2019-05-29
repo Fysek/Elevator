@@ -3,7 +3,7 @@
 module buttons_tb;
 
 	parameter BUTTONS_WIDTH = 8;
-	reg 						reset;
+	reg 						an_reset;
 	reg 	[BUTTONS_WIDTH-1:0] btn_in; 
 	reg 	[BUTTONS_WIDTH-1:0] btn_up_out; 
 	reg 	[BUTTONS_WIDTH-1:0] btn_down_out;
@@ -15,7 +15,7 @@ module buttons_tb;
 	wire	[BUTTONS_WIDTH-1:1] active_out_down_levels;
 
  buttons buttons_inst(
-		.reset(reset),
+		.an_reset(an_reset),
 		.btn_in(btn_in),
 		.btn_up_out(btn_up_out),
 		.btn_down_out(btn_down_out),
@@ -30,7 +30,7 @@ module buttons_tb;
 initial
 	begin
 	$dumpfile("buttons_tb.vcd");
-	$dumpvars(0,reset,btn_in,btn_up_out,btn_down_out,inactivate_in_levels,inactivate_out_up_levels,inactivate_out_down_levels,active_in_levels,active_out_up_levels,active_out_down_levels);
+	$dumpvars(0,an_reset,btn_in,btn_up_out,btn_down_out,inactivate_in_levels,inactivate_out_up_levels,inactivate_out_down_levels,active_in_levels,active_out_up_levels,active_out_down_levels);
 	btn_in = 0;
 	btn_up_out = 0;
 	btn_down_out = 0;
@@ -38,8 +38,8 @@ initial
 	inactivate_out_up_levels = 0;
 	inactivate_out_down_levels = 0;
 	
-	#5 reset = 0;
-	#5 reset = 1;
+	#5 an_reset = 0;
+	#5 an_reset = 1;
 	#10 btn_in[0]		= 1;
 		btn_in[1]		= 1;
 		btn_in[2]		= 1;
@@ -111,8 +111,8 @@ initial
 	    btn_down_out[3] = 0;
 	    btn_down_out[6] = 0;
 		////////////////////
-	#60 reset 			= 0;
-	#10 reset 			= 1;
+	#60 an_reset 			= 0;
+	#10 an_reset 			= 1;
 		////////////////////
 	#40	btn_in[2]		= 1;
 		btn_in[3]		= 1;

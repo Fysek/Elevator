@@ -5,7 +5,7 @@ parameter BUTTONS_WIDTH = 8
 
 )
 (
-	input							reset,
+	input							an_reset,
 	input 		[BUTTONS_WIDTH-1:0] btn_in, // wewnatrz windy
 	input 		[BUTTONS_WIDTH-1:0] btn_up_out, //na zewnatrz do gory
 	input 		[BUTTONS_WIDTH-1:0] btn_down_out,//na zewnatrz na dó³
@@ -20,7 +20,7 @@ parameter BUTTONS_WIDTH = 8
 	
 	always @(*) 
 	begin
-		if(!reset) begin
+		if(!an_reset) begin
 			active_in_levels		=0;
 			active_out_up_levels	=0;
 			active_out_down_levels	=0;
