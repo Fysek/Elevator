@@ -3,9 +3,9 @@
 module elevator
 #(
 parameter BUTTONS_WIDTH = 8, 
-parameter DELAY_IDLE = 5000, //idle state time ~5s=5000
-parameter DELAY_WAIT = 500, //wait to change dir time ~500ms 
-parameter DELAY_OPEN = 6000  //wait after open ~6s
+parameter DELAY_IDLE = 15, //idle state time ~5s=5000
+parameter DELAY_WAIT = 10, //wait to change dir time ~500ms 
+parameter DELAY_OPEN = 10  //wait after open ~6s
 )
 (
 	input 							clock			,

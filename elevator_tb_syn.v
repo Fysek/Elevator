@@ -13,7 +13,7 @@ module elevator_tb;
  parameter BUTTONS_WIDTH = 8;
  reg clock;
  reg an_reset;
- reg emrgncy_enable;
+ reg buttons_block;
  reg open_btn;
  reg close_btn;
  reg overload;
@@ -38,7 +38,7 @@ module elevator_tb;
 elevator elevator_inst( 
 		.clock(clock),
 		.an_reset(an_reset),
-		.emrgncy_enable(emrgncy_enable),
+		.buttons_block(buttons_block),
 		.open_btn(open_btn),
 		.close_btn(close_btn),
 		.overload(overload),
@@ -88,7 +88,7 @@ initial
 	overload = 0;  
 	sensor_inside = 0;
 	bell = 0;
-	emrgncy_enable = 0;
+	buttons_block = 0;
 	/*test 1. an_reset test full floor*/
 	#5 an_reset = 0;
 	#95 an_reset = 1;

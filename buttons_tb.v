@@ -4,6 +4,7 @@ module buttons_tb;
 
 	parameter BUTTONS_WIDTH = 8;
 	reg 						an_reset;
+	reg 						buttons_block;
 	reg 	[BUTTONS_WIDTH-1:0] btn_in; 
 	reg 	[BUTTONS_WIDTH-1:0] btn_up_out; 
 	reg 	[BUTTONS_WIDTH-1:0] btn_down_out;
@@ -16,6 +17,7 @@ module buttons_tb;
 
  buttons buttons_inst(
 		.an_reset(an_reset),
+		.buttons_block(buttons_block),
 		.btn_in(btn_in),
 		.btn_up_out(btn_up_out),
 		.btn_down_out(btn_down_out),
@@ -36,8 +38,8 @@ initial
 	btn_down_out = 0;
 	inactivate_in_levels = 0;
 	inactivate_out_up_levels = 0;
-	inactivate_out_down_levels = 0;
-	
+	inactivate_out_down_levels 	=0;
+	buttons_block 				=0;
 	#5 an_reset = 0;
 	#5 an_reset = 1;
 	#10 btn_in[0]		= 1;

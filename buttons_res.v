@@ -1,4 +1,3 @@
-
 //buttons
 module buttons_res
 #(
@@ -8,6 +7,7 @@ parameter BUTTONS_WIDTH = 8
 (
 	input							clock,
 	input							an_reset,
+	input							buttons_block,
 	input 		[BUTTONS_WIDTH-1:0] btn_in, 				//wewnatrz windy
 	input 		[BUTTONS_WIDTH-2:0] btn_up_out, 			//na zewnatrz do gory
 	input 		[BUTTONS_WIDTH-1:1] btn_down_out,			//na zewnatrz na dół
@@ -44,15 +44,17 @@ parameter BUTTONS_WIDTH = 8
 					end	
 				end	
 				else begin 	
-					if(btn_in[index] == 1) begin
-						if(l_btn_in[index] == 0) begin				
-							if(buttons_state[index]) begin
-								active_in_levels[index] = 1;
-							end		
-							else begin 
-								active_in_levels[index] = 0;
+					if(!buttons_block) begin
+						if(btn_in[index] == 1) begin
+							if(l_btn_in[index] == 0) begin				
+								if(buttons_state[index]) begin
+									active_in_levels[index] = 1;
+								end		
+								else begin 
+									active_in_levels[index] = 0;
+								end	
+								buttons_state[index]=!buttons_state[index];								
 							end	
-							buttons_state[index]=!buttons_state[index];								
 						end	
 					end	
 				end	
@@ -68,22 +70,28 @@ parameter BUTTONS_WIDTH = 8
 			active_out_down_levels	=0;
 		end
 		else begin
-			for(index=0; index<BUTTONS_WIDTH-1; index=index+1) begin
-				//up
-				if(btn_up_out[index] == 1) begin
-					active_out_up_levels[index] = 1;
-				end else if (inactivate_out_up_levels[index] == 1) begin
-					active_out_up_levels[index] = 0;
+			if(!buttons_block) begin
+				for(index=0; index<BUTTONS_WIDTH-1; index=index+1) begin
+					//up
+					if(btn_up_out[index] == 1) begin
+						if(!buttons_block) begin
+							active_out_up_levels[index] = 1;
+						end
+					end else if (inactivate_out_up_levels[index] == 1) begin
+						active_out_up_levels[index] = 0;
+					end
+				end	
+				for(index=1; index<BUTTONS_WIDTH; index=index+1) begin	
+					//down
+					if(btn_down_out[index] == 1) begin
+						if(!buttons_block) begin
+							active_out_down_levels[index] = 1;
+						end
+					end else if (inactivate_out_down_levels[index] == 1) begin
+						active_out_down_levels[index] = 0;
+					end
 				end
 			end	
-			for(index=1; index<BUTTONS_WIDTH; index=index+1) begin	
-				//down
-				if(btn_down_out[index] == 1) begin
-					active_out_down_levels[index] = 1;
-				end else if (inactivate_out_down_levels[index] == 1) begin
-					active_out_down_levels[index] = 0;
-				end
-			end
 		end	
 	end	
 	

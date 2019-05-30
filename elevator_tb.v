@@ -13,7 +13,7 @@ module elevator_tb;
  parameter BUTTONS_WIDTH = 8;
  reg clock;
  reg an_reset;
- reg emrgncy_enable;
+ reg buttons_block;
  reg open_btn;
  reg close_btn;
  reg overload;
@@ -36,25 +36,25 @@ module elevator_tb;
  
 
 elevator elevator_inst( 
-		.clock(clock),
-		.an_reset(an_reset),
-		.emrgncy_enable(emrgncy_enable),
-		.open_btn(open_btn),
-		.close_btn(close_btn),
-		.overload(overload),
-		.bell(bell),
-		.sensor_up(sensor_up),
-		.sensor_down(sensor_down),
-		.sensor_inside(sensor_inside),
-		.sensor_door(sensor_door),
-		.btn_in(btn_in),
-		.btn_up_out(btn_up_out),
-		.btn_down_out(btn_down_out),
-		.engine(engine),
-		.door(door),
-		.direction(direction),
-		.bell_out(bell_out),
-		.level_display(level_display)
+		.clock			(clock)			,
+		.an_reset		(an_reset)		,
+		.buttons_block	(buttons_block)	,
+		.open_btn		(open_btn)		,	
+		.close_btn		(close_btn)		,
+		.overload		(overload)		,
+		.bell			(bell)			,
+		.sensor_up		(sensor_up)		,
+		.sensor_down	(sensor_down)	,
+		.sensor_inside	(sensor_inside)	,
+		.sensor_door	(sensor_door)	,
+		.btn_in			(btn_in)		,
+		.btn_up_out		(btn_up_out)	,
+		.btn_down_out	(btn_down_out)	,
+		.engine			(engine)		,
+		.door			(door)			,
+		.direction		(direction)		,
+		.bell_out		(bell_out)		,
+		.level_display	(level_display)
 		);
 		
 test_module test_module_inst(	
@@ -88,7 +88,7 @@ initial
 	overload = 0;  
 	sensor_inside = 0;
 	bell = 0;
-	emrgncy_enable = 0;
+	buttons_block = 0;
 	/*test 1. an_reset test full floor*/
 	#5 an_reset = 0;
 	#95 an_reset = 1;
@@ -394,16 +394,18 @@ initial
 	#95 an_reset = 1; 
 	#200 btn_in[5] = 1;	
 	#10  btn_in[5] = 0;
-	#10	 emrgncy_enable = 1;
-	#1000 emrgncy_enable = 0; 
+	#10	 buttons_block = 1;
+	#1000 buttons_block = 0; 
 	#200 btn_in[2] = 1;	
 	#10  btn_in[2] = 0;
-	#400 emrgncy_enable = 1;
-	#200 emrgncy_enable = 0; 
+	#400 buttons_block = 1;
+	#200 btn_in[3] = 1;	
+	#10  btn_in[3] = 0;
+	#200 buttons_block = 0; 
 	#200 btn_in[7] = 1;	
 	#10  btn_in[7] = 0;
-	#300 emrgncy_enable = 1;
-	#700 emrgncy_enable = 0;
+	#300 buttons_block = 1;
+	#700 buttons_block = 0;
 	#100 waits = 0;//wait	
 	/* test 19. random test 1  */ 
 	#5 an_reset = 0;

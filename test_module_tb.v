@@ -6,8 +6,8 @@ module test_module_tb;
 	parameter DELAY_ENGINE	= 10;
 	parameter DELAY_DOOR 	= 10;
 	
-	reg 			clock			;
-	reg 			an_reset		;
+	reg 			clock		;
+	reg 			an_reset	;
 	reg 	[1:0] 	engine		;
 	reg 	[1:0] 	door	    ;
 	wire	[1:0]  	sensor_door ;
@@ -16,7 +16,7 @@ module test_module_tb;
 	
  test_module test_module_inst(
 		.clock		(clock		),
-		.an_reset	(an_reset		),
+		.an_reset	(an_reset	),
 		.engine		(engine		),
 		.door	    (door	    ),
 		.sensor_door(sensor_door),

@@ -7,8 +7,8 @@ parameter DELAY_ENGINE = 10,
 parameter DELAY_DOOR = 10
 )
 (
-	input 				clock				,
-	input 				an_reset			,	
+	input 				clock			,
+	input 				an_reset		,	
 	input  		[1:0] 	engine			,	//0 - idle 1 - down 2 - up
 	input 	 	[1:0] 	door			,	//0 - idle 1 - open 2 - close
 	output reg	[1:0] 	sensor_door 	,	//0 - between 1 - open 2 - close

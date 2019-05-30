@@ -5,6 +5,7 @@ module buttons_res_tb;
 	parameter BUTTONS_WIDTH = 8;
 	reg 						clock;
 	reg 						an_reset;
+	reg 						buttons_block;
 	reg 	[BUTTONS_WIDTH-1:0] btn_in; 
 	reg 	[BUTTONS_WIDTH-2:0] btn_up_out; 
 	reg 	[BUTTONS_WIDTH-1:1] btn_down_out;
@@ -26,6 +27,7 @@ testy
  buttons_res buttons_inst(
 		.clock(clock),
 		.an_reset(an_reset),
+		.buttons_block(buttons_block),
 		.btn_in(btn_in),
 		.btn_up_out(btn_up_out),
 		.btn_down_out(btn_down_out),
@@ -52,8 +54,9 @@ initial
 	inactivate_in_levels = 0;
 	inactivate_out_up_levels 	= 0;
 	inactivate_out_down_levels 	= 0;
-	#10 an_reset 					= 0;
-	#10 an_reset 					= 1;
+	buttons_block 				= 0;		
+	#10 an_reset 				= 0;
+	#10 an_reset 				= 1;
 	$display("First test started");
 	#10 btn_in[0]				= 1;
 	#10 btn_in[0]				= 0;
