@@ -6,7 +6,7 @@ asim +access +r elevator_tb
 wave 
 add wave -noreg {/elevator_tb/clock}
 add wave -noreg {/elevator_tb/reset}
-add wave -noreg {/elevator_tb/emrgncy_enable}
+add wave -noreg {/elevator_tb/buttons_blocked}
 add wave -noreg {/elevator_tb/elevator_inst/state}
 add wave -noreg {/elevator_tb/elevator_inst/direction}	
 add wave -noreg {/elevator_tb/elevator_inst/letout}	
