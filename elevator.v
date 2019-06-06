@@ -159,7 +159,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 					level_display=0;
 					if(reached) begin	
 						if(direction) begin //direction up
-							if((active_in_levels[1]==1)||(active_out_up_levels[1]==1)) begin
+							if((active_in_levels[1]==1)||(active_out_up_levels[1]==1&&!overload)) begin
 								state						<=FLOOR1;	//go up to the full floor
 								engine						<=0;
 								inactivate_in_levels[1]		<=1;
@@ -270,7 +270,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 					level_display=1;
 					if(reached) begin					
 						if(direction) begin //direction up
-							if((active_in_levels[2]==1)||(active_out_up_levels[2]==1)) begin
+							if((active_in_levels[2]==1)||(active_out_up_levels[2]==1&&!overload)) begin
 								state						<=FLOOR2;	//go up to the full floor
 								engine						<=0;
 								inactivate_in_levels[2]		<=1;
@@ -290,7 +290,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 							end	
 						end
 						else begin//direction 0
-							if((active_in_levels[1]==1)||(active_out_down_levels[1]==1)) begin
+							if((active_in_levels[1]==1)||(active_out_down_levels[1]==1&&!overload)) begin
 								state							<=FLOOR1; 	//go down to the full floor
 								engine							<=0;
 								inactivate_in_levels[1]			<=1;
@@ -306,7 +306,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 							else begin
 								state		<=FLOOR01;
 								saved_state	<=FLOOR01;
-								i_engine<=1;
+								i_engine	<=1;
 							end	
 						end
 					end	
@@ -395,7 +395,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 					level_display=2;
 					if(reached) begin
 						if(direction) begin //direction up
-							if((active_in_levels[3]==1)||(active_out_up_levels[3]==1)) begin
+							if((active_in_levels[3]==1)||(active_out_up_levels[3]==1&&!overload)) begin
 								state						<=FLOOR3; 	//go up to the full floor
 								engine						<=0;
 								inactivate_in_levels[3]		<=1;
@@ -415,7 +415,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 							end	
 						end
 						else begin//direction down
-							if((active_in_levels[2]==1)||(active_out_down_levels[2]==1)) begin
+							if((active_in_levels[2]==1)||(active_out_down_levels[2]==1&&!overload)) begin
 								state							<=FLOOR2; 	//go down to the full floor
 								engine							<=0;
 								inactivate_in_levels[2]			<=1;
@@ -520,7 +520,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 					level_display	=3;
 					if(reached) begin
 						if(direction) begin //direction up
-							if((active_in_levels[4]==1)||(active_out_up_levels[4]==1)) begin
+							if((active_in_levels[4]==1)||(active_out_up_levels[4]==1&&!overload)) begin
 								state						<=FLOOR4; 	//go up to the full floor
 								engine						<=0;
 								inactivate_in_levels[4]		<=1;
@@ -540,7 +540,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 							end	
 						end
 						else begin//direction down
-							if((active_in_levels[3]==1)||(active_out_down_levels[3]==1)) begin
+							if((active_in_levels[3]==1)||(active_out_down_levels[3]==1&&!overload)) begin
 								state							<=FLOOR3; 	//go down to the full floor
 								engine							<=0;
 								inactivate_in_levels[3]			<=1;
@@ -585,7 +585,6 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 									state		<=CLOSE;
 									saved_state	<=FLOOR45;
 									waiting		<=1;
-									
 									i_engine	<=2;
 								end	
 								else begin
@@ -646,7 +645,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 					level_display=4;
 					if(reached) begin
 						if(direction) begin //direction up
-							if((active_in_levels[5]==1)||(active_out_up_levels[5]==1)) begin
+							if((active_in_levels[5]==1)||(active_out_up_levels[5]==1&&!overload)) begin
 								state						<=FLOOR5; 	//go up to the full floor
 								engine						<=0;
 								inactivate_in_levels[5]		<=1;							
@@ -666,7 +665,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 							end	
 						end
 						else begin//direction down
-							if((active_in_levels[4]==1)||(active_out_down_levels[4]==1)) begin
+							if((active_in_levels[4]==1)||(active_out_down_levels[4]==1&&!overload)) begin
 								state							<=FLOOR4; 	//go down to the full floor
 								engine							<=0;
 								inactivate_in_levels[4]			<=1;					
@@ -771,7 +770,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 					level_display=5;
 					if(reached) begin
 						if(direction) begin //direction up
-							if((active_in_levels[6]==1)||(active_out_up_levels[6]==1)) begin
+							if((active_in_levels[6]==1)||(active_out_up_levels[6]==1&&!overload)) begin
 								state						<=FLOOR6; 	//go up to the full floor
 								engine						<=0;
 								inactivate_in_levels[6]		<=1;	
@@ -791,7 +790,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 							end	
 						end
 						else begin//direction down
-							if((active_in_levels[5]==1)||(active_out_down_levels[5]==1)) begin
+							if((active_in_levels[5]==1)||(active_out_down_levels[5]==1&&!overload)) begin
 								state							<=FLOOR5; 	//go down to the full floor
 								engine							<=0;
 								inactivate_in_levels[5]			<=1;					
@@ -902,7 +901,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 							inactivate_out_down_levels[7] 	<=1;
 						end
 						else begin//direction down
-							if((active_in_levels[6]==1)||(active_out_down_levels[6]==1)) begin
+							if((active_in_levels[6]==1)||(active_out_down_levels[6]==1&&!overload)) begin
 								state							<=FLOOR6; 	//go down to the full floor
 								engine							<=0;
 								inactivate_in_levels[6]			<=1;					
