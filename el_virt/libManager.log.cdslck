@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      dyrdol
+HostName                       lab513-pc1.elektro.agh.edu.pl
+ProcessIdentifier              21381
+ProcessCreationTime_UTC        1560612105
+ProcessCreationTime_Readable   Sat Jun 15 17:21:45 2019 CEST
+AppIdentifier                  /tools/cadence/2016-17/RHELx86/IC_6.1.7.704/tools/dfII/bin/64bit/libManager
+OSType                         lnx86
+ReasonForPlacingEditLock       log file
+FilePathUsedToEditLock         /home/student/DYPLOM/dyrdol/magisterka/el_virt/libManager.log
+TimeEditLocked                 Sat Jun 15 17:28:26 2019 CEST

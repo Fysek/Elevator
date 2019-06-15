@@ -1,0 +1,125 @@
+@(#)$CDS: ihdl version 6.1.7-64b 05/24/2016 18:50 (sjfnl172) $  Sat Jun 15 17:41:02 2019
+
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module BUF_X2. Therefore using library
+NangateOpenCellLibrary, cell BUF_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module CLKBUF_X1. Therefore using library
+NangateOpenCellLibrary, cell CLKBUF_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module DLH_X1. Therefore using library
+NangateOpenCellLibrary, cell DLH_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI21_X1. Therefore using library
+NangateOpenCellLibrary, cell OAI21_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND3_X1. Therefore using library
+NangateOpenCellLibrary, cell NAND3_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module DFFR_X1. Therefore using library
+NangateOpenCellLibrary, cell DFFR_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AND2_X1. Therefore using library
+NangateOpenCellLibrary, cell AND2_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NOR2_X1. Therefore using library
+NangateOpenCellLibrary, cell NOR2_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module MUX2_X1. Therefore using library
+NangateOpenCellLibrary, cell MUX2_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND3_X2. Therefore using library
+NangateOpenCellLibrary, cell NAND3_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module INV_X1. Therefore using library
+NangateOpenCellLibrary, cell INV_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module INV_X2. Therefore using library
+NangateOpenCellLibrary, cell INV_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module XOR2_X1. Therefore using library
+NangateOpenCellLibrary, cell XOR2_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module XNOR2_X1. Therefore using library
+NangateOpenCellLibrary, cell XNOR2_X1, and view symbol as the symbol.
+INFO (VERILOGIN-357): Checked in symbol buttons_res.
+INFO (VERILOGIN-372): Checked-in schematic buttons_res.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND2_X1. Therefore using library
+NangateOpenCellLibrary, cell NAND2_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AOI21_X1. Therefore using library
+NangateOpenCellLibrary, cell AOI21_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND4_X1. Therefore using library
+NangateOpenCellLibrary, cell NAND4_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NOR2_X2. Therefore using library
+NangateOpenCellLibrary, cell NOR2_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AND3_X4. Therefore using library
+NangateOpenCellLibrary, cell AND3_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AND2_X2. Therefore using library
+NangateOpenCellLibrary, cell AND2_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND2_X4. Therefore using library
+NangateOpenCellLibrary, cell NAND2_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND2_X2. Therefore using library
+NangateOpenCellLibrary, cell NAND2_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module INV_X8. Therefore using library
+NangateOpenCellLibrary, cell INV_X8, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module DFF_X1. Therefore using library
+NangateOpenCellLibrary, cell DFF_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module DFFRS_X2. Therefore using library
+NangateOpenCellLibrary, cell DFFRS_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI211_X1. Therefore using library
+NangateOpenCellLibrary, cell OAI211_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI21_X2. Therefore using library
+NangateOpenCellLibrary, cell OAI21_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI21_X4. Therefore using library
+NangateOpenCellLibrary, cell OAI21_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NOR2_X4. Therefore using library
+NangateOpenCellLibrary, cell NOR2_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module INV_X4. Therefore using library
+NangateOpenCellLibrary, cell INV_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI22_X1. Therefore using library
+NangateOpenCellLibrary, cell OAI22_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND4_X2. Therefore using library
+NangateOpenCellLibrary, cell NAND4_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NOR3_X1. Therefore using library
+NangateOpenCellLibrary, cell NOR3_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AOI21_X4. Therefore using library
+NangateOpenCellLibrary, cell AOI21_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AND4_X1. Therefore using library
+NangateOpenCellLibrary, cell AND4_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AOI21_X2. Therefore using library
+NangateOpenCellLibrary, cell AOI21_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI211_X2. Therefore using library
+NangateOpenCellLibrary, cell OAI211_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AOI221_X1. Therefore using library
+NangateOpenCellLibrary, cell AOI221_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OR2_X1. Therefore using library
+NangateOpenCellLibrary, cell OR2_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AND2_X4. Therefore using library
+NangateOpenCellLibrary, cell AND2_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AOI22_X1. Therefore using library
+NangateOpenCellLibrary, cell AOI22_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI222_X1. Therefore using library
+NangateOpenCellLibrary, cell OAI222_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AOI222_X1. Therefore using library
+NangateOpenCellLibrary, cell AOI222_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AND3_X1. Therefore using library
+NangateOpenCellLibrary, cell AND3_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI22_X4. Therefore using library
+NangateOpenCellLibrary, cell OAI22_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI22_X2. Therefore using library
+NangateOpenCellLibrary, cell OAI22_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AOI22_X4. Therefore using library
+NangateOpenCellLibrary, cell AOI22_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NOR4_X1. Therefore using library
+NangateOpenCellLibrary, cell NOR4_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND4_X4. Therefore using library
+NangateOpenCellLibrary, cell NAND4_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI221_X1. Therefore using library
+NangateOpenCellLibrary, cell OAI221_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NOR3_X2. Therefore using library
+NangateOpenCellLibrary, cell NOR3_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AOI211_X1. Therefore using library
+NangateOpenCellLibrary, cell AOI211_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND3_X4. Therefore using library
+NangateOpenCellLibrary, cell NAND3_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OR4_X1. Therefore using library
+NangateOpenCellLibrary, cell OR4_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AND3_X2. Therefore using library
+NangateOpenCellLibrary, cell AND3_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module BUF_X1. Therefore using library
+NangateOpenCellLibrary, cell BUF_X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AND4_X2. Therefore using library
+NangateOpenCellLibrary, cell AND4_X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OR2_X4. Therefore using library
+NangateOpenCellLibrary, cell OR2_X4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OR2_X2. Therefore using library
+NangateOpenCellLibrary, cell OR2_X2, and view symbol as the symbol.
+INFO (VERILOGIN-357): Checked in symbol elevator.
+INFO (VERILOGIN-372): Checked-in schematic elevator.
+INFO (VERILOGIN-206): End of Logfile.

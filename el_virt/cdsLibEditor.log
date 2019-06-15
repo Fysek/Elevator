@@ -1,0 +1,29 @@
+\o Program:		@(#)$CDS: cdsLibEditor version 6.1.7 - CAT35 04/10/2016 16:16 (sjfnl137) $
+\o Sub version:		sub-version  IC6.1.7 - CAT35.15s014 
+\o Arguments:		-cdslib /home/student/DYPLOM/dyrdol/magisterka/el_virt/cds.lib -mpssession virtuoso20726 -mpshost lab513-pc1 
+\o Working Directory:	lab513-pc1:/home/student/DYPLOM/dyrdol/magisterka/el_virt
+\o 64-bit offsets
+\a nrSetWindowVisibility(cdsLibEditor "show")
+\o Qt version: 		4.8.5
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrListItemAction(cdsLibEditor->mainTable 0 0)
+\o Active cell: 0 0 "analogLib"
+\a nrResizeWindow(cdsLibEditor list(112 135 500 400))
+\a nrListItemAction(cdsLibEditor->mainTable 4 0)
+\o Active cell: 4 0 ""
+\a nrListItemAction(cdsLibEditor->mainTable 3 0)
+\o Active cell: 3 0 "UMC_18_CMOS"
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrListItemAction(cdsLibEditor->mainTable 4 0)
+\o Active cell: 4 0 ""
+\a nrListItemRename(cdsLibEditor->mainTable, 4 0 "NangateOpenCellLibrary")
+\a nrListItemAction(cdsLibEditor->mainTable 4 1)
+\o Active cell: 4 1 ""
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrListItemRename(cdsLibEditor->mainTable, 4 1 "/home/student/DYPLOM/dyrdol/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/virtuoso/NangateOpenCellLibrary")
+\a nrListItemAction(cdsLibEditor->mainTable 5 0)
+\o Active cell: 5 0 ""
+\a cdsLibEditor->fileSaveButton->value = t
+\a cdsLibEditor->fileExitButton->value = t
+\a nrSetWindowVisibility(cdsLibEditor "hide")
+\a exit(0)

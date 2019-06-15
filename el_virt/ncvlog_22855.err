@@ -1,0 +1,384 @@
+csi-ncvlog - CSI: Command line:
+ncvlog
+    -use5x
+    -ESCAPEDNAME
+    -work __nclib
+    -view module
+    -specificunit DLH_X1
+    /home/student/DYPLOM/dyrdol/magisterka/genus/NangateOpenCellLibrary/Front_End/Verilog/NangateOpenCellLibrary.v
+    -logfile ncvlog.log
+    -cdslib /tmp/ihdl_cdslibb2778_22778
+    -messages
+    -nostdout
+    -nocopyright
+
+csi-ncvlog - CSI: *F,INTERR: INTERNAL EXCEPTION
+-----------------------------------------------------------------
+The tool has encountered an unexpected condition and must exit.
+Contact Cadence Design Systems customer support about this
+problem and provide enough information to help us reproduce it,
+including the logfile that contains this error message.
+  TOOL:	ncvlog(64)	15.20-s010
+  HOSTNAME: lab513-pc1
+  OPERATING SYSTEM: Linux 3.10.0-693.21.1.el7.x86_64 #1 SMP Wed Mar 7 13:12:24 CST 2018 x86_64
+  MESSAGE: apx - can't abstract pointer, 0x7f42de24b578 of 0x7f42de24ac20
+-----------------------------------------------------------------
+
+csi-ncvlog - CSI: Cadence Support Investigation, recording details
+Verilog Syntax Tree: module declaration (VST_D_MODULE) in module __nclib.DLH_X1:module (VST)
+	File: /home/student/DYPLOM/dyrdol/magisterka/genus/NangateOpenCellLibrary/Front_End/Verilog/NangateOpenCellLibrary.v, line 2207, position 12
+	Decompile: Error: csi_sighandler received SIGSEGV
+	Source  : module DLH_X1 (D, G, Q);
+	Position:             ^
+Verilog Syntax Tree: system timing check declaration (VST_D_SYSTEM_TIMING_CHECK) in module __nclib.DLH_X1:module (VST)
+	File: /home/student/DYPLOM/dyrdol/magisterka/genus/NangateOpenCellLibrary/Front_End/Verilog/NangateOpenCellLibrary.v, line 2237, position 11
+	Decompile: Error: csi_sighandler received SIGSEGV
+	Source  :       $width(posedge G, 0.1, 0, NOTIFIER);
+	Position:            ^
+Verilog Syntax Tree: edge sensitive sdpd declaration (VST_D_EDGE_SENSITIVE_SDPD) in module __nclib.DLH_X1:module (VST)
+	File: /home/student/DYPLOM/dyrdol/magisterka/genus/NangateOpenCellLibrary/Front_End/Verilog/NangateOpenCellLibrary.v, line 2229, position 16
+	Decompile: Error: csi_sighandler received SIGSEGV
+	Source  :     (posedge G => (Q +: D)) = (0.1, 0.1);
+	Position:                 ^
+Verilog Syntax Tree: number expression (VST_E_NUMBER) in module __nclib.DLH_X1:module (VST)
+	File: /home/student/DYPLOM/dyrdol/magisterka/genus/NangateOpenCellLibrary/Front_End/Verilog/NangateOpenCellLibrary.v, line 2237, position 29
+	Decompile: 0
+	Source  :       $width(posedge G, 0.1, 0, NOTIFIER);
+	Position:                              ^
+Verilog Syntax Tree: register declaration (VST_D_REG) in module __nclib.DLH_X1:module (VST)
+	File: /home/student/DYPLOM/dyrdol/magisterka/genus/NangateOpenCellLibrary/Front_End/Verilog/NangateOpenCellLibrary.v, line 2211, position 13
+	Decompile: Error: csi_sighandler received SIGSEGV
+	Source  :   reg NOTIFIER;
+	Position:              ^
+Verilog Syntax Tree: logic type (VST_T_LOGIC) in module __nclib.DLH_X1:module (VST)
+	Decompile: Error: csi_sighandler received SIGSEGV
+Intermediate File: string (IF_STRING) in module __nclib.DLH_X1:module (VST)
+	Decompile: Ó¢ÍµÌ‹‹
+Intermediate File: root (IF_ROOT) in module __nclib.DLH_X1:module (VST)
+Verilog Syntax Tree: root (VST_ROOT) in module __nclib.DLH_X1:module (VST)
+	File: /home/student/DYPLOM/dyrdol/magisterka/genus/NangateOpenCellLibrary/Front_End/Verilog/NangateOpenCellLibrary.v, line 2207, position 5
+	Decompile: Error: csi_sighandler received SIGSEGV
+	Source  : module DLH_X1 (D, G, Q);
+	Position:      ^
+Verilog Syntax Tree: sfilea (VST_SFILEA) in module __nclib.DLH_X1:module (VST)
+	Decompile: Error: csi_sighandler received SIGSEGV
+Verilog Syntax Tree: instance declaration (VST_D_INSTANCE) in module __nclib.DLH_X1:module (VST)
+	File: /home/student/DYPLOM/dyrdol/magisterka/genus/NangateOpenCellLibrary/Front_End/Verilog/NangateOpenCellLibrary.v, line 2223, position 7
+	Decompile: Error: csi_sighandler received SIGSEGV
+	Source  :     buf(nextstate, D);
+	Position:        ^
+Error: Error processing stack frame(197) - skipping rest of frame!
+Error: Error processing stack frame(198) - skipping rest of frame!
+Error: Error processing stack frame(199) - skipping rest of frame!
+Error: Error processing stack frame(200) - skipping rest of frame!
+Error: Error processing stack frame(201) - skipping rest of frame!
+Error: Error processing stack frame(202) - skipping rest of frame!
+Error: Error processing stack frame(203) - skipping rest of frame!
+Error: Error processing stack frame(204) - skipping rest of frame!
+Error: Error processing stack frame(205) - skipping rest of frame!
+Error: Error processing stack frame(206) - skipping rest of frame!
+Error: Error processing stack frame(207) - skipping rest of frame!
+Error: Error processing stack frame(208) - skipping rest of frame!
+Error: Error processing stack frame(209) - skipping rest of frame!
+Error: Error processing stack frame(210) - skipping rest of frame!
+Error: Error processing stack frame(211) - skipping rest of frame!
+Error: Error processing stack frame(212) - skipping rest of frame!
+Error: Error processing stack frame(213) - skipping rest of frame!
+Error: Error processing stack frame(214) - skipping rest of frame!
+Error: Error processing stack frame(215) - skipping rest of frame!
+Error: Error processing stack frame(216) - skipping rest of frame!
+Error: Error processing stack frame(217) - skipping rest of frame!
+Error: Error processing stack frame(218) - skipping rest of frame!
+Error: Error processing stack frame(219) - skipping rest of frame!
+Error: Error processing stack frame(220) - skipping rest of frame!
+Error: Error processing stack frame(221) - skipping rest of frame!
+Error: Error processing stack frame(222) - skipping rest of frame!
+Error: Error processing stack frame(223) - skipping rest of frame!
+Error: Error processing stack frame(224) - skipping rest of frame!
+Error: Error processing stack frame(225) - skipping rest of frame!
+Error: Error processing stack frame(226) - skipping rest of frame!
+Error: Error processing stack frame(227) - skipping rest of frame!
+Error: Error processing stack frame(228) - skipping rest of frame!
+Error: Error processing stack frame(229) - skipping rest of frame!
+Error: Error processing stack frame(230) - skipping rest of frame!
+Error: Error processing stack frame(231) - skipping rest of frame!
+Error: Error processing stack frame(232) - skipping rest of frame!
+Error: Error processing stack frame(233) - skipping rest of frame!
+Error: Error processing stack frame(234) - skipping rest of frame!
+Error: Error processing stack frame(235) - skipping rest of frame!
+Error: Error processing stack frame(236) - skipping rest of frame!
+Error: Error processing stack frame(237) - skipping rest of frame!
+Error: Error processing stack frame(238) - skipping rest of frame!
+Error: Error processing stack frame(239) - skipping rest of frame!
+Error: Error processing stack frame(240) - skipping rest of frame!
+Error: Error processing stack frame(241) - skipping rest of frame!
+Error: Error processing stack frame(242) - skipping rest of frame!
+Error: Error processing stack frame(243) - skipping rest of frame!
+Error: Error processing stack frame(244) - skipping rest of frame!
+Error: Error processing stack frame(245) - skipping rest of frame!
+Error: Error processing stack frame(246) - skipping rest of frame!
+Error: Error processing stack frame(247) - skipping rest of frame!
+Error: Error processing stack frame(248) - skipping rest of frame!
+Error: Error processing stack frame(249) - skipping rest of frame!
+Error: Error processing stack frame(250) - skipping rest of frame!
+Error: Error processing stack frame(251) - skipping rest of frame!
+Error: Error processing stack frame(252) - skipping rest of frame!
+Error: Error processing stack frame(253) - skipping rest of frame!
+Error: Error processing stack frame(254) - skipping rest of frame!
+Error: Error processing stack frame(255) - skipping rest of frame!
+Error: Error processing stack frame(256) - skipping rest of frame!
+Error: Error processing stack frame(257) - skipping rest of frame!
+Error: Error processing stack frame(258) - skipping rest of frame!
+Error: Error processing stack frame(259) - skipping rest of frame!
+Error: Error processing stack frame(260) - skipping rest of frame!
+Error: Error processing stack frame(261) - skipping rest of frame!
+Error: Error processing stack frame(262) - skipping rest of frame!
+Error: Error processing stack frame(263) - skipping rest of frame!
+Error: Error processing stack frame(264) - skipping rest of frame!
+Error: Error processing stack frame(265) - skipping rest of frame!
+Error: Error processing stack frame(266) - skipping rest of frame!
+Error: Error processing stack frame(267) - skipping rest of frame!
+Error: Error processing stack frame(268) - skipping rest of frame!
+Error: Error processing stack frame(269) - skipping rest of frame!
+Error: Error processing stack frame(270) - skipping rest of frame!
+Error: Error processing stack frame(271) - skipping rest of frame!
+Error: Error processing stack frame(272) - skipping rest of frame!
+Error: Error processing stack frame(273) - skipping rest of frame!
+Error: Error processing stack frame(274) - skipping rest of frame!
+Error: Error processing stack frame(275) - skipping rest of frame!
+Error: Error processing stack frame(276) - skipping rest of frame!
+Error: Error processing stack frame(277) - skipping rest of frame!
+Error: Error processing stack frame(278) - skipping rest of frame!
+Error: Error processing stack frame(279) - skipping rest of frame!
+Error: Error processing stack frame(280) - skipping rest of frame!
+Error: Error processing stack frame(281) - skipping rest of frame!
+Error: Error processing stack frame(282) - skipping rest of frame!
+Error: Error processing stack frame(283) - skipping rest of frame!
+Error: Error processing stack frame(284) - skipping rest of frame!
+Error: Error processing stack frame(285) - skipping rest of frame!
+Error: Error processing stack frame(286) - skipping rest of frame!
+Error: Error processing stack frame(287) - skipping rest of frame!
+Error: Error processing stack frame(288) - skipping rest of frame!
+Error: Error processing stack frame(289) - skipping rest of frame!
+Error: Error processing stack frame(290) - skipping rest of frame!
+Error: Error processing stack frame(291) - skipping rest of frame!
+Error: Error processing stack frame(292) - skipping rest of frame!
+Error: Error processing stack frame(293) - skipping rest of frame!
+Error: Error processing stack frame(294) - skipping rest of frame!
+Error: Error processing stack frame(295) - skipping rest of frame!
+Error: Error processing stack frame(296) - skipping rest of frame!
+Error: Error processing stack frame(297) - skipping rest of frame!
+Error: Error processing stack frame(298) - skipping rest of frame!
+Error: Error processing stack frame(299) - skipping rest of frame!
+Error: Error processing stack frame(300) - skipping rest of frame!
+Error: Error processing stack frame(301) - skipping rest of frame!
+Error: Error processing stack frame(302) - skipping rest of frame!
+Error: Error processing stack frame(303) - skipping rest of frame!
+Error: Error processing stack frame(304) - skipping rest of frame!
+Error: Error processing stack frame(305) - skipping rest of frame!
+Error: Error processing stack frame(306) - skipping rest of frame!
+Error: Error processing stack frame(307) - skipping rest of frame!
+Error: Error processing stack frame(308) - skipping rest of frame!
+Error: Error processing stack frame(309) - skipping rest of frame!
+Error: Error processing stack frame(310) - skipping rest of frame!
+Error: Error processing stack frame(311) - skipping rest of frame!
+Error: Error processing stack frame(312) - skipping rest of frame!
+Error: Error processing stack frame(313) - skipping rest of frame!
+Error: Error processing stack frame(314) - skipping rest of frame!
+Error: Error processing stack frame(315) - skipping rest of frame!
+Error: Error processing stack frame(316) - skipping rest of frame!
+Error: Error processing stack frame(317) - skipping rest of frame!
+Error: Error processing stack frame(318) - skipping rest of frame!
+Error: Error processing stack frame(319) - skipping rest of frame!
+Error: Error processing stack frame(320) - skipping rest of frame!
+Error: Error processing stack frame(321) - skipping rest of frame!
+Error: Error processing stack frame(322) - skipping rest of frame!
+Error: Error processing stack frame(323) - skipping rest of frame!
+Error: Error processing stack frame(324) - skipping rest of frame!
+Error: Error processing stack frame(325) - skipping rest of frame!
+Error: Error processing stack frame(326) - skipping rest of frame!
+Error: Error processing stack frame(327) - skipping rest of frame!
+Error: Error processing stack frame(328) - skipping rest of frame!
+Error: Error processing stack frame(329) - skipping rest of frame!
+Error: Error processing stack frame(330) - skipping rest of frame!
+Error: Error processing stack frame(331) - skipping rest of frame!
+Error: Error processing stack frame(332) - skipping rest of frame!
+Error: Error processing stack frame(333) - skipping rest of frame!
+Error: Error processing stack frame(334) - skipping rest of frame!
+Error: Error processing stack frame(335) - skipping rest of frame!
+Error: Error processing stack frame(336) - skipping rest of frame!
+Error: Error processing stack frame(337) - skipping rest of frame!
+Error: Error processing stack frame(338) - skipping rest of frame!
+Error: Error processing stack frame(339) - skipping rest of frame!
+Error: Error processing stack frame(340) - skipping rest of frame!
+Error: Error processing stack frame(341) - skipping rest of frame!
+Error: Error processing stack frame(342) - skipping rest of frame!
+Error: Error processing stack frame(343) - skipping rest of frame!
+Error: Error processing stack frame(344) - skipping rest of frame!
+Error: Error processing stack frame(345) - skipping rest of frame!
+Error: Error processing stack frame(346) - skipping rest of frame!
+Error: Error processing stack frame(347) - skipping rest of frame!
+Error: Error processing stack frame(348) - skipping rest of frame!
+Error: Error processing stack frame(349) - skipping rest of frame!
+Error: Error processing stack frame(350) - skipping rest of frame!
+Error: Error processing stack frame(351) - skipping rest of frame!
+Error: Error processing stack frame(352) - skipping rest of frame!
+Error: Error processing stack frame(353) - skipping rest of frame!
+Error: Error processing stack frame(354) - skipping rest of frame!
+Error: Error processing stack frame(355) - skipping rest of frame!
+Error: Error processing stack frame(356) - skipping rest of frame!
+Error: Error processing stack frame(357) - skipping rest of frame!
+Error: Error processing stack frame(358) - skipping rest of frame!
+Error: Error processing stack frame(359) - skipping rest of frame!
+Error: Error processing stack frame(360) - skipping rest of frame!
+Error: Error processing stack frame(361) - skipping rest of frame!
+Error: Error processing stack frame(362) - skipping rest of frame!
+Error: Error processing stack frame(363) - skipping rest of frame!
+Error: Error processing stack frame(364) - skipping rest of frame!
+Error: Error processing stack frame(365) - skipping rest of frame!
+Error: Error processing stack frame(366) - skipping rest of frame!
+Error: Error processing stack frame(367) - skipping rest of frame!
+Error: Error processing stack frame(368) - skipping rest of frame!
+Error: Error processing stack frame(369) - skipping rest of frame!
+Error: Error processing stack frame(370) - skipping rest of frame!
+Error: Error processing stack frame(371) - skipping rest of frame!
+Error: Error processing stack frame(372) - skipping rest of frame!
+Error: Error processing stack frame(373) - skipping rest of frame!
+Error: Error processing stack frame(374) - skipping rest of frame!
+Error: Error processing stack frame(375) - skipping rest of frame!
+Error: Error processing stack frame(376) - skipping rest of frame!
+Error: Error processing stack frame(377) - skipping rest of frame!
+Error: Error processing stack frame(378) - skipping rest of frame!
+Error: Error processing stack frame(379) - skipping rest of frame!
+Error: Error processing stack frame(380) - skipping rest of frame!
+Error: Error processing stack frame(381) - skipping rest of frame!
+Error: Error processing stack frame(382) - skipping rest of frame!
+Error: Error processing stack frame(383) - skipping rest of frame!
+Error: Error processing stack frame(384) - skipping rest of frame!
+Error: Error processing stack frame(385) - skipping rest of frame!
+Error: Error processing stack frame(386) - skipping rest of frame!
+Error: Error processing stack frame(387) - skipping rest of frame!
+Error: Error processing stack frame(388) - skipping rest of frame!
+Error: Error processing stack frame(389) - skipping rest of frame!
+Error: Error processing stack frame(390) - skipping rest of frame!
+Error: Error processing stack frame(391) - skipping rest of frame!
+Error: Error processing stack frame(392) - skipping rest of frame!
+Error: Error processing stack frame(393) - skipping rest of frame!
+Error: Error processing stack frame(394) - skipping rest of frame!
+Error: Error processing stack frame(395) - skipping rest of frame!
+Error: Error processing stack frame(396) - skipping rest of frame!
+Error: Error processing stack frame(397) - skipping rest of frame!
+Error: Error processing stack frame(398) - skipping rest of frame!
+Error: Error processing stack frame(399) - skipping rest of frame!
+Error: Error processing stack frame(400) - skipping rest of frame!
+Error: Error processing stack frame(401) - skipping rest of frame!
+Error: Error processing stack frame(402) - skipping rest of frame!
+Error: Error processing stack frame(403) - skipping rest of frame!
+Error: Error processing stack frame(404) - skipping rest of frame!
+Error: Error processing stack frame(405) - skipping rest of frame!
+Error: Error processing stack frame(406) - skipping rest of frame!
+Error: Error processing stack frame(407) - skipping rest of frame!
+Error: Error processing stack frame(408) - skipping rest of frame!
+Error: Error processing stack frame(409) - skipping rest of frame!
+Error: Error processing stack frame(410) - skipping rest of frame!
+Error: Error processing stack frame(411) - skipping rest of frame!
+Error: Error processing stack frame(412) - skipping rest of frame!
+Error: Error processing stack frame(413) - skipping rest of frame!
+Error: Error processing stack frame(414) - skipping rest of frame!
+Error: Error processing stack frame(415) - skipping rest of frame!
+Error: Error processing stack frame(416) - skipping rest of frame!
+Error: Error processing stack frame(417) - skipping rest of frame!
+Error: Error processing stack frame(418) - skipping rest of frame!
+Error: Error processing stack frame(419) - skipping rest of frame!
+Error: Error processing stack frame(420) - skipping rest of frame!
+Error: Error processing stack frame(421) - skipping rest of frame!
+Error: Error processing stack frame(422) - skipping rest of frame!
+Error: Error processing stack frame(423) - skipping rest of frame!
+Error: Error processing stack frame(424) - skipping rest of frame!
+Error: Error processing stack frame(425) - skipping rest of frame!
+Error: Error processing stack frame(426) - skipping rest of frame!
+Error: Error processing stack frame(427) - skipping rest of frame!
+Error: Error processing stack frame(428) - skipping rest of frame!
+Error: Error processing stack frame(429) - skipping rest of frame!
+Error: Error processing stack frame(430) - skipping rest of frame!
+Error: Error processing stack frame(431) - skipping rest of frame!
+Error: Error processing stack frame(432) - skipping rest of frame!
+Error: Error processing stack frame(433) - skipping rest of frame!
+Error: Error processing stack frame(434) - skipping rest of frame!
+Error: Error processing stack frame(435) - skipping rest of frame!
+Error: Error processing stack frame(436) - skipping rest of frame!
+Error: Error processing stack frame(437) - skipping rest of frame!
+Error: Error processing stack frame(438) - skipping rest of frame!
+Error: Error processing stack frame(439) - skipping rest of frame!
+Error: Error processing stack frame(440) - skipping rest of frame!
+Error: Error processing stack frame(441) - skipping rest of frame!
+Error: Error processing stack frame(442) - skipping rest of frame!
+Error: Error processing stack frame(443) - skipping rest of frame!
+Error: Error processing stack frame(444) - skipping rest of frame!
+Error: Error processing stack frame(445) - skipping rest of frame!
+Error: Error processing stack frame(446) - skipping rest of frame!
+Error: Error processing stack frame(447) - skipping rest of frame!
+Error: Error processing stack frame(448) - skipping rest of frame!
+Error: Error processing stack frame(449) - skipping rest of frame!
+Error: Error processing stack frame(450) - skipping rest of frame!
+Error: Error processing stack frame(451) - skipping rest of frame!
+Error: Error processing stack frame(452) - skipping rest of frame!
+Error: Error processing stack frame(453) - skipping rest of frame!
+Error: Error processing stack frame(454) - skipping rest of frame!
+Error: Error processing stack frame(455) - skipping rest of frame!
+Error: Error processing stack frame(456) - skipping rest of frame!
+Error: Error processing stack frame(457) - skipping rest of frame!
+Error: Error processing stack frame(458) - skipping rest of frame!
+Error: Error processing stack frame(459) - skipping rest of frame!
+Error: Error processing stack frame(460) - skipping rest of frame!
+Error: Error processing stack frame(461) - skipping rest of frame!
+Error: Error processing stack frame(462) - skipping rest of frame!
+Error: Error processing stack frame(463) - skipping rest of frame!
+Error: Error processing stack frame(464) - skipping rest of frame!
+Error: Error processing stack frame(465) - skipping rest of frame!
+Error: Error processing stack frame(466) - skipping rest of frame!
+Error: Error processing stack frame(467) - skipping rest of frame!
+Error: Error processing stack frame(468) - skipping rest of frame!
+Error: Error processing stack frame(469) - skipping rest of frame!
+Error: Error processing stack frame(470) - skipping rest of frame!
+Error: Error processing stack frame(471) - skipping rest of frame!
+Error: Error processing stack frame(472) - skipping rest of frame!
+Error: Error processing stack frame(473) - skipping rest of frame!
+Error: Error processing stack frame(474) - skipping rest of frame!
+Error: Error processing stack frame(475) - skipping rest of frame!
+Error: Error processing stack frame(476) - skipping rest of frame!
+Error: Error processing stack frame(477) - skipping rest of frame!
+Error: Error processing stack frame(478) - skipping rest of frame!
+Error: Error processing stack frame(479) - skipping rest of frame!
+Error: Error processing stack frame(480) - skipping rest of frame!
+Error: Error processing stack frame(481) - skipping rest of frame!
+Error: Error processing stack frame(482) - skipping rest of frame!
+Error: Error processing stack frame(483) - skipping rest of frame!
+Error: Error processing stack frame(484) - skipping rest of frame!
+Error: Error processing stack frame(485) - skipping rest of frame!
+Error: Error processing stack frame(486) - skipping rest of frame!
+Error: Error processing stack frame(487) - skipping rest of frame!
+Error: Error processing stack frame(488) - skipping rest of frame!
+Error: Error processing stack frame(489) - skipping rest of frame!
+Error: Error processing stack frame(490) - skipping rest of frame!
+Error: Error processing stack frame(491) - skipping rest of frame!
+Error: Error processing stack frame(492) - skipping rest of frame!
+Error: Error processing stack frame(493) - skipping rest of frame!
+Error: Error processing stack frame(494) - skipping rest of frame!
+Error: Error processing stack frame(495) - skipping rest of frame!
+Error: Error processing stack frame(496) - skipping rest of frame!
+Error: Error processing stack frame(497) - skipping rest of frame!
+Error: Error processing stack frame(498) - skipping rest of frame!
+Error: Error processing stack frame(499) - skipping rest of frame!
+Error: Error processing stack frame(500) - skipping rest of frame!
+Error: Error processing stack frame(501) - skipping rest of frame!
+Error: Error processing stack frame(502) - skipping rest of frame!
+Error: Error processing stack frame(503) - skipping rest of frame!
+Error: Error processing stack frame(504) - skipping rest of frame!
+Error: Error processing stack frame(505) - skipping rest of frame!
+Error: Error processing stack frame(506) - skipping rest of frame!
+Error: Error processing stack frame(507) - skipping rest of frame!
+Error: Error processing stack frame(508) - skipping rest of frame!
+Error: Error processing stack frame(509) - skipping rest of frame!
+Error: Error processing stack frame(510) - skipping rest of frame!
+csi-ncvlog - CSI: investigation complete took 0.003 secs, send this file to Cadence Support

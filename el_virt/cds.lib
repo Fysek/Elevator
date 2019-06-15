@@ -1,0 +1,7 @@
+# File Created by Mateusz Dyrdól at Sat Jun 15 17:28:01 2019
+# assisted by CdsLibEditor
+INCLUDE /tools/DesignKits/UMC/180/bu/cds.lib
+
+DEFINE NangateOpenCellLibrary /home/student/DYPLOM/dyrdol/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/virtuoso/NangateOpenCellLibrary
+DEFINE avTech /tools/cadence/2016-17/RHELx86/ASSURA_04.15.107_IC617OA/tools.lnx86/assura/etc/avtech/avTech
+DEFINE elevator_lib /home/student/DYPLOM/dyrdol/magisterka/el_virt/elevator_lib
