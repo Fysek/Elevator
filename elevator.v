@@ -30,7 +30,6 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 	
 );
     
-	
 	reg 		closing;			//special flag when doors are closing
 	reg 		opening;			//special flag when doors are opening 
 	reg 		waiting;			//special flag for wait when people are leaving	 

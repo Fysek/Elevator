@@ -30,7 +30,7 @@ module elevator_tb;
  wire [1:0] door;
  wire 		direction;
  wire 		bell_out;
- wire [2:0] level_display;	
+ wire [3:0] level_display;	
  
  reg waits; //only for testing
  

@@ -1,6 +1,0 @@
-//Verilog HDL for "elevator", "elevator_syn" "functional"
-
-
-module elevator_syn ( );
-
-endmodule

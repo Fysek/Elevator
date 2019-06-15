@@ -1,1 +1,0 @@
-("elevator:/\televator elevator functional" (("open" (nil hierarchy "/{elevator elevator functional }:a"))) nil)("buttons_res:/\tbuttons_res elevator functional" (("open" (nil hierarchy "/{elevator buttons_res functional }:a"))) nil)("elevator_syn:/\televator_syn elevator functional" (("open" (nil hierarchy "/{elevator elevator_syn functional }:a"))) nil)

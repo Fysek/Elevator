@@ -1,7 +1,0 @@
-# File Created by pssw115 at Sun May 19 18:07:28 2019
-# assisted by CdsLibEditor
-INCLUDE /tools/DesignKits/UMC/180/bu/cds.lib
-
-DEFINE elevator /home/student/pssw115/Documents/elevator_virt/elevator
-DEFINE avTech /eda/cadence/2016-17/RHELx86/ASSURA_04.15.107_IC617OA/tools.lnx86/assura/etc/avtech/avTech
-DEFINE biblioteka /home/student/biblioteka
