@@ -70,28 +70,26 @@ parameter BUTTONS_WIDTH = 8
 			active_out_down_levels	=0;
 		end
 		else begin
-			if(!buttons_block) begin
-				for(index=0; index<BUTTONS_WIDTH-1; index=index+1) begin
-					//up
-					if(btn_up_out[index] == 1) begin
-						if(!buttons_block) begin
-							active_out_up_levels[index] = 1;
-						end
-					end else if (inactivate_out_up_levels[index] == 1) begin
-						active_out_up_levels[index] = 0;
+			for(index=0; index<BUTTONS_WIDTH-1; index=index+1) begin
+				//up
+				if(btn_up_out[index] == 1) begin
+					if(!buttons_block) begin
+						active_out_up_levels[index] = 1;
 					end
-				end	
-				for(index=1; index<BUTTONS_WIDTH; index=index+1) begin	
-					//down
-					if(btn_down_out[index] == 1) begin
-						if(!buttons_block) begin
-							active_out_down_levels[index] = 1;
-						end
-					end else if (inactivate_out_down_levels[index] == 1) begin
-						active_out_down_levels[index] = 0;
-					end
+				end else if (inactivate_out_up_levels[index] == 1) begin
+					active_out_up_levels[index] = 0;
 				end
 			end	
+			for(index=1; index<BUTTONS_WIDTH; index=index+1) begin	
+				//down
+				if(btn_down_out[index] == 1) begin
+					if(!buttons_block) begin
+						active_out_down_levels[index] = 1;
+					end
+				end else if (inactivate_out_down_levels[index] == 1) begin
+					active_out_down_levels[index] = 0;
+				end
+			end
 		end	
 	end	
 	
