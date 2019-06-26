@@ -1,7 +1,18 @@
 # Cadence Genus(TM) Synthesis Solution, Version 16.12-s027_1, built Oct  5 2016
 
-# Date: Sat Jun 15 16:50:19 2019
+# Date: Tue Jun 25 22:51:58 2019
 # Host: lab513-pc1 (x86_64 w/Linux 3.10.0-693.21.1.el7.x86_64) (4cores*4cpus*Intel(R) Core(TM) i5-4690 CPU @ 3.50GHz 6144KB)
 # OS:   Scientific Linux release 7.4 (Nitrogen)
 
-gui_show
+source setup_elevator.tcl 
+source setup_elevator.tcl 
+source setup_elevator.tcl 
+source setup.tcl 
+source setup_elevator.tcl 
+write_hdl > elevator_syn.v
+write_design -innovus design elevator
+write_design $basename g1 innovus
+write_design $basename innovus
+write_design $basename -innovus
+write_design $basename -gzip_files -innovus -tcf
+exit

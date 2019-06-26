@@ -1,0 +1,817 @@
+(DELAYFILE
+  (SDFVERSION "3.0")
+  (DESIGN "elevator")
+  (DATE "Wed Jun 26 17:47:12 2019")
+  (VENDOR "Cadence Design Systems, Inc.")
+  (PROGRAM "Innovus")
+  (VERSION "v17.11-s080_1 ((64bit) 08/04/2017 11:13 (Linux 2.6.18-194.el5))")
+  (DIVIDER /)
+  (VOLTAGE 1.200000::1.200000)
+  (PROCESS "1.000000::1.000000")
+  (TEMPERATURE 25.000000::25.000000)
+  (TIMESCALE 1.0 ns)
+
+  (CELL
+    (CELLTYPE  "elevator")
+    (INSTANCE)
+      (DELAY
+	(ABSOLUTE
+	(INTERCONNECT clk buttons_inst/l_btn_in_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_btn_in_reg\[2\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_btn_in_reg\[3\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_btn_in_reg\[4\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_btn_in_reg\[5\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_btn_in_reg\[6\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_btn_in_reg\[7\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_inactivate_in_levels_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_inactivate_in_levels_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_inactivate_in_levels_reg\[5\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_inactivate_in_levels_reg\[2\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_inactivate_in_levels_reg\[3\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_inactivate_in_levels_reg\[4\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_btn_in_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_inactivate_in_levels_reg\[6\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/l_inactivate_in_levels_reg\[7\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/active_in_levels_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/active_in_levels_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/active_in_levels_reg\[2\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/active_in_levels_reg\[3\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/active_in_levels_reg\[4\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/active_in_levels_reg\[5\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/active_in_levels_reg\[6\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk buttons_inst/active_in_levels_reg\[7\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk bell_out_reg/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk closing_reg/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[2\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[3\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[4\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[5\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[6\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[7\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[8\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[9\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[10\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[11\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[12\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[13\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[15\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk door_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk door_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk engine_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk engine_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk i_direction_reg/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk i_engine_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk i_engine_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_in_levels_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_in_levels_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_in_levels_reg\[2\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_in_levels_reg\[3\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_in_levels_reg\[4\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_in_levels_reg\[5\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_in_levels_reg\[6\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_in_levels_reg\[7\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_down_levels_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_down_levels_reg\[2\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_down_levels_reg\[3\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_down_levels_reg\[4\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_down_levels_reg\[5\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_down_levels_reg\[6\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_up_levels_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_up_levels_reg\[2\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_up_levels_reg\[3\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_up_levels_reg\[4\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_up_levels_reg\[5\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk inactivate_out_up_levels_reg\[6\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk level_display_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk level_display_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk level_display_reg\[2\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk level_display_reg\[3\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk opening_reg/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk saved_state_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk saved_state_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk saved_state_reg\[2\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk saved_state_reg\[3\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk state_reg\[0\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk state_reg\[1\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk state_reg\[2\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk state_reg\[3\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk state_reg\[4\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk waiting_reg/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk counter_reg\[14\]/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk direction_reg/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk letout_reg/CK  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT buttons_inst/active_out_down_levels_reg\[2\]/Q g39899/C  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT buttons_inst/active_out_down_levels_reg\[2\]/Q g40138/A0  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT buttons_inst/active_out_down_levels_reg\[2\]/Q g40176/B  (0.000::0.000) (0.000::0.000))
+	)
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_up_levels_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_down_levels_reg\[7\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_btn_in_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_btn_in_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_btn_in_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_btn_in_reg\[4\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_btn_in_reg\[5\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_btn_in_reg\[6\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_btn_in_reg\[7\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_inactivate_in_levels_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_inactivate_in_levels_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_inactivate_in_levels_reg\[5\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_inactivate_in_levels_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_inactivate_in_levels_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_inactivate_in_levels_reg\[4\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRX1MTH")
+    (INSTANCE  buttons_inst/l_btn_in_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_inactivate_in_levels_reg\[6\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/l_inactivate_in_levels_reg\[7\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/active_in_levels_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/active_in_levels_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/active_in_levels_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/active_in_levels_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/active_in_levels_reg\[4\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/active_in_levels_reg\[5\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/active_in_levels_reg\[6\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  buttons_inst/active_in_levels_reg\[7\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_down_levels_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_down_levels_reg\[2\])
+      (DELAY
+	(ABSOLUTE
+	(IOPATH D Q  (0.117::0.121) (0.144::0.157))
+	(IOPATH (posedge G) Q  (0.209::0.213) (0.144::0.156))
+	)
+      )
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_down_levels_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_down_levels_reg\[4\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_down_levels_reg\[5\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_down_levels_reg\[6\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_up_levels_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_up_levels_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_up_levels_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_up_levels_reg\[4\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_up_levels_reg\[5\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "TLATX2M")
+    (INSTANCE  buttons_inst/active_out_up_levels_reg\[6\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  bell_out_reg)
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  closing_reg)
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "SDFFRQX2M")
+    (INSTANCE  counter_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[4\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[5\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[6\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[7\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[8\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[9\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[10\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[11\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[12\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[13\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  counter_reg\[15\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  door_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  door_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  engine_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  engine_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "SDFFRQX2M")
+    (INSTANCE  i_direction_reg)
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFQX1M")
+    (INSTANCE  i_engine_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFQX1M")
+    (INSTANCE  i_engine_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_in_levels_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_in_levels_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_in_levels_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_in_levels_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_in_levels_reg\[4\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_in_levels_reg\[5\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_in_levels_reg\[6\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_in_levels_reg\[7\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_down_levels_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_down_levels_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_down_levels_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_down_levels_reg\[4\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_down_levels_reg\[5\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_down_levels_reg\[6\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_up_levels_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_up_levels_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_up_levels_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_up_levels_reg\[4\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_up_levels_reg\[5\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  inactivate_out_up_levels_reg\[6\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFQX1M")
+    (INSTANCE  level_display_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFQX1M")
+    (INSTANCE  level_display_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFQX1M")
+    (INSTANCE  level_display_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFQX1M")
+    (INSTANCE  level_display_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  opening_reg)
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFQX1M")
+    (INSTANCE  saved_state_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFQX1M")
+    (INSTANCE  saved_state_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFQX1M")
+    (INSTANCE  saved_state_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFQX1M")
+    (INSTANCE  saved_state_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFSRHQX2M")
+    (INSTANCE  state_reg\[0\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFSRHQX2M")
+    (INSTANCE  state_reg\[1\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFSRHQX2M")
+    (INSTANCE  state_reg\[2\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFSRHQX2M")
+    (INSTANCE  state_reg\[3\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  state_reg\[4\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRQX2M")
+    (INSTANCE  waiting_reg)
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFFRX1M")
+    (INSTANCE  counter_reg\[14\])
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "SDFFRQX2M")
+    (INSTANCE  direction_reg)
+      (TIMINGCHECK
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "SDFFRQX2M")
+    (INSTANCE  letout_reg)
+      (TIMINGCHECK
+      )
+  )
+)
