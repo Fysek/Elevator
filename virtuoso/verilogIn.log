@@ -1,0 +1,45 @@
+@(#)$CDS: ihdl version 6.1.7-64b 05/24/2016 18:50 (sjfnl172) $  Sun Jun 30 00:08:22 2019
+
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module BUFX2. Therefore using library
+UofU_Digital_v1_2, cell BUFX2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module DCBX1. Therefore using library
+UofU_Digital_v1_2, cell DCBX1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND2X1. Therefore using library
+UofU_Digital_v1_2, cell NAND2X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AOI21X1. Therefore using library
+UofU_Digital_v1_2, cell AOI21X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI22X1. Therefore using library
+UofU_Digital_v1_2, cell OAI22X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module INVX2. Therefore using library
+UofU_Digital_v1_2, cell INVX2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module MUX2NX1. Therefore using library
+UofU_Digital_v1_2, cell MUX2NX1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NOR3X1. Therefore using library
+UofU_Digital_v1_2, cell NOR3X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module OAI21X1. Therefore using library
+UofU_Digital_v1_2, cell OAI21X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NOR2X1. Therefore using library
+UofU_Digital_v1_2, cell NOR2X1, and view symbol as the symbol.
+INFO (VERILOGIN-357): Checked in symbol buttons_res.
+INFO (VERILOGIN-372): Checked-in schematic buttons_res.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module INVX4. Therefore using library
+UofU_Digital_v1_2, cell INVX4, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND3X1. Therefore using library
+UofU_Digital_v1_2, cell NAND3X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NOR2X2. Therefore using library
+UofU_Digital_v1_2, cell NOR2X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module NAND2X2. Therefore using library
+UofU_Digital_v1_2, cell NAND2X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AND3X1. Therefore using library
+UofU_Digital_v1_2, cell AND3X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module MUX2X2. Therefore using library
+UofU_Digital_v1_2, cell MUX2X2, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module AOI22X1. Therefore using library
+UofU_Digital_v1_2, cell AOI22X1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module INVX1. Therefore using library
+UofU_Digital_v1_2, cell INVX1, and view symbol as the symbol.
+INFO (VERILOGIN-126): Unable to find the Verilog definition for module XNOR2X1. Therefore using library
+UofU_Digital_v1_2, cell XNOR2X1, and view symbol as the symbol.
+INFO (VERILOGIN-357): Checked in symbol elevator.
+INFO (VERILOGIN-372): Checked-in schematic elevator.
+INFO (VERILOGIN-206): End of Logfile.

@@ -1,7 +1,7 @@
 #####################################################################
 #
 # Innovus input globals file
-# Created by Genus(TM) Synthesis Solution on 06/25/2019 23:54:54
+# Created by Genus(TM) Synthesis Solution on 06/29/2019 23:39:04
 #
 #####################################################################
 global setUserDataValue
@@ -12,7 +12,7 @@ setUserDataValue init_design_netlisttype {Verilog}
 setUserDataValue init_design_settop {1}
 setUserDataValue init_top_cell {elevator}
 setUserDataValue init_mmmc_file {genus_invs_des/genus.mmode.tcl}
-setUserDataValue init_lef_file {/tools/DesignKits/pssw/LEF/tsmc13fsg_8lm_tech.lef /tools/DesignKits/pssw/LEF/tsmc13g_m_macros.lef /tools/DesignKits/pssw/LEF/tsmc13hvt_m_macros.lef}
+setUserDataValue init_lef_file {/home/student/DYPLOM/dyrdol/UofU/UofU_Digital_v1_2/UofU_Digital_v1_2.lef}
 setUserDataValue fp_core_cntl {aspect}
 setUserDataValue fp_aspect_ratio {1.0000}
 setUserDataValue extract_shrink_factor {1.0}

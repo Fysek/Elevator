@@ -4,10 +4,8 @@ set ::IMEX::libVar ${::IMEX::dataVar}/libs
 
 create_library_set -name default_library_set\
    -timing\
-    [list ${::IMEX::libVar}/lib/typ/tt_g_1v20_25c.lib\
-    ${::IMEX::libVar}/lib/typ/tt_hvt_1v20_25c.lib]
+    [list ${::IMEX::libVar}/mmmc/UofU_Digital_v1_2.lib]
 create_rc_corner -name _default_rc_corner_\
-   -cap_table ${::IMEX::libVar}/mmmc/tsmc13fsg.capTbl\
    -preRoute_res 1\
    -postRoute_res 1\
    -preRoute_cap 1\
@@ -18,8 +16,8 @@ create_rc_corner -name _default_rc_corner_\
    -T 25
 create_delay_corner -name _default_delay_corner_\
    -library_set default_library_set\
-   -opcond_library tt_g_1v20_25c\
-   -opcond tt_1v20_25c\
+   -opcond_library UofU_Digital_v1_2\
+   -opcond typical\
    -rc_corner _default_rc_corner_
 create_constraint_mode -name _default_constraint_mode_\
    -sdc_files\

@@ -1,0 +1,17 @@
+
+********************************************************************************
+Product   : Virtuoso(R) DEF In 
+Program   : @(#)$CDS: defin version 6.1.7-64b 05/24/2016 18:51 (sjfbm189) $
+SubVersion: sub-version  IC6.1.7-64b.500.4 
+Started at: 30-Jun-2019  00:04:50
+User Name : dyrdol
+Host Name : lab513-pc1
+Directory : /home/student/DYPLOM/dyrdol/magisterka/virtuoso
+DB Version: 	20160524 (SJ)
+CADENCE Design Systems, Inc.
+********************************************************************************
+Running: defin -lib elevator_lib -libPath /home/student/DYPLOM/dyrdol/magisterka/virtuoso -def "/home/student/DYPLOM/dyrdol/magisterka/innovus/elevator.def" -cell elevator -view layout -techRefs "UofU_TechLib_ami06"
+
+Elapsed Time: 1.3s
+
+defin translation completed (errors: 0, warnings: 0).

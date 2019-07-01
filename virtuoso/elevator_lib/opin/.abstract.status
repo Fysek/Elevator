@@ -1,0 +1,6 @@
+cUiSetViewStatus {opin} {layout} {0}
+cUiSetViewStatus {opin} {logical} {0}
+cUiSetViewStatus {opin} {abstract.pin} {0}
+cUiSetViewStatus {opin} {abstract.ext} {0}
+cUiSetViewStatus {opin} {abstract} {0}
+cUiSetViewStatus {opin} {abstract.ver} {0}

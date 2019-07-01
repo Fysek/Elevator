@@ -2,7 +2,7 @@
 #
 # Genus(TM) Synthesis Solution setup file
 # Created by Genus(TM) Synthesis Solution 16.12-s027_1
-#   on 06/25/2019 23:54:54
+#   on 06/29/2019 23:39:04
 #
 #
 #####################################################################
@@ -21,10 +21,9 @@ if {[::legacy::find -design /designs/elevator] ne ""} {
 
 # Libraries
 ###########################################################
-::legacy::set_attribute library {/tools/DesignKits/pssw/TIMING13/tt_g_1v20_25c.lib /tools/DesignKits/pssw/TIMING13/tt_hvt_1v20_25c.lib {}} /
+::legacy::set_attribute library {/home/student/DYPLOM/dyrdol/UofU/UofU_Digital_v1_2/UofU_Digital_v1_2.lib {}} /
 
-::legacy::set_attribute lef_library {/tools/DesignKits/pssw/LEF/tsmc13fsg_8lm_tech.lef /tools/DesignKits/pssw/LEF/tsmc13g_m_macros.lef /tools/DesignKits/pssw/LEF/tsmc13hvt_m_macros.lef} /
-::legacy::set_attribute cap_table_file /tools/DesignKits/pssw/tsmc13fsg.capTbl /
+::legacy::set_attribute lef_library {/home/student/DYPLOM/dyrdol/UofU/UofU_Digital_v1_2/UofU_Digital_v1_2.lef} /
 
 
 # Design
@@ -51,8 +50,8 @@ set _slk_ [::legacy::get_attribute slack /designs/elevator]
 if {[regexp {^-?[0-9.]+$} $_slk_]} {
   set _slk_ [format %.1f $_slk_]
 }
-if {$_slk_ != "99796985.7"} {
-   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden slack: 99796985.7,  current slack: $_slk_"
+if {$_slk_ != "99785690.7"} {
+   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden slack: 99785690.7,  current slack: $_slk_"
 }
 unset _slk_
 # multi-mode slack
@@ -70,8 +69,8 @@ set _cell_area_ [::legacy::get_attribute cell_area /designs/elevator]
 if {[regexp {^-?[0-9.]+$} $_cell_area_]} {
   set _cell_area_ [format %.0f $_cell_area_]
 }
-if {$_cell_area_ != "6739"} {
-   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden cell area: 6739,  current cell area: $_cell_area_"
+if {$_cell_area_ != "372211"} {
+   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden cell area: 372211,  current cell area: $_cell_area_"
 }
 unset _cell_area_
 # net area
@@ -79,7 +78,7 @@ set _net_area_ [::legacy::get_attribute net_area /designs/elevator]
 if {[regexp {^-?[0-9.]+$} $_net_area_]} {
   set _net_area_ [format %.0f $_net_area_]
 }
-if {$_net_area_ != "4223"} {
-   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden net area: 4223,  current net area: $_net_area_"
+if {$_net_area_ != "319404"} {
+   mesg_send [::legacy::find -message /messages/PHYS/PHYS-92] "golden net area: 319404,  current net area: $_net_area_"
 }
 unset _net_area_

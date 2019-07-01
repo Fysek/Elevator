@@ -8,7 +8,7 @@ parameter DELAY_WAIT = 500, //wait to change dir time ~500ms
 parameter DELAY_OPEN = 6000  //wait after open ~6s
 )
 (
-	input 							clk			,
+	input 							clock			,
 	input 							an_reset		,
 	input 							buttons_block	,
 	input 							open_btn		,
@@ -71,7 +71,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 				WAIT    = 18;
 	
 	buttons_res buttons_inst(
-		.clk						(clk)							,
+		.clock						(clock)							,
 		.an_reset					(an_reset)						,
 		.buttons_block				(buttons_block)					,
 		.btn_in						(btn_in)						,
@@ -88,7 +88,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 	
 	assign reached=sensor_down&&sensor_up;
 	
-	always@(posedge clk or negedge an_reset)
+	always@(posedge clock)
 	begin
 		if(!an_reset) begin
 			bell_out<=0;
@@ -101,7 +101,7 @@ parameter DELAY_OPEN = 6000  //wait after open ~6s
 		end	
 	end
 	
-	always@(posedge clk or negedge an_reset)
+	always@(posedge clock)
 	begin
 		if(!an_reset) begin
 			engine 						<=0;

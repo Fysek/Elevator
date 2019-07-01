@@ -5,7 +5,7 @@ parameter BUTTONS_WIDTH = 8
 
 )
 (
-	input							clk,
+	input							clock,
 	input							an_reset,
 	input							buttons_block,
 	input 		[BUTTONS_WIDTH-1:0] btn_in, 				//wewnatrz windy
@@ -26,20 +26,20 @@ parameter BUTTONS_WIDTH = 8
 		
 	assign 	l_active_in_levels=active_in_levels;
 		
-	always @(posedge clk or negedge an_reset) begin
+	always @(posedge clock) begin
 		if(!an_reset) begin
-			l_btn_in 				=0;
-			l_inactivate_in_levels 	=0;
-			active_in_levels 		=0;
-			buttons_state			=8'hFF;
+			l_btn_in 				<=0;
+			l_inactivate_in_levels 	<=0;
+			active_in_levels 		<=0;
+			buttons_state			<=8'hFF;
 		end
 		else begin
 			for(index=0; index<BUTTONS_WIDTH; index=index+1) begin
 				if (inactivate_in_levels[index] == 1) begin
 					if (l_inactivate_in_levels[index] == 0) begin
 						if (l_active_in_levels[index] == 1) begin
-							active_in_levels[index] = 0;
-							buttons_state[index]=!buttons_state[index];
+							active_in_levels[index] <= 0;
+							buttons_state[index]<=!buttons_state[index];
 						end	
 					end	
 				end	
@@ -48,46 +48,46 @@ parameter BUTTONS_WIDTH = 8
 						if(btn_in[index] == 1) begin
 							if(l_btn_in[index] == 0) begin				
 								if(buttons_state[index]) begin
-									active_in_levels[index] = 1;
+									active_in_levels[index] <= 1;
 								end		
 								else begin 
-									active_in_levels[index] = 0;
+									active_in_levels[index] <= 0;
 								end	
-								buttons_state[index]=!buttons_state[index];								
+								buttons_state[index]<=!buttons_state[index];								
 							end	
 						end	
 					end	
 				end	
-				l_btn_in[index] = btn_in[index];
-				l_inactivate_in_levels[index] = inactivate_in_levels[index];
+				l_btn_in[index] <= btn_in[index];
+				l_inactivate_in_levels[index] <= inactivate_in_levels[index];
 			end	
 		end	
 	end		
 
-	always @(*) begin
+	always @(posedge clock) begin
 		if(!an_reset) begin
-			active_out_up_levels	=0;
-			active_out_down_levels	=0;
+			active_out_up_levels	<=0;
+			active_out_down_levels	<=0;
 		end
 		else begin
 			for(index=0; index<BUTTONS_WIDTH-1; index=index+1) begin
 				//up
 				if(btn_up_out[index] == 1) begin
 					if(!buttons_block) begin
-						active_out_up_levels[index] = 1;
+						active_out_up_levels[index] <= 1;
 					end
 				end else if (inactivate_out_up_levels[index] == 1) begin
-					active_out_up_levels[index] = 0;
+					active_out_up_levels[index] <= 0;
 				end
 			end	
 			for(index=1; index<BUTTONS_WIDTH; index=index+1) begin	
 				//down
 				if(btn_down_out[index] == 1) begin
 					if(!buttons_block) begin
-						active_out_down_levels[index] = 1;
+						active_out_down_levels[index] <= 1;
 					end
 				end else if (inactivate_out_down_levels[index] == 1) begin
-					active_out_down_levels[index] = 0;
+					active_out_down_levels[index] <= 0;
 				end
 			end
 		end	

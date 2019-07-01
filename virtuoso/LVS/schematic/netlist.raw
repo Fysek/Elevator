@@ -1,0 +1,32 @@
+
+n 1 vdd!
+n 0 gnd!
+
+; nmos4 Instance /I46/N0 = auLvs device Q0
+d nmos D G S B (p D S)
+i 0 nmos 1 0 0 0 " m 4 l 600e-9 w 30e-6 "
+
+; nmos4 Instance /I46/N1 = auLvs device Q1
+i 1 nmos 1 0 0 0 " m 4 l 600e-9 w 30e-6 "
+
+; nmos4 Instance /I82/N0 = auLvs device Q2
+i 2 nmos 1 0 0 0 " m 4 l 600e-9 w 30e-6 "
+
+; nmos4 Instance /I82/N1 = auLvs device Q3
+i 3 nmos 1 0 0 0 " m 4 l 600e-9 w 30e-6 "
+
+; pmos4 Instance /I8/P0 = auLvs device Q4
+d pmos D G S B (p D S)
+i 4 pmos 0 1 1 1 " m 4 l 600e-9 w 30e-6 "
+
+; pmos4 Instance /I8/P1 = auLvs device Q5
+i 5 pmos 0 1 1 1 " m 4 l 600e-9 w 30e-6 "
+
+; pmos4 Instance /I67/P0 = auLvs device Q6
+i 6 pmos 0 1 1 1 " m 4 l 600e-9 w 30e-6 "
+
+; pmos4 Instance /I67/P1 = auLvs device Q7
+i 7 pmos 0 1 1 1 " m 4 l 600e-9 w 30e-6 "
+t 0 gnd! global
+t 1 vdd! global
+

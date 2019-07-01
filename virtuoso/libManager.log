@@ -1,0 +1,262 @@
+\o Program:		@(#)$CDS: libManager version 6.1.7 - CAT35 04/10/2016 16:14 (sjfnl137) $
+\o Sub version:		sub-version  IC6.1.7 - CAT35.15s014 
+\o Arguments:		-mpssession virtuoso28782 -mpshost lab513-pc1 
+\o Working Directory:	lab513-pc1:/home/student/DYPLOM/dyrdol/magisterka/virtuoso
+\o 64-bit offsets
+\o Qt version: 		4.8.5
+\o Log file is "/home/student/DYPLOM/dyrdol/magisterka/virtuoso/libManager.log".
+\o Opening libManager window.
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(cdsLibManager list(8 188 1440 837))
+\o changeWorkingDir("/home/student/DYPLOM/dyrdol/magisterka/virtuoso") unnecessary.
+\o ddSetForcedLib("") unnecessary.
+\o MPS service: map window
+\w Warning: LIB basic from File /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib Line 19 redefines
+\w LIB basic from File /tools/DesignKits/UMC/180/bu/cds.lib
+\w Insert UNDEFINE basic
+\w before DEFINE basic
+\w     in /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib
+\w Or remove or comment out DEFINE basic
+\w     in /tools/DesignKits/UMC/180/bu/cds.lib
+\w to suppress this warning message.
+\o Library Manager customization server connected.
+\a cdsLibManager->libListBox->value = "UofU_Pads"
+\a cdsLibManager->libLineEdit->value = "UofU_Pads"
+\a cdsLibManager->cellListBox->value = "Frame2v_70"
+\a cdsLibManager->cellListBox->value = "Frame2h_68"
+\a cdsLibManager->cellListBox->value = "Frame2h_68_my"
+\a cdsLibManager->cellLineEdit->value = "Frame2h_68_my"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 2 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libLineEdit->value = ""
+\w Warning: LIB basic from File /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib Line 19 redefines
+\w LIB basic from File /tools/DesignKits/UMC/180/bu/cds.lib
+\w Insert UNDEFINE basic
+\w before DEFINE basic
+\w     in /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib
+\w Or remove or comment out DEFINE basic
+\w     in /tools/DesignKits/UMC/180/bu/cds.lib
+\w to suppress this warning message.
+\a cdsLibManager->libListBox->value = "UofU_Pads"
+\a cdsLibManager->libLineEdit->value = "UofU_Pads"
+\a cdsLibManager->cellListBox->value = "Frame2h_68_my"
+\a cdsLibManager->cellLineEdit->value = "Frame2h_68_my"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "pad_in"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->cellLineEdit->value = "pad_in"
+\a cdsLibManager->libListBox->value = "analogLib"
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "basic"
+\a cdsLibManager->libLineEdit->value = "basic"
+\a cdsLibManager->cellListBox->value = "ipin"
+\a cdsLibManager->cellLineEdit->value = "ipin"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = "symbolrOff"
+\a cdsLibManager->viewLineEdit->value = "symbolrOff"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = "symbolrOff"
+\a cdsLibManager->viewLineEdit->value = "symbolrOff"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 1 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a _lmgrCloseIconify("cdsLibManager" 1)
+\a nrResizeWindow(cdsLibManager list(0 0 1440 837))
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(cdsLibManager list(8 188 1440 837))
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "avTech"
+\a cdsLibManager->libListBox->value = "UofU_Pads"
+\a cdsLibManager->libLineEdit->value = "UofU_Pads"
+\a cdsLibManager->cellListBox->value = "Frame2h_68"
+\a nrListItemAction(cdsLibManager->cellListBox 1 0)
+\o MPS request: edit design
+\a cdsLibManager->cellLineEdit->value = "Frame2h_68"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libLineEdit->value = ""
+\w Warning: LIB basic from File /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib Line 19 redefines
+\w LIB basic from File /tools/DesignKits/UMC/180/bu/cds.lib
+\w Insert UNDEFINE basic
+\w before DEFINE basic
+\w     in /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib
+\w Or remove or comment out DEFINE basic
+\w     in /tools/DesignKits/UMC/180/bu/cds.lib
+\w to suppress this warning message.
+\a cdsLibManager->libListBox->value = "UofU_Pads"
+\a cdsLibManager->libLineEdit->value = "UofU_Pads"
+\a cdsLibManager->cellListBox->value = "Frame2h_68"
+\a cdsLibManager->cellLineEdit->value = "Frame2h_68"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 2 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libLineEdit->value = ""
+\w Warning: LIB basic from File /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib Line 19 redefines
+\w LIB basic from File /tools/DesignKits/UMC/180/bu/cds.lib
+\w Insert UNDEFINE basic
+\w before DEFINE basic
+\w     in /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib
+\w Or remove or comment out DEFINE basic
+\w     in /tools/DesignKits/UMC/180/bu/cds.lib
+\w to suppress this warning message.
+\a cdsLibManager->libListBox->value = "UofU_Pads"
+\a cdsLibManager->libLineEdit->value = "UofU_Pads"
+\a cdsLibManager->cellListBox->value = "Frame2h_68"
+\a cdsLibManager->cellLineEdit->value = "Frame2h_68"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->libListBox->value = "UofU_Analog_Parts"
+\a cdsLibManager->libLineEdit->value = "UofU_Analog_Parts"
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libListBox->value = "UofU_Digital_v1_2"
+\a cdsLibManager->libListBox->value = "elevator_lib"
+\a cdsLibManager->libLineEdit->value = "elevator_lib"
+\a cdsLibManager->cellListBox->value = "elevator_pads"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->cellListBox->value = "elevator"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->cellLineEdit->value = "elevator"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = "layout"
+\a cdsLibManager->viewLineEdit->value = "layout"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 2 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "elevator_pads"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrListItemAction(cdsLibManager->cellListBox 2 0)
+\o MPS request: edit design
+\a cdsLibManager->cellLineEdit->value = "elevator_pads"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libLineEdit->value = ""
+\w Warning: LIB basic from File /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib Line 19 redefines
+\w LIB basic from File /tools/DesignKits/UMC/180/bu/cds.lib
+\w Insert UNDEFINE basic
+\w before DEFINE basic
+\w     in /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib
+\w Or remove or comment out DEFINE basic
+\w     in /tools/DesignKits/UMC/180/bu/cds.lib
+\w to suppress this warning message.
+\a cdsLibManager->libListBox->value = "elevator_lib"
+\a cdsLibManager->libLineEdit->value = "elevator_lib"
+\a cdsLibManager->cellListBox->value = "elevator_pads"
+\a cdsLibManager->cellLineEdit->value = "elevator_pads"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 2 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "ipin"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->cellLineEdit->value = "ipin"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "opin"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->cellListBox->value = "iopin"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->cellLineEdit->value = "iopin"
+\a nrSetCurrentWindow(cdsLibManager)
+\a _lmgrCloseIconify("cdsLibManager" 0)
+\a _lmgrCloseIconify("cdsLibManager" 1)
+\a nrResizeWindow(cdsLibManager list(0 0 1440 837))
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(cdsLibManager list(8 188 1440 837))
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "elevator_pads"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = "elevator_pads"
+\a cdsLibManager->libListBox->value = "UofU_Pads"
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libLineEdit->value = "UofU_Pads"
+\a cdsLibManager->cellListBox->value = "pad_bidirhe"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->cellListBox->value = "Frame2h_68"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "Frame2h_68_my"
+\a cdsLibManager->cellLineEdit->value = "Frame2h_68_my"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 2 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a _lmgrCloseIconify("cdsLibManager" 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\o MPS service: shutdown
+\o libManager is exiting.
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a exit(0)

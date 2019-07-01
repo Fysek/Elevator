@@ -1,0 +1,24 @@
+\o Program:		@(#)$CDS: cdsLibEditor version 6.1.7 - CAT35 04/10/2016 16:16 (sjfnl137) $
+\o Sub version:		sub-version  IC6.1.7 - CAT35.15s014 
+\o Arguments:		-cdslib /home/student/DYPLOM/dyrdol/magisterka/virtuoso/cds.lib -mpssession virtuoso28782 -mpshost lab513-pc1 
+\o Working Directory:	lab513-pc1:/home/student/DYPLOM/dyrdol/magisterka/virtuoso
+\o 64-bit offsets
+\a nrSetWindowVisibility(cdsLibEditor "show")
+\o Qt version: 		4.8.5
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrListItemAction(cdsLibEditor->mainTable 0 0)
+\o Active cell: 0 0 "analogLib"
+\a nrResizeWindow(cdsLibEditor list(138 161 500 400))
+\a nrListItemAction(cdsLibEditor->mainTable 2 0)
+\o Active cell: 2 0 "UMC_18_CMOS"
+\a nrListItemAction(cdsLibEditor->mainTable 7 1)
+\o Active cell: 7 1 "/home/student/DYPLOM/dyrdol/ncsu-cdk-1.6.0.beta/lib/basic"
+\a nrListItemAction(cdsLibEditor->mainTable 9 1)
+\o Active cell: 9 1 "/home/student/DYPLOM/dyrdol/ncsu-cdk-1.6.0.beta/lib/NCSU_Digital_Parts"
+\a nrListItemAction(cdsLibEditor->mainTable 7 1)
+\o Active cell: 7 1 "/home/student/DYPLOM/dyrdol/ncsu-cdk-1.6.0.beta/lib/basic"
+\a nrListItemAction(cdsLibEditor->mainTable 11 1)
+\o Active cell: 11 1 "/home/student/DYPLOM/dyrdol/ncsu-cdk-1.6.0.beta/lib/NCSU_TechLib_ami16"
+\a cdsLibEditor->fileExitButton->value = t
+\a nrSetWindowVisibility(cdsLibEditor "hide")
+\a exit(0)

@@ -1,0 +1,6 @@
+cUiSetViewStatus {elevator} {layout} {1}
+cUiSetViewStatus {elevator} {logical} {0}
+cUiSetViewStatus {elevator} {abstract.pin} {0}
+cUiSetViewStatus {elevator} {abstract.ext} {0}
+cUiSetViewStatus {elevator} {abstract} {0}
+cUiSetViewStatus {elevator} {abstract.ver} {0}

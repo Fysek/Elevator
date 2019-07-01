@@ -1,0 +1,7 @@
+cUiSelectCellP {elevator_pads}
+cUiSetViewStatus {elevator_pads} {layout} {1}
+cUiSetViewStatus {elevator_pads} {logical} {0}
+cUiSetViewStatus {elevator_pads} {abstract.pin} {1}
+cUiSetViewStatus {elevator_pads} {abstract.ext} {1}
+cUiSetViewStatus {elevator_pads} {abstract} {3}
+cUiSetViewStatus {elevator_pads} {abstract.ver} {0}

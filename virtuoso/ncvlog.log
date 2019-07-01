@@ -1,0 +1,22 @@
+ncvlog: *W,DLNOHV: Unable to find an 'hdl.var' file to load in.
+TOOL:	ncvlog(64)	15.20-s010: Started on Jun 30, 2019 at 00:08:23 CEST
+ncvlog
+    -use5x
+    -work __nclib
+    -view module
+    -logfile ncvlog.log
+    -cdslib /tmp/ihdl_cdslibb9489_19489
+    -messages
+    -nostdout
+    -nocopyright
+    -ESCAPEDNAME
+    /home/student/DYPLOM/dyrdol/magisterka/innovus/elevator.v
+
+file: /home/student/DYPLOM/dyrdol/magisterka/innovus/elevator.v
+	module __nclib.buttons_res:module
+		errors: 0, warnings: 0
+	module __nclib.elevator:module
+		errors: 0, warnings: 0
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 1
+TOOL:	ncvlog(64)	15.20-s010: Exiting on Jun 30, 2019 at 00:08:23 CEST  (total: 00:00:00)

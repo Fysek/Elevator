@@ -7,7 +7,6 @@ catch { setAnalysisMode -checkType setup }
 catch { setAnalysisMode -clkSrcPath true }
 catch { setAnalysisMode -clockPropagation forcedIdeal }
 catch { setAnalysisMode -usefulSkew true }
-catch { setAnalysisMode -virtualIPO false }
 catch { setOptMode -activeHoldViews { _default_view_ } }
 catch { setOptMode -activeSetupViews { _default_view_ } }
 catch { setOptMode -autoSetupViews { _default_view_} }
@@ -20,15 +19,15 @@ catch { setOptMode -fixFanoutLoad false }
 catch { setOptMode -fixTran true }
 catch { setOptMode -optimizeFF true }
 catch { setOptMode -setupTargetSlack 0 }
-setExtractRCMode  -engine postRoute -total_c_th 5 -relative_c_th 0.03 -coupling_c_th 3 -minNetTermNrToBeInMem 50
+setExtractRCMode  -engine preRoute
 catch {setNanoRouteMode -quiet -drouteUseMinSpacingForBlockage auto}
 catch {setNanoRouteMode -quiet -extractThirdPartyCompatible false}
-catch {setNanoRouteMode -quiet -grouteExpTdStdDelay 26.800000}
-catch {setNanoRouteMode -quiet -routeExpSignatureEco false}
+catch {setNanoRouteMode -quiet -grouteExpTdStdDelay 127.600000}
 catch {setNanoRouteMode -quiet -routeStrictlyHonorNonDefaultRule "false"}
+catch {setNanoRouteMode -quiet -routeTdrEffort 1}
 catch {setNanoRouteMode -quiet -routeWithSiDriven false}
 catch {setNanoRouteMode -quiet -routeWithSiPostRouteFix false}
-catch {setNanoRouteMode -quiet -routeWithTimingDriven false}
+catch {setNanoRouteMode -quiet -routeWithTimingDriven true}
 catch {setNanoRouteMode -quiet -timingEngine ""}
 
 catch { setPlaceMode -place_design_floorplan_mode false }
@@ -78,7 +77,7 @@ catch { setDelayCalMode -enable_high_fanout true }
 catch { setDelayCalMode -eng_copyNetPropToNewNet true }
 catch { setDelayCalMode -engine aae }
 catch { setDelayCalMode -ignoreNetLoad false }
-catch { setDelayCalMode -SIAware true }
+catch { setPinAssignMode -pinEditInBatch false }
 catch { setTrialRouteMode -handlePreroute true }
 catch { setTrialRouteMode -keepMarkedOptRoutes true }
 catch { setAddRingMode -avoid_short false }
@@ -89,7 +88,7 @@ catch { setAddRingMode -ring_target default }
 catch { setAddRingMode -skip_crossing_trunks none }
 catch { setAddRingMode -skip_via_on_pin standardcell }
 catch { setAddRingMode -skip_via_on_wire_shape noshape }
-catch { setAddRingMode -stacked_via_bottom_layer METAL1 }
-catch { setAddRingMode -stacked_via_top_layer METAL8 }
+catch { setAddRingMode -stacked_via_bottom_layer metal1 }
+catch { setAddRingMode -stacked_via_top_layer metal3 }
 catch { setAddRingMode -via_using_exact_crossover_size true }
 catch { setSIMode -separate_delta_delay_on_data true }

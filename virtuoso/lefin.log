@@ -1,0 +1,16 @@
+
+********************************************************************************
+Product   : Virtuoso(R) LEF In 
+Program   : @(#)$CDS: lefin version 6.1.7-64b 05/24/2016 18:54 (sjfnl162) $
+SubVersion: sub-version  IC6.1.7-64b.500.4 
+Started at: 27-Jun-2019  19:41:33
+User Name : dyrdol
+Host Name : lab513-pc1
+Directory : /home/student/DYPLOM/dyrdol/magisterka/virtuoso
+DB Version: 	20160524 (SJ)
+CADENCE Design Systems, Inc.
+********************************************************************************
+Running: lefin -lib tmsc_130_tech -libPath /home/student/DYPLOM/dyrdol/magisterka/virtuoso -lef "/tools/DesignKits/pssw/LEF/tsmc13fsg_8lm_tech.lef" -tech tmsc_130 -techPath /home/student/DYPLOM/dyrdol/magisterka/virtuoso -view abstract
+WARNING: (OALEFDEF-90024): The existing display.drf is saved as display.drf.orig. The new packet display information will be appended to a copy of display.drf. 
+ERROR: (OALEFDEF-3): File '/tools/cadence/2016-17/RHELx86/IC_6.1.7.704/tools.lnx86/dfII/etc/cdsDefTechLib/tech.db' is not writable.
+ERROR: (OALEFDEF-90007): lefin translation has failed.

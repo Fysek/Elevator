@@ -1,0 +1,6 @@
+cUiSetViewStatus {buttons_res} {layout} {0}
+cUiSetViewStatus {buttons_res} {logical} {0}
+cUiSetViewStatus {buttons_res} {abstract.pin} {0}
+cUiSetViewStatus {buttons_res} {abstract.ext} {0}
+cUiSetViewStatus {buttons_res} {abstract} {0}
+cUiSetViewStatus {buttons_res} {abstract.ver} {0}
