@@ -1,6 +1,9 @@
 # Elevator
 
-The aim of the master's thesis is to present the elevator control algorithm and its implementation as an integrated circuit in the top-down technique. The behavioral description of the digital circuit is written in the Verilog hardware description language. The controller is based on a finite state machine, where the individual states are instructions executed by the elevator
+The aim of the master's thesis is to present the elevator control algorithm and its implementation as an integrated circuit in the top-down technique. The behavioral description of the digital circuit is written in the Verilog hardware description language. The controller is based on a finite state machine, where the individual states are instructions executed by the elevator.
+
+
+<img src="https://github.com/Fysek/Elevator/blob/master/pictures/asic/all.png" width="1000"/>
 
 ## Summary 
 
