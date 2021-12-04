@@ -6,7 +6,7 @@ Features of the designed algorithm:
 - modular architecture (possible use for any number of floor)
 - simple algorithm, easy to extend
 - fast response time
-- ressetable buttons
+- resettable buttons
 - easy to translate to other programming languages (implemented in verilog)
 
 <img src="https://github.com/Fysek/Elevator/blob/master/pictures/asic/all.png" width="1000"/>
